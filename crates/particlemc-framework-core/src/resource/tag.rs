@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! Tag<T> 通用数据存储框架（R6）：类型化键 + 序列化器 + 处理器。
 //!
 //! 语义对齐 Java `net.minestom.server.tag`（权威参考 `java/.../server/tag/`，

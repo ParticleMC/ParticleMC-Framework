@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 连接管理器：真实持有在线连接的运行时状态。
 //!
 //! 每个连接以 `conn_id`（监听任务分配的 32 位整数）为键，记录其对应的玩家实体、

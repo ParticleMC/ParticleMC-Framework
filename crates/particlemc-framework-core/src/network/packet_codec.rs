@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 数据包编解码 trait（骨架占位）。
 //!
 //! 真实协议编解码将在后续增量实现；骨架阶段仅声明接口，默认实现一律返回

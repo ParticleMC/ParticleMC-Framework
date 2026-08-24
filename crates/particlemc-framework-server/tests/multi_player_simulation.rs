@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 多玩家集成测试。
 //!
 //! - 100 名玩家并发 TCP 登录，验证服务器稳定性

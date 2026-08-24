@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 属性同步系统（R8）：消费 [`AttributeInbox`] 收件箱，向玩家广播
 //! `EntityAttributes`(0x81) 更新包。
 //!

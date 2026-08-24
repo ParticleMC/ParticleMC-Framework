@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 物理运动模拟工具：组合方块碰撞 + 空气动力学 + WorldBorder 约束。
 //!
 //! 对齐 Java [`net.minestom.server.collision.PhysicsUtils`] 的框架层抽象。

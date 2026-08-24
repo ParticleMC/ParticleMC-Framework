@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 配置阶段数据包（资源包 / 注册表同步 / 完成配置）。
 
 use crate::protocol::byte_buf::ByteBuffer;

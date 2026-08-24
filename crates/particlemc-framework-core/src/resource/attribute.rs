@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 属性框架（R8）：`Attribute` 值类型、`AttributeInstance` 叠加实例与
 //! [`AttributeRegistry`] 注册表。
 //!

@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! # particlemc-framework-server
 //!
 //! ParticleMCFramework（Rust 重写版）服务器二进制入口。构造并装配自研 `App`、启动真实

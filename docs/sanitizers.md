@@ -1,3 +1,5 @@
+﻿<!-- Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+SPDX-License-Identifier: GPL-3.0-or-later -->
 # 内存与未定义行为校验（T16.6）
 
 本文档说明如何对 `minestom-ecs` 内核施加内存安全/未定义行为（UB）校验：nightly **Miri**（本机可跑）、Linux **valgrind**，以及它们在 CI 中的落点（`.github/workflows/ci.yml`）。

@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 实体属性组件（R8）：以 `HashMap<attr_id, AttributeInstance>` 承载实体的
 //! 全部属性实例，并用 `dirty` 集合记录待同步的变更。
 //!

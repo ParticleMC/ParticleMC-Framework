@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 实例（世界）管理器：维护默认实例与已注册实例表（R11）。
 //!
 //! 以 `Uuid` 为键登记各个 `Instance` 对应的 [`WorldId`]，并持有「默认实例」

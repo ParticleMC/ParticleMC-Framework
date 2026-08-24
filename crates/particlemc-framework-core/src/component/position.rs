@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 实体坐标组件。
 //!
 //! 以 `f64` 存储世界坐标（x/y/z），`f32` 存储朝向（yaw/pitch），契合 Minecraft

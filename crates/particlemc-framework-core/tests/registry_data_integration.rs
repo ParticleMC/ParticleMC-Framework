@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 集成测试：完整注册数据加载计数校验。
 //!
 //! 验证由 `tools/gen_registry_data.py` 生成的完整 TOML 数据可被正确解析并加载，

@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 服务器列表 Ping 子系统（对齐 Java `net.minestom.server.ping` 语义，T14）。
 //!
 //! Java `Status` 经 `StructCodec` 序列化为 MOTD JSON（`{version:{name,protocol},

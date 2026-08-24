@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 区块生成器：`ChunkGenerator` trait + 内存中的生成结果表示。
 //!
 //! 语义对齐 Minestom Java 的 `Generator`（`generate` 产出区块数据，随后才由

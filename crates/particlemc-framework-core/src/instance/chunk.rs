@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 区块与区段结构（世界模型骨架）。
 //!
 //! [`Section`] 是 16×16×16 的方块容器，内部以「调色板 + 位压缩」存储：

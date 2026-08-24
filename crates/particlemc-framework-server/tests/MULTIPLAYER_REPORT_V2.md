@@ -1,3 +1,5 @@
+﻿<!-- Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+SPDX-License-Identifier: GPL-3.0-or-later -->
 # 多人在线模拟压力测试报告（V2）
 
 > 测试日期：2026-08-23

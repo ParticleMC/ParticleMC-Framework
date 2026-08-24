@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 方块注册表：以 `Resource` 形式承载 `Registry<BlockDefinition>`。
 //!
 //! 启动时由 [`crate::plugin::McServerPlugin`] 调用 [`BlockRegistry::from_toml_file`]

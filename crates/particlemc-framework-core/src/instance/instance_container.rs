@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 实例容器（世界化记录）。
 //!
 //! R11 重构后，`InstanceContainer` 不再是主 World 的组件，而是持有实例专属

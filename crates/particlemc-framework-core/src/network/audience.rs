@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 消息受众抽象（Audience）。
 //!
 //! 本模块提供统一的"向谁发送消息"抽象，解耦上层逻辑与具体的发送目标：

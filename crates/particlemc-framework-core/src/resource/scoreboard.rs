@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 计分板 API（框架层，见 `.specs/implement-framework-capabilities/` R8）。
 //!
 //! 提供 [`Objective`]（目标）、[`Team`]（队伍）、[`ScoreEntry`]（分数条目）三个

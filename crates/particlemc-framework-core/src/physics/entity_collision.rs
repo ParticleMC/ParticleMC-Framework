@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 实体间碰撞检测：沿速度矢量扫掠，检测与附近实体的碰撞。
 //!
 //! 对齐 Java [`net.minestom.server.collision.EntityCollision`] 的框架层抽象。

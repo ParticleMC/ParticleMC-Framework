@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 伤害值类型（T4 最小版 → T7 伤害体系扩展）。
 //!
 //! 本模块承载 [`Living::hurt`] 委托 [`Health::damage`] 所需的 [`Damage`] 值。

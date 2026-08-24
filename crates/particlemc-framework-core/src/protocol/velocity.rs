@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! Velocity modern forwarding（1.20.3+ 握手转发）校验。
 //!
 //! 经 Velocity 代理转发的玩家，其握手包末尾附加一段二进制转发数据（blob），

@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 掉落物实体组件（T4 实体类层级：以组件组合替代 Java `ItemEntity` 继承）。
 //!
 //! [`ItemEntity`] 承载地面物品栈；拾取 / 合并语义由后续 tick 系统消费

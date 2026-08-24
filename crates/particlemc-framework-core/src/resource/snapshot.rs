@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 世界快照（R7）：区块 / 实体 / 实例的序列化载体。
 //!
 //! 语义对齐 Minestom Java `snapshot/` 包：`Snapshotable` 对象在安全点（如

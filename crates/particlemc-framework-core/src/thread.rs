@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 线程模型抽象：`ThreadProvider` trait 占位 + [`StdThreadProvider`] 实现。
 //!
 //! **边界说明**：Rust 侧以 `std::thread` + tokio（异步运行时）为准，**不复制

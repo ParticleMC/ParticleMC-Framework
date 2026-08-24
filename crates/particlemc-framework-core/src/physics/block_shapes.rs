@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 方块形状表：将方块名映射为局部坐标下的多 AABB 子盒。
 //!
 //! 本模块是 `complete-framework-gaps` WS3 的核心数据：由方块名解析其碰撞形状，

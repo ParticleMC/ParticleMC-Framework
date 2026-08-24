@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! Minecraft 变长整数（VarInt / VarLong）编解码。
 //!
 //! 编码规则：每字节低 7 位为数据，最高位（0x80）为「还有后续」标志。

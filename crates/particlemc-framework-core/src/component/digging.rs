@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 玩家挖掘状态组件。
 //!
 //! 记录玩家对目标方块的挖掘进度，用于平滑挖掘动画与打断判定。

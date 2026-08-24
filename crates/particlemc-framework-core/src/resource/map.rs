@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 地图画布（T13，对应 spec R13）。
 //!
 //! [`MapData`] 承载一张 128×128 像素的简化地图画布（简化 framebuffer），

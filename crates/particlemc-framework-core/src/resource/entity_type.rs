@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 实体类型：对「实体类型注册表 id」的轻量值类型封装。
 //!
 //! [`EntityType`] 以 `Copy` 值类型承载一个实体类型注册表 id，并提供经

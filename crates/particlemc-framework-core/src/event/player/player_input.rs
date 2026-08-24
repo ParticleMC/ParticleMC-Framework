@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 玩家输入事件。
 
 use crate::event::r#trait::{EntityEvent, Event, PlayerEvent};

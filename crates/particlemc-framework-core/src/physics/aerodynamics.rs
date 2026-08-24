@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 空气动力学属性：描述实体受到的重力与空气阻力。
 //!
 //! 对齐 Java [`net.minestom.server.collision.Aerodynamics`]。各字段为不可变

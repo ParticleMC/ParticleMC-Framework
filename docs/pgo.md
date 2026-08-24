@@ -1,3 +1,5 @@
+﻿<!-- Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+SPDX-License-Identifier: GPL-3.0-or-later -->
 # PGO 构建与极致 Release 调优（T16.3）
 
 本文档说明如何对自研 ECS 内核 `minestom-ecs` 启用 **PGO（Profile-Guided Optimization，基于性能剖析的优化）**，以及仓库根 `Cargo.toml` 中 `[profile.release]` 各开关的取舍。

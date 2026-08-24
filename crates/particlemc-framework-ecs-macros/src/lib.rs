@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! particlemc-framework-ecs 的过程宏 crate：`Component` / `Archetype` / `Message` 派生宏
 //! 与 `register_archetypes!` / `register_components!` 注册宏。
 //!

@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 世界内调度器：系统注册、依赖排序、固定步长时钟。
 //!
 //! 变更标识符：`implement-custom-ecs`

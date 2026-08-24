@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 事件分发器（EventDispatcher）。
 //!
 //! 支持全局监听 + 实例级节点分层，替代旧版 [`super::bus::EventBus`]。

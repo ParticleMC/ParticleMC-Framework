@@ -1,3 +1,5 @@
+﻿<!-- Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+SPDX-License-Identifier: GPL-3.0-or-later -->
 # 性能基准与调优说明（T15 / T16）
 
 本文档记录自研 ECS 内核 `minestom-ecs`（零外部依赖、纯 `std`）的性能基准结果，以及为「极致压榨」所落地的优化手段（SIMD / LTO / PGO / 线程亲和 / 无分支）与其已知约束。

@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 定时器便捷层（对齐 Java `net.minestom.server.timer` 语义，T14）。
 //!
 //! Java Minestom 的 `Scheduler` / `Schedulable` 提供 `scheduleNextTick` /

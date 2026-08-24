@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 附魔承载与注册表（R11）。
 //!
 //! [`Enchantment`] 表示一个具名附魔条目（类型 + 注册表序位 + 应用等级）；

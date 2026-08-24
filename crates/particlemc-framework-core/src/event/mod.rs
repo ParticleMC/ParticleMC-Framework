@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 事件层（`Message`）与事件总线。
 //!
 //! 以 自研 ECS 的 `Message` 机制（即旧版 `Event`）描述游戏循环与网络层之间的

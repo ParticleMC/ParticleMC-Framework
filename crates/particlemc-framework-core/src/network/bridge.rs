@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 网络桥接：`tokio` 异步监听 ↔ `旧 ECS 方案` 同步游戏循环的连接点。
 //!
 //! `inbound` 由监听任务持有发送端；`outbound` 由监听任务在连接建立时插入

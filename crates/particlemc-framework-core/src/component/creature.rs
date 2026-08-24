@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 生物实体组件（T4 实体类层级：以组件组合替代 Java `EntityCreature` 继承）。
 //!
 //! [`EntityCreature`] 标记可移动、可被 AI 控制的生物实体。导航语义由 T6

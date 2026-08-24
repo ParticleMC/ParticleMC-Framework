@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 活体实体组件（T4 实体类层级：以组件组合替代 Java `LivingEntity` 继承）。
 //!
 //! [`Living`] 标记「有生命值、可受伤」的实体，携带 AI 组（[`EntityAIGroup`]，

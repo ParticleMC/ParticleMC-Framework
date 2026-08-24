@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 事件过滤器。
 //!
 //! [`EventFilter`] trait 定义了事件的过滤接口，配合 [`super::dispatcher::EventDispatcher`]

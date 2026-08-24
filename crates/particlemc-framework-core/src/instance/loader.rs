@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 区块持久化抽象：`ChunkLoader` trait + 内存实现。
 //!
 //! 语义对齐 Minestom Java 的 `ChunkLoader`（`load` 返回整块数据且不再应用

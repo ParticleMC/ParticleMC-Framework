@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 区块序列化：将区块/区段编码为 Minecraft 1.21.11 调色板字节流。
 //!
 //! 移植自 Minestom Java `PaletteImpl` / `Palettes.pack` / `Heightmap.encode`，

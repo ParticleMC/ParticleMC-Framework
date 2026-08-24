@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 共享只读资源：多世界共享同一 `Arc<T>`，零拷贝只读访问。
 //!
 //! 变更标识符：`implement-custom-ecs`

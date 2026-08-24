@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 自建 `App` 装配抽象（替代 自建 App，RM1）。
 //!
 //! 变更标识符：`implement-custom-ecs`（T10）

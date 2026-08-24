@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 物理模拟结果：封装一次完整运动物理（方块碰撞 + 空气动力学）的输出。
 //!
 //! 对齐 Java [`net.minestom.server.collision.PhysicsResult`]。由

@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! Velocity modern forwarding 集成测试（真实 TCP，1.21.11 流程）。
 //!
 //! 场景一（velocity_forwarding_uses_real_uuid）：伪客户端携带正确签名的

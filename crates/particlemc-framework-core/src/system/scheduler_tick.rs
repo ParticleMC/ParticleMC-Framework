@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! tick 管线：推进调度器时钟并执行到期任务。
 //!
 //! [`TickCounter`] 每 tick 递增一次，作为 [`TaskScheduler`] 的调度时钟源；

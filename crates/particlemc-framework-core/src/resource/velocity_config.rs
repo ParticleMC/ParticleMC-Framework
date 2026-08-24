@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 速度代理转发配置（Velocity Modern Forwarding）。
 //!
 //! 对应 Java 侧 `MinecraftServer.getVelocityForwardingSecret()` 行为。

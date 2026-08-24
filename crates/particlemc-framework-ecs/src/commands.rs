@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 延迟命令缓冲（IC-6 / R5）：系统内入队，tick 起始批量 apply。
 //!
 //! 变更标识符：`implement-custom-ecs`

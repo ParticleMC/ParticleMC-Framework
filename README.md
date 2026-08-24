@@ -1,4 +1,5 @@
-<<<<<<< HEAD
+﻿<!-- Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+SPDX-License-Identifier: GPL-3.0-or-later -->
 # ParticleMCFramework
 
 基于高性能网络编程的 Minecraft 服务器框架，使用 **Rust 2024 + 自研 ECS（particlemc-framework-ecs）** 构建。当前交付为**可用框架层**：真实 TCP 监听、1.21.11 协议编解码、完整的 `Handshake → Status → Login → Configuration → Play` 状态机、玩家出生与移动、原生 Velocity modern forwarding 转发校验，以及三层发包模型。

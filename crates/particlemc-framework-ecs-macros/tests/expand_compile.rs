@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 集成测试：proc-macro 在外部 crate（stub 模拟 `particlemc_framework_ecs` 权威类型）中的展开。
 //!
 //! 变更标识符：`implement-custom-ecs`

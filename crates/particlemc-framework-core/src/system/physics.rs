@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! tick 管线第五步：逐轴碰撞物理（重力 + 地面 / 墙面碰撞）。
 //!
 //! 对每个持有 `Position` / `Velocity` / `InstanceRef` 的实体，先求其碰撞盒

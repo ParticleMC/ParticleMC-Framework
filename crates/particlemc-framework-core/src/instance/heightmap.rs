@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 高度图：每个区块列的「最高实心方块」高度表。
 //!
 //! 语义对齐 Minestom Java `Heightmap` / `MotionBlockingHeightmap`：对每列

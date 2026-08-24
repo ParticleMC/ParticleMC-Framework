@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 固定步长调度：Minestom 的 20Hz tick（20 TPS）。
 //!
 //! 借助自研 `Schedule` 内嵌的 `FixedClock` 实现固定步长循环（替代旧 ECS 方案

@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! tick 管线：玩家进入 Play 后的出区块批次发送。
 //!
 //! 消费 [`EnterPlayEvent`]，以玩家所在区块为中心发送 3×3 区块批次：

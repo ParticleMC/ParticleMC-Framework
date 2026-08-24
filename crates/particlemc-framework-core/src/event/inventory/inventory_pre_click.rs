@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 背包预点击事件（在点击处理前触发）。
 
 use crate::event::inventory::inventory_click::ClickAction;

@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 伪客户端集成测试：真实 TCP 连入，按 1.21.11 离线流程完成登录并进入游玩。
 //!
 //! 覆盖协议 774 全流程：

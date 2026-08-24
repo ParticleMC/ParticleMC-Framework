@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! tick 管线第一步：标记一个逻辑 tick 的开始。
 //!
 //! 负责清理入站帧缓冲区（`NetworkBridge::inbound`），防止上一 tick 遗留的

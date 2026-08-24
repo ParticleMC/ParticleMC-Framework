@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 注册表 NBT 化：把注册数据转换为配置阶段的 RegistryData / UpdateTags 包。
 //!
 //! 对应 Minestom Java 的 `RegistryContainer` / `TagManager`：在配置阶段向客户端

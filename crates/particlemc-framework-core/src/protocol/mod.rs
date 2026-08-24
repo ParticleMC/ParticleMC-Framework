@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 协议层：变长整数、字节缓冲、帧封装、数据包 trait 与派发。
 //!
 //! - [`error`]：协议错误类型（每个变体可被单测命中）。

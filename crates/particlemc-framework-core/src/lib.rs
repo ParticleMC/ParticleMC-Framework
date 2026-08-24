@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 // 全局 unsafe 禁令：默认构建零 unsafe（合 Constitution）。
 // 仅当启用 `wasm-extensions`（引入 wasmtime host FFI 的少量 unsafe）时降级为
 // `deny`——仍禁止 unsafe，仅在 `extension/` 白名单模块内以 `#[allow]` 显式开放。

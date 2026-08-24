@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 全局实例调度器：多世界并行 tick + 全局同步屏障（IC-10，T9）。
 //!
 //! 变更标识符：`implement-custom-ecs`

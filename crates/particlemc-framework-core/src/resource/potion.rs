@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 药水子系统（对齐 Java `net.minestom.server.potion` 语义，T14）。
 //!
 //! 对应 Minestom 的 `PotionEffect` / `TimedPotion` / `PotionEffects` / `PotionType`

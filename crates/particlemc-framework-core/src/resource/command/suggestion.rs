@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 命令补全回调 API（框架侧，见 `.specs/implement-command-framework/`）。
 //!
 //! 网络下发（Tab 补全包）超出范围，仅实现回调类型与收集入口。

@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 系统：可调度的最小执行单元（IC-7/IC-9，T7）。
 //!
 //! 变更标识符：`implement-custom-ecs`

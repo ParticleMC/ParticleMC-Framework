@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 按 `(ConnectionState, packet_id)` 派发入站包。
 
 use crate::network::connection::ConnectionState;

@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 物品行为承载与值类型（R11）。
 //!
 //! 书承载：[`WritableBook`] / [`WrittenBook`] 经组件 id

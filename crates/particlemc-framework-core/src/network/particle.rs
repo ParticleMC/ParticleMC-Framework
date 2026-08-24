@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 粒子发送（T13，对应 spec R13）。
 //!
 //! 简化值类型 [`Particle`]（id / 数量 / 速度）经 [`send_particle`] 转换为

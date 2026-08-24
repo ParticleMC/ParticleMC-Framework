@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 时间轴插值子系统（对齐 Java `net.minestom.server.world.timeline` 语义子集，T14）。
 //!
 //! Java `Timeline` 以 `period_ticks` + `Track(attribute, keyframes, ease)` 驱动

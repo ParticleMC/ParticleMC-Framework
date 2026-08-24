@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 服务器状态配置（MOTD 等状态响应内容）。
 //!
 //! 状态响应（StatusResponse）的 JSON 内容属于服务器应用层决策，框架只提供

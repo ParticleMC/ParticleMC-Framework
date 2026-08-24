@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 物品栈模型与线格式编解码（Minecraft 1.21.11）。
 //!
 //! 本模块定义 1.21.11 网络线格式下的物品栈值类型 [`ItemStack`] 及其与

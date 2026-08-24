@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 资源：跨系统共享的单例数据，按类型存储。
 //!
 //! 变更标识符：`implement-custom-ecs`

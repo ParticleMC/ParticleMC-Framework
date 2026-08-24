@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 战利品表注册表。
 //!
 //! 加载 `resources/data/loot_tables/*.toml`，每个条目为一张战利品表。

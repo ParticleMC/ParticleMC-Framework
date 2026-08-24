@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! WASM 扩展运行时（WS4-T2/T3）。
 //!
 //! 本模块是 wasmtime host FFI 的唯一白名单 `unsafe` 区域（符合 ADR-016 安全评审）。

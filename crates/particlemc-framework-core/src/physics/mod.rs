@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 物理模块：碰撞盒、形状抽象与射线检测的几何基础。
 //!
 //! 提供轴对齐包围盒 [`Aabb`]（相交 / 方块重叠 / 平移）、实体碰撞盒构造

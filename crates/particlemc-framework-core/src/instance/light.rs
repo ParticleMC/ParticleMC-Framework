@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 光照系统（简化 API 骨架）。
 //!
 //! 提供按坐标设置/读取天空光照（`sky_light`）与方块光照（`block_light`）的

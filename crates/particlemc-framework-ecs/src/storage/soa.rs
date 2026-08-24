@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! SoA（Structure of Arrays）组件列存储：热组件紧凑连续、缓存行对齐。
 //!
 //! 变更标识符：`implement-custom-ecs`

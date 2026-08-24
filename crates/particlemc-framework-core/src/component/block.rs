@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 方块类型：对「方块状态 id」的轻量值类型封装。
 //!
 //! [`Block`] 以 `Copy` 值类型承载一个方块状态 id，并提供经注册表解析的

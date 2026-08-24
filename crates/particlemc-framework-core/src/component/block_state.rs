@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 方块状态组件。
 //!
 //! 记录某位置方块的数值 `block_id` 与一组键值属性。属性以固定长度数组

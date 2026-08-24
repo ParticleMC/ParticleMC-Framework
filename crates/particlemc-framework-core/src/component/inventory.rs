@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 玩家库存组件与 Minestom 内部槽 → 窗口槽映射。
 //!
 //! 提供 [`PlayerInventory`] 组件：以 Minestom 内部序维护 46 个物品槽 + 光标 +

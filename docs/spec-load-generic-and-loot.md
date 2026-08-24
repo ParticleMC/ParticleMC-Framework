@@ -1,3 +1,5 @@
+﻿<!-- Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+SPDX-License-Identifier: GPL-3.0-or-later -->
 # Spec 副本：load-generic-and-loot-registries
 
 > 权威记录。原 `.specs/load-generic-and-loot-registries/` 目录两次被外部机制删除（项目非 git 仓库），此副本防止再次丢失。

@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 实体速度组件。
 //!
 //! 以 `f64` 存储三轴速度（方块/秒）。`Velocity` 为 `Copy`，便于在物理系统中按值运算。

@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 标签注册表。
 //!
 //! 加载 `resources/data/tags/*.toml`，每个标签条目由 `name` 与 `values`

@@ -1,3 +1,5 @@
+﻿<!-- Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+SPDX-License-Identifier: GPL-3.0-or-later -->
 # 架构决策记录（Architecture Decision Records）
 
 本项目以 [Minestom](https://github.com/Minestom/Minestom)（Java）为设计蓝本，

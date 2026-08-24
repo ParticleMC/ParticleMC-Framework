@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 静态 Archetype 定义：实体类型到固定组件集合的映射。
 //!
 //! 变更标识符：`implement-custom-ecs`

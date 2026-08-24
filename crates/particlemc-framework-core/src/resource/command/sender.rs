@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 命令发送者抽象（见 `.specs/implement-command-framework/`）。
 //!
 //! 仅承载身份与类型信息，文本反馈仍走 `emit` 回调（与 inventory 一致）。

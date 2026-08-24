@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 网络压缩配置（T7 压缩启用）。
 //!
 //! 控制服务端是否在登录流程中下发`LoginCompression`包并启用 zlib 压缩。

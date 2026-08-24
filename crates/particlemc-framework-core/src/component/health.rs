@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 实体生命值组件（骨架层真实逻辑）。
 //!
 //! 维护 `current` / `max` 两个 `f32` 值，提供 `damage` / `heal` / `is_alive`

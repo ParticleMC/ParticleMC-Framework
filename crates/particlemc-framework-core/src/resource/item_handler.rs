@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 物品处理器（R11）：`ItemHandler` 回调 trait 与注册表。
 //!
 //! 应用侧可为特定 `material` 注册一个 [`ItemHandler`]，在使用 / 持有 / 丢弃

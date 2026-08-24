@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 注册表层模块：核心 [`Registry`] 与各类具名注册表。
 //!
 //! 这里集中导出方块、物品、实体类型等具名注册表，以及承接其余变体类与标签的

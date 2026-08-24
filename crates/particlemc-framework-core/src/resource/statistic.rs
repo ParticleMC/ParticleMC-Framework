@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 统计体系（T13，对应 spec R13）。
 //!
 //! [`Statistic`] 为数据驱动注册条目（`resources/data/statistics.toml`），

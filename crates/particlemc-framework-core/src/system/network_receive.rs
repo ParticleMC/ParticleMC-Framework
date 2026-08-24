@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! tick 管线首段：消费 `NetworkBridge.inbound` 入站帧，按协议状态机推进连接。
 //!
 //! 处理流程（1.21.11 / protocol 774 离线 / Velocity 转发）：

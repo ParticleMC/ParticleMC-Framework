@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 命令框架子模块（语法驱动 + 有类型参数，对齐 Minestom `command/**`）。
 //!
 //! 见 `.specs/implement-command-framework/`。本模块承载命令构建、参数体系、

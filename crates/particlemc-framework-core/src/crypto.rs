@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 在线 Mojang 认证模块（WS5b，feature `online-auth`）。
 //!
 //! 本模块实现 Minecraft 在线认证握手流程：

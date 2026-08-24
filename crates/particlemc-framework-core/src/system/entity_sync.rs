@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! tick 管线：玩家实体网络同步。
 //!
 //! 消费 [`EnterPlayEvent`] / [`PlayerQuit`]，实现玩家互见：

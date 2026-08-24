@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 数据包 trait：每个状态的数据包实现编码 / 解码与 packet id 查询。
 
 use crate::protocol::byte_buf::ByteBuffer;

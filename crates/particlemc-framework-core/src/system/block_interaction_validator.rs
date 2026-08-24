@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 方块交互校验系统。
 //!
 //! 消费由 [`super::packet_action::packet_action_system`] 写入的

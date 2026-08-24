@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 坐标值类型：`Vec` / `BlockVec` / `Area` / `ChunkRange`。
 //!
 //! 语义对齐 Java Minestom 的 `net.minestom.server.coordinate` 包：

@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 控制台 IO 与运维命令分发（T13，`implement-custom-ecs`）。
 //!
 //! 设计要点（与 spec 13.1 的偏差及理由，见 `tasks.md` T13 注记）：

@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! tick 管线：消费动作类 serverbound 包并经事件总线派发。
 //!
 //! `network_receive` 把框架关注的动作包（交互 / 动作 / 动画 / 使用物品 /

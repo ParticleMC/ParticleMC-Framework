@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 配方 API（框架层，见 `.specs/complete-partial-framework-capabilities/` R6）。
 //!
 //! 提供 1.21.11 真实线格式的四类值类型 [`RecipeProperty`] / [`Ingredient`] /

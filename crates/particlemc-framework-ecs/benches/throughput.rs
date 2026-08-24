@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 手写基准（T15.3）：spawn 吞吐 / query 迭代 / 单 tick 耗时 / 跨世界迁移成本。
 //!
 //! 零外部依赖，仅用 `std::time` 计时；运行：`cargo bench --bench throughput`。

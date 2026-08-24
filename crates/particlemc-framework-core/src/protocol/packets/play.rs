@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 游玩阶段数据包（protocol 774 / 1.21.11 真实映射）。
 //!
 //! 库存相关 clientbound 包（`WindowItemsPacket` / `SetSlotPacket` / `EntityEquipmentPacket`）

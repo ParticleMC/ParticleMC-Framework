@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 // 方块写入压力测试（优化版）：使用 BulkEditContext 批量填充。
 //
 // 规模：31×31 网格 = 961 区块，每区块 1 个区段 × 4096 格（y=0..15），

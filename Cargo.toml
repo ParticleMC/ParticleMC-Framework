@@ -1,3 +1,5 @@
+﻿# Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+# SPDX-License-Identifier: GPL-3.0-or-later
 # ParticleMCFramework（Rust 重写版）Cargo Workspace 根配置。
 #
 # 注意：所有直接依赖均使用精确版本锁定（`=x.y.z`），以遵守项目章程

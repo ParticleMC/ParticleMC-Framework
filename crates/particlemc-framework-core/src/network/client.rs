@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 三层混合发包模型（ClientNetwork）。
 //!
 //! - `urgent_queue`：登录 / 传送 / 伤害 / 聊天等必须立即送达的包，tick 末逐包 `write+flush`。

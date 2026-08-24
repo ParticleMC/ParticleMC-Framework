@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 系统层：20 TPS tick 管线的 9 个系统。
 //!
 //! 各系统签名固定（使用 旧 ECS 方案 的 `Commands` / `Query` /

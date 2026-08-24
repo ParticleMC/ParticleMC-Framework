@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 实例层：Minestom 的世界模型骨架。
 //!
 //! 对应 Minestom 的 `Instance` / `Chunk` / `Section`，骨架阶段提供方块读写的最小

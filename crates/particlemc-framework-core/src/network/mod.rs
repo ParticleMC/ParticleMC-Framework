@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 网络层：连接状态机、真实 TCP 监听、桥接与三层混合发包模型。
 
 pub mod audience;

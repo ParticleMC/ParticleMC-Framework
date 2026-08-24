@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 命令参数体系：类型擦除 `AnyArgument` 与有类型 `Argument<T>`，以及 `ArgumentType` 工厂。
 //!
 //! 变更标识：`complete-partial-framework-capabilities`（T3：新增 10 种参数类型、

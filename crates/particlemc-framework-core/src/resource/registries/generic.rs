@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 通用变体类注册表。
 //!
 //! 承接绘画变体、横幅图案、修剪材料等「无专属结构」的注册数据，

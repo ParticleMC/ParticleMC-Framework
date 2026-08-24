@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 实例区块存储（`ChunkStore`）：作为实例 World 的只读/可变 `Resource`，
 //! 承载原 `InstanceContainer` 的区块数据、脏标记、生成器与持久化器。
 //!

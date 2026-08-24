@@ -1,3 +1,5 @@
+﻿# Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+# SPDX-License-Identifier: GPL-3.0-or-later
 # 统计注册表（T13）。
 # 语义对齐 Java `StatisticCategory`（枚举序位 0..=8）与 `custom_statistics` 注册表：
 #   category：0=MINED、1=CRAFTED、2=USED、3=BROKEN、4=PICKED_UP、5=DROPPED、

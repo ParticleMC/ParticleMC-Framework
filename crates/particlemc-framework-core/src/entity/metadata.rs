@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 实体 / 生物元数据类型（变更标识符：`complete-missing-subsystems`）。
 //!
 //! 对应 Java `net.minestom.server.entity.metadata` 包（1.21.11，~190 文件）。

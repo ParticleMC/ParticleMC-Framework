@@ -1,3 +1,5 @@
+﻿<!-- Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+SPDX-License-Identifier: GPL-3.0-or-later -->
 # 线程亲和与 NUMA 感知（T16.4）
 
 本文档说明自研 ECS 调度器 `InstanceScheduler` 的线程亲和落地方式、NUMA 感知的必要性与平台边界。

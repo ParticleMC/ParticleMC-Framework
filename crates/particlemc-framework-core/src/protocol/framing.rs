@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 帧封装：Minecraft 线格式中每个数据包外裹一层 `VarInt 长度 + payload`。
 //!
 //! `payload` 内含 `packet_id`（VarInt）与包体。监听器读取时先解出长度，再取

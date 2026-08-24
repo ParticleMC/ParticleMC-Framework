@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 弹射物实体组件（T4 实体类层级：以组件组合替代 Java `EntityProjectile` 继承）。
 //!
 //! [`EntityProjectile`] 记录射手、伤害量与速度，并承载命中回调。本任务仅定义

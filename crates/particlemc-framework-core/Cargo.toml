@@ -1,3 +1,5 @@
+﻿# Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+# SPDX-License-Identifier: GPL-3.0-or-later
 [package]
 name = "particlemc-framework-core"
 description = "ParticleMCFramework（Rust 重写版）核心框架库：基于自研 ECS（particlemc-framework-ecs）的服务器内核、数据层与插件接口"

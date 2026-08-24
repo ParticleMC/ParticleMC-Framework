@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 命令管理器（框架核心全对齐版，见 `.specs/implement-command-framework/`）。
 //!
 //! 提供 Minestom `CommandManager` 的完整 API：命令注册/注销/查询、语法驱动的

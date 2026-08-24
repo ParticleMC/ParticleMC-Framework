@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! WASM 扩展加载器测试（WS4-T3）。
 //!
 //! 本测试用 `wat`（WASM 文本格式）构造最小扩展，验证：

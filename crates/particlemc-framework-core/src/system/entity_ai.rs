@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! tick 管线第四步：实体 AI 计算（T6 升级）。
 //!
 //! 对挂载 `Living.ai = Some(group)` 且带 `Position` / `EntityCreature` /

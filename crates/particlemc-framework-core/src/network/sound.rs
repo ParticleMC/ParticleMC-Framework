@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 声音播放（T13，对应 spec R13）。
 //!
 //! 简化值类型 [`Sound`]（id / 分类）经 [`play_sound`] 转换为协议

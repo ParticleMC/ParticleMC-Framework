@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 世界类具名注册表集合。
 //!
 //! 生物群系、维度类型、流体、粒子、音效事件、附魔、药水效果这七类

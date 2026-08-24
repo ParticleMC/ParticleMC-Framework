@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 连接状态机与连接占位结构。
 //!
 //! [`ConnectionState`] 描述 Minecraft 协议握手后的状态流转（Handshake →

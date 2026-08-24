@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! Minecraft 文本组件（adventure 语义对齐，含 NBT 序列化）。
 //!
 //! 本模块实现聊天 / 物品文本组件的 adventure 等价子集：`Empty`、`Text`、

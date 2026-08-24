@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 扫掠碰撞结果：记录一次射线-AABB 扫掠检测的碰撞信息。
 //!
 //! 对齐 Java [`net.minestom.server.collision.SweepResult`] 的语义，用于

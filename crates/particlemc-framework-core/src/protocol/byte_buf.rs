@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 字节缓冲：游标式读 / 写，所有越界一律返回 [`ProtocolError::UnexpectedEof`]。
 //!
 //! 读游标只读、不修改底层 `buf`；写游标追加到末尾。所有整数按大端（网络字节序）

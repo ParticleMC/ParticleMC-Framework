@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 实例引用组件。
 //!
 //! 指向实体所属 `Instance` 的 `WorldId`，用于在 ECS 查询中快速定位实例世界

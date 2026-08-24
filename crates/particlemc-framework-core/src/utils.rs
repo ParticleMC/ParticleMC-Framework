@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 通用工具层：`MathUtils` / `TimeUtils` / `Validate`。
 //!
 //! 语义对齐 Java Minestom 的 `net.minestom.server.utils` 包，但**只补 Rust std

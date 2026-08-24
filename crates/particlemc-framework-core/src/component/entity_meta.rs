@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 实体元数据组件：实体类型 + 按协议 index 组织的有序元数据表。
 //!
 //! [`EntityMeta`] 记录实体类型（[`EntityType`]）与实体元数据键值表

@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 方块处理器：方块生命周期事件的注册与查询。
 //!
 //! 应用侧可为特定方块注册一个 [`BlockHandler`]，在放置 / 破坏 / 交互事件

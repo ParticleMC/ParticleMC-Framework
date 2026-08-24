@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 注册表同步系统（WS5a-T2/T3）：当注册表发生运行时增删时，向处于 Play
 //! 状态的客户端重发 `RegistryData`（0x07）包。
 //!

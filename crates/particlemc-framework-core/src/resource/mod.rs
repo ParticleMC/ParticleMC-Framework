@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 资源层：Minestom 的 Manager 类 `Resource` 与各类注册表。
 //!
 //! 对应 Minestom 的 `ConnectionManager` / `InstanceManager` / `CommandManager`

@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 经验球实体组件（T4 实体类层级：以组件组合替代 Java `ExperienceOrb` 继承）。
 //!
 //! [`ExperienceOrb`] 记录经验值；拾取分配语义由后续 tick 系统消费。

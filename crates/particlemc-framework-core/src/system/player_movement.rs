@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! tick 管线第三步：玩家位移整合（服务端驱动部分）。
 //!
 //! 客户端上报的坐标已在 `player_input` 中权威落盘。本阶段对服务端驱动的位移

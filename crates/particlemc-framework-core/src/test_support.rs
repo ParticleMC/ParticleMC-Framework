@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 测试辅助：构建「实例 World」测试环境（R11 / T12.5）。
 //!
 //! 生产代码经 [`InstanceScheduler`](particlemc_framework_ecs::scheduler::InstanceScheduler)

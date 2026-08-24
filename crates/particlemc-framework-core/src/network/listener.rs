@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 真实 TCP 监听与帧分发。
 //!
 //! [`ConnectionListener::start`] 绑定端口，每连接分配 `conn_id` 并建立读写任务：

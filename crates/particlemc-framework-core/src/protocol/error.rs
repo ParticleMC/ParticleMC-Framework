@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 协议层错误类型。
 //!
 //! 每个变体都应由单元测试命中（Err 分支全覆盖），以保证编解码失败时不会 panic，

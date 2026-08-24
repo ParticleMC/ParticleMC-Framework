@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 实体寻路子系统：A* 搜索、路径生成器与路径跟随器（T6）。
 //!
 //! 语义对齐 Minestom Java 的 `entity/pathfinding` 包，但以简化的纯函数

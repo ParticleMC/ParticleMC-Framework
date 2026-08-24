@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! Query 编译期匹配：`Query<'w, D, F>` 按静态 Archetype 声明序构建匹配集合。
 //!
 //! 变更标识符：`implement-custom-ecs`

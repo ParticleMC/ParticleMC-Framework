@@ -1,3 +1,5 @@
+﻿# Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+# SPDX-License-Identifier: GPL-3.0-or-later
 # Velocity modern forwarding 配置
 #
 # secret：与 Velocity 服务端 forwarding-secret 完全一致的共享密钥。

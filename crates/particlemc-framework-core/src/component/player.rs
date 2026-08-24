@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 玩家标识组件。
 //!
 //! 记录玩家的 `Uuid` 与用户名，用于在 ECS 中区分玩家实体。`Player` 持有

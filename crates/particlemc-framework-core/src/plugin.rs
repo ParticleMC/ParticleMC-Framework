@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! `McServerPlugin`：组装 Minestom 服务器内核的自研插件（替代旧 ECS 方案 插件，RM1）。
 //!
 //! 负责把全部 Manager 类 `Resource`、全部注册表、全部 `Message`（事件）以及

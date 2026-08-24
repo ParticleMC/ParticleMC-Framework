@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 库存同步系统：登录/光标变化全量下发 + 脏槽增量下发。
 //!
 //! 每个 tick 对带 [`PlayerInventory`] 的玩家实体执行：

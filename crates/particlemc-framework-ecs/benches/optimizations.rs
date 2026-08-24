@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 手写基准（T16.1 / T16.2 / T16.5）：SIMD vs 标量、静态 archetype 匹配 vs
 //! 运行时逐实体查找、列 iter 无分支 vs 逐元素 get 边界检查。
 //!

@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 出生配置：玩家进入 Play 时的默认出生坐标。
 //!
 //! 框架不生成任何出生平台（世界内容由应用提供），仅提供可配置的默认出生点，

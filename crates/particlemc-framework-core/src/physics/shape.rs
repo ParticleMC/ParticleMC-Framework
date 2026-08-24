@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 方块形状抽象：统一「实心方块 / 空 / 多个 AABB 合并」三种碰撞形态。
 //!
 //! [`Shape`] 对应 Java 侧 `Shape` 的 `AABB` / `EMPTY` / `merged` 三种形态，

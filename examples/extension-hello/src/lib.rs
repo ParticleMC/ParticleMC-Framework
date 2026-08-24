@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 扩展示例：最小起步模板（WS4-T3 G7）。
 //!
 //! 本 crate 编译为 `.wasm` 模块，导出 `minestom_init` 入口，

@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! tick 管线第七步：占位阶段。
 //!
 //! 实际出站发包统一经 `ClientNetwork` 队列在 `network_send` 中 flush，本阶段

@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! AABB 碰撞盒：轴对齐包围盒的基础几何与方块重叠判定。
 //!
 //! [`Aabb`] 以 `min` / `max` 两个角点描述一个轴对齐包围盒，提供相交判定、

@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 类型擦除的组件列存储：SoA 列 + SparseSet 混合，按 `ComponentId` 索引。
 //!
 //! 变更标识符：`implement-custom-ecs`

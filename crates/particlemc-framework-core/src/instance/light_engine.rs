@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 光照传播引擎（complete-framework-gaps WS1-T3）。
 //!
 //! 依据方块不透明度（`BlockRegistry::light_opacity`）与发光度

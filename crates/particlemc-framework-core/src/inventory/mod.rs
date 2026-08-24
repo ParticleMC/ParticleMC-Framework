@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 容器类型系统：抽象 `Inventory` trait、通用 `AbstractInventory` 基础实现与
 //! 各具体方块容器（箱子/熔炉/铁砧/信标/酿造台/附魔台/村民）。
 //!

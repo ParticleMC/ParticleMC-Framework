@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 射线与体素遍历：沿射线逐方块推进的 DDA 射线检测。
 //!
 //! [`Ray`] 由原点和方向定义（方向为零向量视为非法，构造返回 `None`）。

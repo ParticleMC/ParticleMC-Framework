@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 // 扩展 tick 派发性能基准（WS4-T1 G5，ADR-016 §5 tick 性能预算）。
 //
 // 本基准测量单个 tick 派发 N 个扩展回调的成本（tens~hundreds ns 级别）。

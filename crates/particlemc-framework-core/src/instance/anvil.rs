@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! Anvil `.mca` 区域文件持久化（WS2 — `complete-framework-gaps`）。
 //!
 //! [`AnvilChunkLoader`] 实现 [`ChunkLoader`]：将 [`Chunk`]（含方块调色板与

@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 实体子系统（变更标识符：`complete-missing-subsystems`）。
 //!
 //! 本模块补齐此前缺失的实体域代码组织。当前交付：

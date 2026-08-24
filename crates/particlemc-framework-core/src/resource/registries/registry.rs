@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 注册表核心数据结构与 TOML 加载器。
 //!
 //! [`Registry`] 提供「数值 id ⇄ 命名空间字符串」的双向映射，是 Minestom

@@ -1,3 +1,5 @@
+﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! 进度（Advancement）API（框架层，见 `.specs/implement-framework-capabilities/` R8）。
 //!
 //! 提供 [`Advancement`] 值类型与 [`AdvancementManager`] `Resource`，维护进度树的
