@@ -1,0 +1,7 @@
+[[entry]]
+name = "minecraft:black"
+asset_id = "minecraft:entity/cat/cat_black"
+
+[[entry]]
+name = "minecraft:all_black"
+asset_id = "minecraft:entity/cat/cat_all_black"

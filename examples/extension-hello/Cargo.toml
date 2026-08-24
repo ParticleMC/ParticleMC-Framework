@@ -1,0 +1,11 @@
+[package]
+name = "extension-hello"
+version = "0.1.0"
+edition = "2024"
+publish = false
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+# 仅需 core（无标准库依赖，以最小体积适应 WASM）

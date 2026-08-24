@@ -1,0 +1,8 @@
+# Velocity modern forwarding 配置
+#
+# secret：与 Velocity 服务端 forwarding-secret 完全一致的共享密钥。
+#         留空表示未启用转发校验（后端按离线模式处理直连）。
+# enforce：true 时仅接受来自持有正确密钥的 Velocity 代理的连接，
+#         直连将被 LoginDisconnect 拒绝；false（默认）允许直连与代理并存。
+secret = ""
+enforce = false

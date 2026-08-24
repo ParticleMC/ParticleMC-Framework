@@ -1,0 +1,20 @@
+[[entry]]
+name = "minecraft:pig"
+id = 0
+translationKey = "entity.minecraft.pig"
+width = 0.9
+height = 0.9
+
+[[entry]]
+name = "minecraft:cow"
+id = 1
+translationKey = "entity.minecraft.cow"
+width = 0.9
+height = 1.4
+
+[[entry]]
+name = "minecraft:sheep"
+id = 2
+translationKey = "entity.minecraft.sheep"
+width = 0.9
+height = 1.3

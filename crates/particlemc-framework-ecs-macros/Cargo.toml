@@ -1,0 +1,26 @@
+# particlemc-framework-ecs-macros：ECS 过程宏 crate。
+#
+# 变更标识符：implement-custom-ecs
+#
+# 为 `#[derive(Component)]` / `#[derive(Archetype)]` / `#[derive(Message)]`
+# 及 `register_archetypes!` / `register_components!` 提供过程宏展开。
+#
+# 依赖说明：章程「最小依赖」禁止的是"仅用于辅助开发的 crate"（如 once_cell /
+# lazy_static，标准库可替代）；syn/quote/proc-macro2 是 proc-macro 必需的基础
+# 设施（手写 token 解析易错且不可维护），纯 Rust、无 unsafe 传递依赖，判为允许。
+# 版本精确锁定（章程「所有依赖版本精确锁定」）。
+
+[package]
+name = "particlemc-framework-ecs-macros"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.89"
+description = "particlemc-framework-ecs 的 proc-macro 派生宏与注册宏（变更标识符 implement-custom-ecs）"
+
+[lib]
+proc-macro = true
+
+[dependencies]
+proc-macro2 = "=1.0.107"
+quote = "=1.0.47"
+syn = "=2.0.119"

@@ -1,0 +1,14 @@
+[[entry]]
+name = "minecraft:diamond"
+id = 0
+translationKey = "item.minecraft.diamond"
+
+[[entry]]
+name = "minecraft:stick"
+id = 1
+translationKey = "item.minecraft.stick"
+
+[[entry]]
+name = "minecraft:apple"
+id = 2
+translationKey = "item.minecraft.apple"

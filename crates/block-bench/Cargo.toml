@@ -1,0 +1,13 @@
+[package]
+name = "block-bench"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+publish = false
+
+[[bin]]
+name = "block-bench"
+path = "src/main.rs"
+
+[dependencies]
+particlemc-framework-core = { path = "../particlemc-framework-core" }

@@ -1,0 +1,31 @@
+# particlemc-framework-ecs：自研 ECS 内核 crate。
+#
+# 变更标识符：implement-custom-ecs
+#
+# 面向 Minecraft 服务端的极致性能 ECS 内核：静态 Archetype、SoA/SparseSet
+# 存储、缓存行对齐、单 Tick 零堆分配。本 crate 为 ECS 核心，仅依赖标准库。
+
+[package]
+name = "particlemc-framework-ecs"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.89"
+description = "面向 Minecraft 服务端的自研 ECS 内核（变更标识符 implement-custom-ecs），零外部依赖"
+
+[lib]
+crate-type = ["rlib"]
+
+[dependencies]
+# 零外部依赖（纯标准库）：ECS 内核的一切机制仅依赖 std，不引用旧 ECS 方案。
+
+# 手写基准（T15.3 / T16.1 / T16.2 / T16.5）：零外部依赖，std::time 计时，
+# `cargo bench --bench <name>` 运行。`harness = false` 使 main() 直接驱动计时，
+# 规避 criterion 等第三方依赖（离线环境无法获取）。
+[[bench]]
+name = "throughput"
+harness = false
+
+[[bench]]
+name = "optimizations"
+harness = false
+

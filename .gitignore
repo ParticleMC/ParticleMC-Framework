@@ -1,0 +1,13 @@
+# Rust 构建产物
+/target
+target-custom/
+
+# Cargo 注册表缓存
+.cargo/registry/
+.cargo/git/
+
+# 开发过程文档（不参与发布）
+.specs/
+
+# 独立快照目录（不参与发布）
+.standalone/

@@ -1,0 +1,16 @@
+[[entry]]
+name = "minecraft:air"
+id = 0
+translationKey = "block.minecraft.air"
+
+[[entry]]
+name = "minecraft:stone"
+id = 1
+translationKey = "block.minecraft.stone"
+hardness = 1.5
+soundGroup = "stone"
+
+[[entry]]
+name = "minecraft:grass"
+id = 2
+translationKey = "block.minecraft.grass"

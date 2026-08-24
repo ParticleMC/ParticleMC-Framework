@@ -1,0 +1,14 @@
+[[entry]]
+name = "minecraft:plains"
+temperature = 0.8
+downfall = 0.4
+
+[[entry]]
+name = "minecraft:desert"
+temperature = 2.0
+downfall = 0.0
+
+[[entry]]
+name = "minecraft:ocean"
+temperature = 0.5
+downfall = 0.5

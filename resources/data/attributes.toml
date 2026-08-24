@@ -1,0 +1,284 @@
+# 属性注册表（R8）
+# 清单与 id 对齐 Java Minestom `AttributeImpl.REGISTRY`（Attributes.java 常量序位，
+# 共 35 项，id 0..=34）；default/min/max/client_sync 取自 1.21.11 原版属性数据。
+# Entries: 35
+
+[[entry]]
+name = "minecraft:armor"
+id = 0
+default_value = 0.0
+min_value = 0.0
+max_value = 30.0
+client_sync = true
+
+[[entry]]
+name = "minecraft:armor_toughness"
+id = 1
+default_value = 0.0
+min_value = 0.0
+max_value = 20.0
+client_sync = true
+
+[[entry]]
+name = "minecraft:attack_damage"
+id = 2
+default_value = 3.0
+min_value = 0.0
+max_value = 2048.0
+client_sync = true
+
+[[entry]]
+name = "minecraft:attack_knockback"
+id = 3
+default_value = 0.0
+min_value = 0.0
+max_value = 5.0
+client_sync = true
+
+[[entry]]
+name = "minecraft:attack_speed"
+id = 4
+default_value = 4.0
+min_value = 0.0
+max_value = 1024.0
+client_sync = true
+
+[[entry]]
+name = "minecraft:block_break_speed"
+id = 5
+default_value = 1.0
+min_value = 0.0
+max_value = 1024.0
+client_sync = true
+
+[[entry]]
+name = "minecraft:block_interaction_range"
+id = 6
+default_value = 4.5
+min_value = 0.0
+max_value = 64.0
+client_sync = true
+
+[[entry]]
+name = "minecraft:burning_time"
+id = 7
+default_value = 1.0
+min_value = 0.0
+max_value = 1024.0
+client_sync = true
+
+[[entry]]
+name = "minecraft:camera_distance"
+id = 8
+default_value = 5.0
+min_value = 1.0
+max_value = 50.0
+client_sync = true
+
+[[entry]]
+name = "minecraft:explosion_knockback_resistance"
+id = 9
+default_value = 0.0
+min_value = 0.0
+max_value = 1.0
+client_sync = true
+
+[[entry]]
+name = "minecraft:entity_interaction_range"
+id = 10
+default_value = 3.0
+min_value = 0.0
+max_value = 64.0
+client_sync = true
+
+[[entry]]
+name = "minecraft:fall_damage_multiplier"
+id = 11
+default_value = 1.0
+min_value = 0.0
+max_value = 100.0
+client_sync = true
+
+[[entry]]
+name = "minecraft:flying_speed"
+id = 12
+default_value = 0.4
+min_value = 0.0
+max_value = 1024.0
+client_sync = true
+
+[[entry]]
+name = "minecraft:follow_range"
+id = 13
+default_value = 32.0
+min_value = 0.0
+max_value = 2048.0
+client_sync = false
+
+[[entry]]
+name = "minecraft:gravity"
+id = 14
+default_value = 0.08
+min_value = -1.0
+max_value = 1.0
+client_sync = true
+
+[[entry]]
+name = "minecraft:jump_strength"
+id = 15
+default_value = 0.42
+min_value = 0.0
+max_value = 32.0
+client_sync = true
+
+[[entry]]
+name = "minecraft:knockback_resistance"
+id = 16
+default_value = 0.0
+min_value = 0.0
+max_value = 1.0
+client_sync = true
+
+[[entry]]
+name = "minecraft:luck"
+id = 17
+default_value = 0.0
+min_value = -1024.0
+max_value = 1024.0
+client_sync = true
+
+[[entry]]
+name = "minecraft:max_absorption"
+id = 18
+default_value = 0.0
+min_value = 0.0
+max_value = 2048.0
+client_sync = true
+
+[[entry]]
+name = "minecraft:max_health"
+id = 19
+default_value = 20.0
+min_value = 1.0
+max_value = 1024.0
+client_sync = true
+
+[[entry]]
+name = "minecraft:mining_efficiency"
+id = 20
+default_value = 0.0
+min_value = 0.0
+max_value = 1024.0
+client_sync = true
+
+[[entry]]
+name = "minecraft:movement_efficiency"
+id = 21
+default_value = 0.0
+min_value = 0.0
+max_value = 1.0
+client_sync = true
+
+[[entry]]
+name = "minecraft:movement_speed"
+id = 22
+default_value = 0.7
+min_value = 0.0
+max_value = 1024.0
+client_sync = true
+
+[[entry]]
+name = "minecraft:oxygen_bonus"
+id = 23
+default_value = 0.0
+min_value = 0.0
+max_value = 1024.0
+client_sync = true
+
+[[entry]]
+name = "minecraft:safe_fall_distance"
+id = 24
+default_value = 3.0
+min_value = -1024.0
+max_value = 1024.0
+client_sync = true
+
+[[entry]]
+name = "minecraft:scale"
+id = 25
+default_value = 1.0
+min_value = 0.0625
+max_value = 16.0
+client_sync = true
+
+[[entry]]
+name = "minecraft:sneaking_speed"
+id = 26
+default_value = 0.3
+min_value = 0.0
+max_value = 1.0
+client_sync = true
+
+[[entry]]
+name = "minecraft:spawn_reinforcements"
+id = 27
+default_value = 0.0
+min_value = 0.0
+max_value = 1.0
+client_sync = false
+
+[[entry]]
+name = "minecraft:step_height"
+id = 28
+default_value = 0.6
+min_value = 0.0
+max_value = 10.0
+client_sync = true
+
+[[entry]]
+name = "minecraft:submerged_mining_speed"
+id = 29
+default_value = 0.2
+min_value = 0.0
+max_value = 20.0
+client_sync = true
+
+[[entry]]
+name = "minecraft:sweeping_damage_ratio"
+id = 30
+default_value = 0.0
+min_value = 0.0
+max_value = 1.0
+client_sync = true
+
+[[entry]]
+name = "minecraft:tempt_range"
+id = 31
+default_value = 10.0
+min_value = 0.0
+max_value = 2048.0
+client_sync = false
+
+[[entry]]
+name = "minecraft:water_movement_efficiency"
+id = 32
+default_value = 0.0
+min_value = 0.0
+max_value = 1.0
+client_sync = true
+
+[[entry]]
+name = "minecraft:waypoint_transmit_range"
+id = 33
+default_value = 0.0
+min_value = 0.0
+max_value = 2048.0
+client_sync = false
+
+[[entry]]
+name = "minecraft:waypoint_receive_range"
+id = 34
+default_value = 0.0
+min_value = 0.0
+max_value = 2048.0
+client_sync = false

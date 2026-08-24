@@ -1,0 +1,7 @@
+[[entry]]
+name = "minecraft:candles"
+values = ["minecraft:candle", "minecraft:white_candle"]
+
+[[entry]]
+name = "minecraft:planks"
+values = ["#minecraft:oak_planks", "minecraft:spruce_planks"]

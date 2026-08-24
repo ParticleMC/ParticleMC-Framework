@@ -1,0 +1,74 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+  workflow_dispatch:
+
+env:
+  CARGO_TERM_COLOR: always
+  RUSTFLAGS: "-D warnings"
+
+jobs:
+  # 1) stable 门禁：与本地开发机一致的全量构建 + 内核单元测试
+  stable:
+    name: stable build & test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install rust (stable)
+        uses: dtolnay/rust-toolchain@stable
+      - name: Cache cargo
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            rust/ParticleMCFramework/target
+          key: ${{ runner.os }}-cargo-stable-${{ hashFiles('rust/ParticleMCFramework/Cargo.lock') }}
+      - name: Build workspace
+        working-directory: rust/ParticleMCFramework
+        run: cargo build --workspace
+      - name: Test particlemc-framework-ecs (lib)
+        working-directory: rust/ParticleMCFramework
+        run: cargo test -p particlemc-framework-ecs --lib
+
+  # 2) Miri：nightly 下检测 UB（越界/未初始化/别名/数据竞争）
+  miri:
+    name: miri (nightly, UB check)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install rust (nightly + miri)
+        uses: dtolnay/rust-toolchain@nightly
+        with:
+          components: miri
+      - name: Miri setup
+        working-directory: rust/ParticleMCFramework
+        run: cargo miri setup
+      - name: Miri test (particlemc-framework-ecs lib)
+        working-directory: rust/ParticleMCFramework
+        env:
+          MIRIFLAGS: "-Zmiri-disable-isolation"
+        run: cargo miri test -p particlemc-framework-ecs --lib
+
+  # 3) valgrind：Linux 下检测泄漏/越界/未初始化读取
+  valgrind:
+    name: valgrind (linux, memcheck)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install rust (stable)
+        uses: dtolnay/rust-toolchain@stable
+      - name: Install valgrind
+        run: sudo apt-get update && sudo apt-get install -y valgrind
+      - name: Build test binary (release, no-run)
+        working-directory: rust/ParticleMCFramework
+        run: cargo test --no-run --release -p particlemc-framework-ecs
+      - name: Run valgrind Memcheck on ecs lib tests
+        working-directory: rust/ParticleMCFramework
+        run: |
+          BIN=$(find target/release/deps -maxdepth 1 -type f -name 'particlemc_framework_ecs-*' ! -name '*.d' | head -n1)
+          valgrind --error-exitcode=1 --leak-check=full --show-leak-kinds=all \
+            "$BIN" --lib -- --nocapture

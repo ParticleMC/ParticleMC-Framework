@@ -1,0 +1,22 @@
+//! 玩家输入事件。
+
+use crate::event::r#trait::{EntityEvent, Event, PlayerEvent};
+use crate::prelude::{Entity, Message};
+
+/// 玩家输入事件。
+#[derive(Message, Debug, Clone)]
+pub struct PlayerInput {
+    pub player: Entity,
+    pub forward: f32,
+    pub strafe: f32,
+    pub jumping: bool,
+    pub sneaking: bool,
+}
+
+impl Event for PlayerInput {}
+impl EntityEvent for PlayerInput {
+    fn entity(&self) -> Entity {
+        self.player
+    }
+}
+impl PlayerEvent for PlayerInput {}

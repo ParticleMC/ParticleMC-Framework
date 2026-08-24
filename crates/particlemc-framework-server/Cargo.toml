@@ -1,0 +1,29 @@
+[package]
+name = "particlemc-framework-server"
+description = "ParticleMCFramework（Rust 重写版）服务器二进制入口"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+
+[lib]
+name = "particlemc_framework_server"
+path = "src/lib.rs"
+
+[[bin]]
+name = "particlemc-framework-server"
+path = "src/main.rs"
+
+[dependencies]
+particlemc-framework-core = { path = "../particlemc-framework-core", version = "=0.1.0" }
+# 直接依赖自研 ECS 内核：跨世界调度器 API（InstanceScheduler / SchedulerConfig）。
+particlemc-framework-ecs = { workspace = true }
+# 二进制入口使用 particlemc-framework-core 自建 App 与 tokio 运行时（替代旧 ECS 方案，RM1）。
+tokio = { workspace = true }
+
+[dev-dependencies]
+# 测试专用：构造 Velocity modern forwarding blob（HMAC-SHA256 签名），
+# 版本与 particlemc-framework-core 内部依赖精确一致（精确锁定，遵守章程）。
+hmac = "=0.12.1"
+sha2 = "=0.10.8"
+# 测试专用：伪客户端解压服务端 zlib 压缩帧（T7 压缩启用集成测试）。
+flate2 = { workspace = true }

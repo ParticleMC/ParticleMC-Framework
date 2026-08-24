@@ -1,0 +1,78 @@
+[package]
+name = "particlemc-framework-core"
+description = "ParticleMCFramework（Rust 重写版）核心框架库：基于自研 ECS（particlemc-framework-ecs）的服务器内核、数据层与插件接口"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+
+[lib]
+# 显式声明为 rlib 库（Cargo 默认即为 rlib，此处显式化以明确库契约）。
+crate-type = ["rlib"]
+
+[dependencies]
+# 自研 ECS 内核（替代旧 ECS 方案，RM1）：World/Schedule/System/Component/Resource/Message。
+particlemc-framework-ecs.workspace = true
+particlemc-framework-ecs-macros.workspace = true
+
+# 数据层与通用基础设施
+serde.workspace = true
+toml.workspace = true
+uuid.workspace = true
+tokio.workspace = true
+hmac.workspace = true
+sha2.workspace = true
+# zlib 压缩（T7）：miniz_oxide 纯 Rust 后端。
+flate2.workspace = true
+# 本地安全聊天签名（T12/R12）：Ed25519 签名/验签 + CSPRNG 密钥生成。
+ed25519-dalek.workspace = true
+rand_core.workspace = true
+
+# ── 可选 feature 依赖（默认 off，见下方 [features]）──
+# WASM 扩展运行时（WS4）：wasmtime 为 unsafe 传递性 crate；精确锁定 + 安全评审见
+# `docs/decisions.md` ADR-016。本机工具链 1.97.1 满足其 1.94 要求；`wasm-extensions`
+# 矩阵需 Rust ≥1.94（默认矩阵仍 1.89）。
+wasmtime = { version = "=47.0.3", optional = true }
+# 在线认证加密原语（WS5b）：纯 Rust、无 unsafe 传递；精确锁定 + 审计见 ADR-017。
+# 注意：`rsa 0.9` 内部依赖 `rand_core 0.6`，故 `rand` 必须锁定 0.8.x（其 `OsRng`
+# 实现的是 `rand_core 0.6` 的 `RngCore`/`CryptoRng`），与 `rand_core 0.6.4`（工作区统一）
+# 共用同一版本线；若误用 rand 0.9（`rand_core 0.9`）会导致 `RsaPrivateKey::new` 类型不匹配。
+# RSA 握手 + hasJoined 验证为本 PR 范围；AES-CFB8 通道加密（用协商出的共享密钥加密
+# 全部进出流量）属于独立后续事项：当前 `cfb8 0.8` 依赖 `cipher 0.4`，与 `aes 0.9`
+# 的 `cipher 0.5` 不兼容，需另选 cipher-0.5 兼容的 CFB8 实现，且要在 framing 层接线，
+# 故本 PR 不引入 `aes`/`cfb8`/`cipher`/`generic-array`（见 ADR-017 与 WS5b 任务清单）。
+rsa = { version = "=0.9.10", optional = true }
+rand = { version = "=0.8.5", optional = true }
+rustls = { version = "=0.23.43", features = ["ring"], optional = true }
+# 在线认证 HTTP 客户端（仅 online-auth feature）：纯 Rust TLS。
+reqwest = { version = "=0.12.26", default-features = false, features = ["json", "rustls-tls"], optional = true }
+# URL 编码辅助（仅 online-auth feature）。
+urlencoding = { version = "=2.1.3", optional = true }
+# JSON 解析（仅 online-auth feature，与 serde 兼容）。
+serde_json = { version = "=1.0.149", optional = true }
+
+# 允许 `#[cfg(fuzzing)]` 标记（协议/外部输入模块 fuzz 占位入口，见 constitution.md）。
+# 声明 check-cfg 后 rustc 不再对未知 cfg 名报错（否则 `-D warnings` 下触发 unexpected_cfgs）。
+[lints.rust]
+unexpected_cfgs = { level = "warn", check-cfg = ['cfg(fuzzing)', 'cfg(feature, values("async-events"))'] }
+
+# ── 可选 feature（默认均关闭，保证默认构建零 unsafe、离线、跨平台）──
+[features]
+# 运行时 WASM 扩展加载（wasmtime）。启用时 crate 根降级为 `deny(unsafe_code)`，
+# 仅 `extension/` 白名单模块可 `unsafe`。见 `docs/decisions.md` ADR-016。
+wasm-extensions = ["dep:wasmtime"]
+# 变更型 host API 预留（host_set_block / host_spawn_entity / host_register_system）；
+# v1 默认关闭、不接线，仅占位签名。见 ADR-016 §2/§5。
+extension-mutation = ["wasm-extensions"]
+# 在线 Mojang 认证（RSA 握手 + hasJoined TLS）。默认关闭，不污染离线构建。见 ADR-017。
+# AES-CFB8 通道加密为后续独立事项，本 feature 不引入 aes/cfb8/cipher/generic-array。
+online-auth = ["dep:rsa", "dep:rand", "dep:rustls", "dep:reqwest", "dep:urlencoding", "dep:serde_json"]
+
+# ── 开发依赖（仅测试 / 基准使用）──
+[dev-dependencies]
+# WASM 文本格式，用于构造测试扩展 `.wasm`（WS4-T3）。仅 `wasm-extensions` 测试启用。
+wat = "=1.256.0"
+
+# ── 基准（harness=false：自定义 main，无需 nightly）──
+[[bench]]
+name = "extension_tick"
+harness = false
