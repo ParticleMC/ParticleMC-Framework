@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # ParticleMCFramework
 
 基于高性能网络编程的 Minecraft 服务器框架，使用 **Rust 2024 + 自研 ECS（particlemc-framework-ecs）** 构建。当前交付为**可用框架层**：真实 TCP 监听、1.21.11 协议编解码、完整的 `Handshake → Status → Login → Configuration → Play` 状态机、玩家出生与移动、原生 Velocity modern forwarding 转发校验，以及三层发包模型。
@@ -352,7 +353,6 @@ Velocity 转发流程差异仅在第 1 步：握手包末尾携带 blob，`verif
 
 ## 相关文档
 
-- `docs/decisions.md`：架构决策记录（ADR-001 \~ ADR-015）。
+- `docs/decisions.md`：架构决策记录（ADR-001 ~ ADR-015）。
 - `CHANGELOG.md`：变更日志。
 - `crates/particlemc-framework-core/src/lib.rs`：crate 级模块说明。
-
