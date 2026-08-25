@@ -1,4 +1,4 @@
-﻿[workspace]
+[workspace]
 members = ["crates/particlemc-framework-core", "crates/particlemc-framework-server", "crates/particlemc-framework-ecs", "crates/particlemc-framework-ecs-macros", "crates/block-bench"]
 resolver = "2"
 

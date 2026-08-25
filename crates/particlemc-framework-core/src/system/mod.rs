@@ -1,4 +1,4 @@
-﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
 //! 系统层：20 TPS tick 管线的 9 个系统。
 //!
@@ -11,6 +11,7 @@
 
 pub mod attribute_sync;
 pub mod block_interaction_validator;
+pub mod chunk_boundary;
 pub mod chunk_dirty_sync;
 pub mod chunk_send;
 pub mod entity_ai;
@@ -29,6 +30,7 @@ pub mod tick_end;
 
 pub use attribute_sync::{AttributeInbox, attribute_sync};
 pub use block_interaction_validator::block_interaction_validator;
+pub use chunk_boundary::chunk_boundary;
 pub use chunk_dirty_sync::chunk_dirty_sync;
 pub use chunk_send::chunk_send;
 pub use entity_ai::entity_ai;

@@ -26,9 +26,9 @@ use crate::resource::registries::{
 };
 use crate::resource::velocity_config::VelocityConfig;
 use crate::resource::{
-    AttributeRegistry, CommandManager, CompressionConfig, ConnectionManager, DamageTypeRegistry,
-    EntitySpawner, GenericRegistry, InstanceManager, LootTableRegistry, SpawnConfig, StatusConfig,
-    TaskScheduler,
+    AttributeRegistry, ChunkLoadQueue, CommandManager, CompressionConfig, ConnectionManager,
+    DamageTypeRegistry, EntitySpawner, GenericRegistry, InstanceManager, LootTableRegistry,
+    SpawnConfig, StatusConfig, TaskScheduler,
 };
 use crate::schedule::configure_20hz;
 use crate::system;
@@ -141,7 +141,9 @@ impl Plugin for McServerPlugin {
             .init_resource::<EntitySpawner>()
             .init_resource::<system::TickCounter>()
             // 属性同步收件箱（R8）：初始为空即天然不主动下发（登录/生成不发属性包）。
-            .init_resource::<system::AttributeInbox>();
+            .init_resource::<system::AttributeInbox>()
+            // G3-T1：区块加载队列。
+            .init_resource::<ChunkLoadQueue>();
 
         // 2.1 网络侧 Resource：空桥接（真实监听由二进制入口覆盖）、发包表、转发配置。
         //     插件内提供默认以便单元测试可直接 `app.update()`；真实服务器在入口处覆盖桥接。
@@ -327,8 +329,10 @@ impl Plugin for McServerPlugin {
         // R11.2：player_movement / entity_ai / physics 已迁入实例 World Schedule
         // （见 `build_instance_world`），不再于主 World 驱动；故 chunk_dirty_sync
         // 的先序改为 player_input（原 physics 先序已随迁移移除）。
+        app.add_system(system::chunk_boundary)
+            .after(system::chunk_boundary, system::player_input);
         app.add_system(system::chunk_dirty_sync)
-            .after(system::chunk_dirty_sync, system::player_input);
+            .after(system::chunk_dirty_sync, system::chunk_boundary);
         app.add_system(system::tick_end)
             .after(system::tick_end, system::chunk_dirty_sync);
         app.add_system(system::attribute_sync)

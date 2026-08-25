@@ -12,6 +12,7 @@ pub mod attribute;
 pub mod block_handler;
 pub mod boss_bar;
 pub mod command;
+pub mod chunk_load_request;
 pub mod compression_config;
 pub mod connection_manager;
 pub mod damage_type;
@@ -48,6 +49,7 @@ pub use block_handler::{
 };
 pub use boss_bar::{BossBar, BossBarColor, BossBarDivision, BossBarError, BossBarManager};
 pub use command::CommandManager;
+pub use chunk_load_request::ChunkLoadQueue;
 pub use compression_config::CompressionConfig;
 pub use connection_manager::ConnectionManager;
 pub use damage_type::{

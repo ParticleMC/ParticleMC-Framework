@@ -1,4 +1,4 @@
-﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
 //! 系统：可调度的最小执行单元（IC-7/IC-9，T7）。
 //!
@@ -352,6 +352,7 @@ impl_system_param_tuple!(A, B, C, D, E, F, G, H, I, J, K, L, M);
 impl_system_param_tuple!(A, B, C, D, E, F, G, H, I, J, K, L, M, N);
 impl_system_param_tuple!(A, B, C, D, E, F, G, H, I, J, K, L, M, N, O);
 impl_system_param_tuple!(A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P);
+impl_system_param_tuple!(A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q);
 
 /// 解耦「函数签名类型」与「[`SystemParam::Item`] 投影」（旧 ECS 方案 同款模式）。
 ///
@@ -428,6 +429,9 @@ impl_system_function!(
 impl_system_function!(
     P0, P1, P2, P3, P4, P5, P6, P7, P8, P9, P10, P11, P12, P13, P14, P15
 );
+impl_system_function!(
+    P0, P1, P2, P3, P4, P5, P6, P7, P8, P9, P10, P11, P12, P13, P14, P15, P16
+);
 
 /// [`IntoSystem`] 宏：为 `fn(P0, P1, …)` 形态（0-4 参数）生成系统转换。
 ///
@@ -469,6 +473,9 @@ impl_into_system!(
 );
 impl_into_system!(
     P0, P1, P2, P3, P4, P5, P6, P7, P8, P9, P10, P11, P12, P13, P14, P15
+);
+impl_into_system!(
+    P0, P1, P2, P3, P4, P5, P6, P7, P8, P9, P10, P11, P12, P13, P14, P15, P16
 );
 
 /// [`FunctionSystem`] 的 [`System`] 实现：按 `F::Param`（`SystemParam` 元组）

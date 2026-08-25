@@ -1,4 +1,4 @@
-﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
 //! tick 管线首段：消费 `NetworkBridge.inbound` 入站帧，按协议状态机推进连接。
 //!
@@ -16,7 +16,7 @@ use uuid::Uuid;
 
 use crate::component::inventory::PlayerInventory;
 use crate::component::{Attributes, Health, InstanceRef, Player, Position, Velocity};
-use crate::event::{EnterPlayEvent, NetworkEvent, PlayerJoin, PlayerQuit};
+use crate::event::{EnterPlayEvent, NetworkEvent, PlayerChat, PlayerJoin, PlayerQuit};
 use crate::network::bridge::NetworkBridge;
 use crate::network::client::{ClientNetworks, Priority, enqueue_packet};
 use crate::network::connection::ConnectionState;
@@ -60,6 +60,7 @@ pub fn network_receive(
     mut join_events: MessageWriter<PlayerJoin>,
     mut quit_events: MessageWriter<PlayerQuit>,
     mut enter_events: MessageWriter<EnterPlayEvent>,
+    mut player_chat_events: MessageWriter<PlayerChat>,
     scheduler: Res<InstanceScheduler>,
 ) {
     while let Ok(frame) = bridge.inbound.try_recv() {
@@ -122,6 +123,7 @@ pub fn network_receive(
                     &mut join_events,
                     &mut quit_events,
                     &mut enter_events,
+                    &mut player_chat_events,
                     #[cfg(feature = "online-auth")]
                     &_auth_ctx,
                 );
@@ -197,6 +199,7 @@ fn handle_packet(
     join_events: &mut MessageWriter<PlayerJoin>,
     _quit_events: &mut MessageWriter<PlayerQuit>,
     enter_events: &mut MessageWriter<EnterPlayEvent>,
+    player_chat_events: &mut MessageWriter<PlayerChat>,
     #[cfg(feature = "online-auth")] _auth_ctx: &OnlineAuthContext,
 ) {
     match inbound {
@@ -777,7 +780,6 @@ fn handle_packet(
         | InboundPacket::ChangeDifficulty(_)
         | InboundPacket::ChangeGameMode(_)
         | InboundPacket::ChatAck(_)
-        | InboundPacket::ChatMessage(_)
         | InboundPacket::ChatSessionUpdate(_)
         | InboundPacket::TickEnd(_)
         | InboundPacket::TabComplete(_)
@@ -819,6 +821,15 @@ fn handle_packet(
         | InboundPacket::TestInstanceBlockAction(_)
         | InboundPacket::CustomClickAction(_)
         | InboundPacket::Ignored { .. } => {}
+        // 消费 ChatMessage（serverbound 0x08），派发 PlayerChat 事件供 chat_broadcast 广播。
+        InboundPacket::ChatMessage(p) => {
+            if let Some(entity) = connections.entity_of(conn_id) {
+                let _ = player_chat_events.write(PlayerChat {
+                    player: entity,
+                    message: p.message.clone(),
+                });
+            }
+        }
         // 框架关注的动作类 serverbound 包：写入收件箱，由 `packet_action_system`
         // 在本 tick 稍后经 EventBus 派发事件（避免 `network_receive` 增参超出
         // 旧 ECS 方案 SystemParam 16 上限）。见 `.specs/implement-framework-capabilities/`。
