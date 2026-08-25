@@ -1,8 +1,8 @@
-﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! 实例层：Minestom 的世界模型骨架。
+//! 实例层：ParticleMC-Framework 的世界模型骨架。
 //!
-//! 对应 Minestom 的 `Instance` / `Chunk` / `Section`，骨架阶段提供方块读写的最小
+//! 对应框架的 `Instance` / `Chunk` / `Section`，骨架阶段提供方块读写的最小
 //! 真实逻辑与占位容器，供后续真实世界生成与 IO 接入。
 
 pub mod anvil;

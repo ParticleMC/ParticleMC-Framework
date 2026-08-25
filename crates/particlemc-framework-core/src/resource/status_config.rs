@@ -1,4 +1,4 @@
-﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
 //! 服务器状态配置（MOTD 等状态响应内容）。
 //!
@@ -23,12 +23,12 @@ pub struct StatusConfig {
 }
 
 impl Default for StatusConfig {
-    /// 默认值：1.21.11 / protocol 774 / 20 人 / "Minestom (Rust)"。
+    /// 默认值：1.21.11 / protocol 774 / 20 人 / "ParticleMC (Rust)"。
     fn default() -> Self {
         Self {
             protocol: 774,
             max_players: 20,
-            motd: "Minestom (Rust)".to_string(),
+            motd: "ParticleMC (Rust)".to_string(),
             version_name: "1.21.11".to_string(),
         }
     }
@@ -64,7 +64,7 @@ mod tests {
         assert!(json.contains(r#""name":"1.21.11""#));
         assert!(json.contains(r#""max":20"#));
         assert!(json.contains(r#""online":0"#));
-        assert!(json.contains(r#""text":"Minestom (Rust)""#));
+        assert!(json.contains(r#""text":"ParticleMC (Rust)""#));
     }
 
     #[test]

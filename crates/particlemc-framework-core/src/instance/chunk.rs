@@ -742,6 +742,42 @@ impl Chunk {
         let _ = registry;
         Block::from_state_id(self.get_block(section, index))
     }
+
+    /// 按世界坐标写入方块 id（坐标顺序 `(x, y, z)`）。
+    ///
+    /// y < 0 时返回 `false`；否则计算所属区段和局部索引，委托给 [`Self::set_block`]。
+    /// 写入成功后将对应区段标记为脏。
+    pub fn set_block_world(&mut self, x: i32, y: i32, z: i32, id: u32) -> bool {
+        if y < 0 {
+            return false;
+        }
+        let section = usize::try_from(y / 16).unwrap_or(usize::MAX);
+        let y_local = usize::try_from(y.rem_euclid(16)).unwrap_or(0);
+        let x_local = usize::try_from(x.rem_euclid(16)).unwrap_or(0);
+        let z_local = usize::try_from(z.rem_euclid(16)).unwrap_or(0);
+        let index = y_local * 256 + z_local * 16 + x_local;
+        self.set_block(section, index, id)
+    }
+
+    /// 按世界坐标读取方块 id（坐标顺序 `(x, y, z)`）。
+    ///
+    /// y < 0 时返回 0；否则计算所属区段和局部索引，委托给 [`Self::get_block`]。
+    pub fn get_block_world(&self, x: i32, y: i32, z: i32) -> u32 {
+        if y < 0 {
+            return 0;
+        }
+        let section = usize::try_from(y / 16).unwrap_or(usize::MAX);
+        let y_local = usize::try_from(y.rem_euclid(16)).unwrap_or(0);
+        let x_local = usize::try_from(x.rem_euclid(16)).unwrap_or(0);
+        let z_local = usize::try_from(z.rem_euclid(16)).unwrap_or(0);
+        let index = y_local * 256 + z_local * 16 + x_local;
+        self.get_block(section, index)
+    }
+
+    /// 按世界坐标读取方块（坐标顺序 `(x, y, z)`，语义经注册表解析）。
+    pub fn get_block_state_world(&self, x: i32, y: i32, z: i32, _registry: &BlockRegistry) -> Block {
+        Block::from_state_id(self.get_block_world(x, y, z))
+    }
 }
 
 #[cfg(test)]
@@ -1111,5 +1147,73 @@ mod tests {
                 }
             }
         }
+    }
+
+    // ── Chunk::set_block_world / get_block_world 测试 ────────────────────────────
+
+    #[test]
+    fn chunk_set_block_world_roundtrip_single_chunk() {
+        let mut chunk = Chunk::new(1, 2, 1);
+        assert!(chunk.set_block_world(16, 5, 32, 7));
+        assert_eq!(chunk.get_block_world(16, 5, 32), 7);
+    }
+
+    #[test]
+    fn chunk_set_block_world_negative_y_rejected() {
+        let mut chunk = Chunk::new(0, 0, 1);
+        assert!(!chunk.set_block_world(0, -1, 0, 1));
+        assert_eq!(chunk.get_block_world(0, -1, 0), 0);
+    }
+
+    #[test]
+    fn chunk_set_block_world_cross_section_boundary() {
+        let mut chunk = Chunk::new(0, 0, 2);
+        // y=15 在 section 0（y ∈ [0, 15]），y=16 在 section 1（y ∈ [16, 31]）。
+        assert!(chunk.set_block_world(0, 15, 0, 1));
+        assert!(chunk.set_block_world(0, 16, 0, 2));
+        assert_eq!(chunk.get_block_world(0, 15, 0), 1);
+        assert_eq!(chunk.get_block_world(0, 16, 0), 2);
+        // 相邻位置仍为空气
+        assert_eq!(chunk.get_block_world(0, 14, 0), 0);
+        assert_eq!(chunk.get_block_world(0, 17, 0), 0);
+    }
+
+    #[test]
+    fn chunk_set_block_world_negative_coords() {
+        let mut chunk = Chunk::new(-1, -1, 1);
+        // (-16, 5, -16) 对应 chunk(-1,-1) 内 x=0,y=5,z=0
+        assert!(chunk.set_block_world(-16, 5, -16, 3));
+        assert_eq!(chunk.get_block_world(-16, 5, -16), 3);
+    }
+
+    #[test]
+    fn chunk_set_block_world_out_of_sections_returns_false() {
+        let mut chunk = Chunk::new(0, 0, 1);
+        // section 越界：y=32 超出单区段（y ∈ [0,15]）
+        assert!(!chunk.set_block_world(0, 32, 0, 1));
+        assert_eq!(chunk.get_block_world(0, 32, 0), 0);
+    }
+
+    #[test]
+    fn chunk_set_block_world_dirty_flag_set() {
+        let mut chunk = Chunk::new(0, 0, 1);
+        assert!(chunk.set_block_world(5, 5, 5, 42));
+        assert!(chunk.dirty_sections[0]);
+    }
+
+    #[test]
+    fn chunk_get_block_state_world_routes_through_registry() {
+        let toml = r#"
+            [[entry]]
+            id = 0
+            name = "minecraft:air"
+        "#;
+        let registry =
+            BlockRegistry(crate::resource::registries::Registry::from_toml_str(toml).unwrap());
+        let mut chunk = Chunk::new(0, 0, 1);
+        assert!(chunk.set_block_world(0, 0, 0, 0));
+        let block = chunk.get_block_state_world(0, 0, 0, &registry);
+        assert_eq!(block.state_id(), 0);
+        assert!(block.is_air(&registry));
     }
 }

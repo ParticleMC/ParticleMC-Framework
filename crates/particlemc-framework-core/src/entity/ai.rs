@@ -1,8 +1,8 @@
-﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
 //! 实体 AI 子系统：goal / target 选择器与内置目标行为（T6）。
 //!
-//! 语义对齐 Minestom Java 的 `entity/ai` 包，但面向 自研 ECS（particlemc-framework-ecs） 重写：
+//! 语义对齐框架的 `entity/ai` 包，但面向 自研 ECS（particlemc-framework-ecs） 重写：
 //!
 //! - [`Goal`] 为纯状态机（`priority` / `can_start` / `start` / `tick` /
 //!   `stop`），不直接触碰 ECS 世界；系统在每 tick 通过

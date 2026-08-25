@@ -1,4 +1,4 @@
-﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
 //! 配方 API（框架层，见 `.specs/complete-partial-framework-capabilities/` R6）。
 //!
@@ -579,7 +579,7 @@ impl StonecutterRecipe {
 
 /// 配方值类型（五种形态，应用侧定义）。
 ///
-/// 对应 Minestom 的 `ShapedRecipe` / `ShapelessRecipe` / `SmeltingRecipe` /
+/// 对应框架的 `ShapedRecipe` / `ShapelessRecipe` / `SmeltingRecipe` /
 /// `StonecuttingRecipe` / `SmithingRecipe`（见 `.specs/complete-partial-framework-capabilities/`
 /// R6）。`id` 在 `RecipeManager` 内唯一。
 ///

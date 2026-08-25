@@ -1,8 +1,8 @@
-﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
 //! Minecraft NBT（Named Binary Tag）网络格式编解码（big-endian）。
 //!
-//! 格式语义对齐 Minestom Java 的 `BinaryTagWriter` / `BinaryTagReader`
+//! 格式语义对齐框架的 `BinaryTagWriter` / `BinaryTagReader`
 //! （`java/.../utils/nbt/`）：所有整数大端、字符串为 VarInt 字节长度前缀 + UTF-8。
 //! 提供三种入口：
 //!

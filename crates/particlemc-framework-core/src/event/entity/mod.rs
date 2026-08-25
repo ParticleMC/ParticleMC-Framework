@@ -1,8 +1,8 @@
-﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
 //! Entity 事件定义（18 个）。
 //!
-//! 对应 Java Minestom 的 `entity` 包下事件。
+//! 对应框架的 `entity` 包下事件。
 
 pub mod entity_attack;
 pub mod entity_damage;

@@ -1,6 +1,6 @@
-﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! 命令框架子模块（语法驱动 + 有类型参数，对齐 Minestom `command/**`）。
+//! 命令框架子模块（语法驱动 + 有类型参数，对齐框架 `command/**`）。
 //!
 //! 见 `.specs/implement-command-framework/`。本模块承载命令构建、参数体系、
 //! 解析上下文、执行结果码、条件闸门、参数异常、补全回调与发送者抽象；

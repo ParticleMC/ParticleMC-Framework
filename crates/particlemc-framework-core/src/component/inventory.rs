@@ -1,13 +1,13 @@
-﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! 玩家库存组件与 Minestom 内部槽 → 窗口槽映射。
+//! 玩家库存组件与内部槽 → 窗口槽映射。
 //!
-//! 提供 [`PlayerInventory`] 组件：以 Minestom 内部序维护 46 个物品槽 + 光标 +
+//! 提供 [`PlayerInventory`] 组件：以内部序维护 46 个物品槽 + 光标 +
 //! 手持热键槽，并跟踪待下发的脏槽集合。另提供
-//! [`convert_minestom_slot_to_window_slot`]，将 Minestom 内部槽号转换为
+//! [`convert_minestom_slot_to_window_slot`]，将内部槽号转换为
 //! `WindowItemsPacket` 内容序（窗口槽）。
 //!
-//! 槽位权威布局（Minestom 内部序）：
+//! 槽位权威布局（内部序）：
 //! - `0-8`   热键栏（hotbar）
 //! - `9-35`  背包（27 格）
 //! - `36-40` 合成格（结果 + 4 输入）
@@ -26,18 +26,18 @@ use crate::component::player::GameMode;
 use crate::inventory::Inventory;
 use crate::item_stack::ItemStack;
 
-/// 玩家库存组件。内部按 Minestom 序维护 46 槽 + 光标 + 手持槽 + 脏槽追踪。
+/// 玩家库存组件。内部按内部序维护 46 槽 + 光标 + 手持槽 + 脏槽追踪。
 #[derive(Component, Clone, Debug)]
 #[component(storage = "sparse")]
 pub struct PlayerInventory {
-    /// 46 槽物品栈。Minestom 内部序：
+    /// 46 槽物品栈。内部序：
     /// 0-8 热键栏, 9-35 背包(27), 36-40 合成格(结果+4), 41-44 盔甲(Helmet/Chestplate/Leggings/Boots), 45 副手。
     pub slots: [ItemStack; 46],
     /// 光标（拖拽中）物品。
     pub cursor: ItemStack,
     /// 当前手持热键槽 0-8。
     pub held_slot: u8,
-    /// 待下发的脏槽集合（存 Minestom 内部序号）。
+    /// 待下发的脏槽集合（存内部序号）。
     pub dirty: HashSet<u8>,
     /// 是否需要全量回推 WindowItems（含光标）。登录 / 光标变化（点击、关窗清空）时
     /// 置位，由 `inventory_sync` 消费一次后清零——避免每 tick 全量下发（既有缺陷，
@@ -68,7 +68,7 @@ impl Default for PlayerInventory {
 pub struct QuickCraftState {
     /// 当前阶段（0-3 拖拽中；结算后清除为默认值且 `targets` 为空）。
     pub stage: u8,
-    /// 参与拖拽的槽（Minestom 内部序）。
+    /// 参与拖拽的槽（内部序）。
     pub targets: Vec<u8>,
     /// 拖拽前这些槽的快照，供取消时回滚（与 `targets` 等长对齐）。
     pub snapshot: Vec<ItemStack>,
@@ -609,7 +609,29 @@ impl PlayerInventory {
         }
     }
 
-    /// 将物品加入库存（ADD 语义，权威来源：Java Minestom `AbstractInventory.addItemStack`）。
+    /// 消耗指定槽位的一个物品：`stack_size > 1` 时减一，`= 1` 时清空该槽。
+    ///
+    /// 返回 `true` 表示成功消耗（槽位存在且物品非空），`false` 表示无效操作（槽位越界或已空）。
+    pub fn consume_item(&mut self, slot: u8) -> bool {
+        let slot_usize = usize::from(slot);
+        if slot_usize >= 46 {
+            return false;
+        }
+        let stack = self.get(slot_usize);
+        if stack.is_air() {
+            return false;
+        }
+        if stack.amount > 1 {
+            let mut new_stack = stack;
+            new_stack.amount = new_stack.amount.saturating_sub(1);
+            self.set(slot_usize, new_stack);
+        } else {
+            self.set(slot_usize, ItemStack::AIR);
+        }
+        true
+    }
+
+    /// 将物品加入库存（ADD 语义，权威来源：Java `AbstractInventory.addItemStack`）。
     ///
     /// 按 `material` + `components` 相等匹配可堆叠槽（忽略 `amount`），
     /// 受各槽 `max_stack` 限制填入部分；随后遍历 `0..=45` 填入空槽。
@@ -669,7 +691,7 @@ impl PlayerInventory {
 /// 槽位读写委托既有 `get`/`set`（越界静默、非 AIR 标脏，行为不变），
 /// 脏槽取自 `dirty` 集合，光标委托 `cursor` 字段。
 impl Inventory for PlayerInventory {
-    /// 槽位总数（Minestom 内部序 46 槽）。
+    /// 槽位总数（内部序 46 槽）。
     fn size(&self) -> usize {
         46
     }
@@ -705,9 +727,9 @@ impl Inventory for PlayerInventory {
     }
 }
 
-/// Minestom 内部槽 → 窗口槽（WindowItemsPacket 内容序）。
+/// 内部槽 → 窗口槽（WindowItemsPacket 内容序）。
 ///
-/// 映射规则（权威来源：Java Minestom `PlayerInventoryUtils.convertMinestomSlotToWindowSlot`）：
+/// 映射规则（权威来源：Java `PlayerInventoryUtils.convertSlotToWindowSlot`）：
 /// - 热键栏 `0-8`    → `36-44`（`slot + 36`）
 /// - 背包   `9-35`   → `9-35`（不变）
 /// - 合成格 `36-40`  → `0-4`（`slot - 36`）
@@ -734,9 +756,9 @@ pub const CLICK_THROW: i32 = 4;
 pub const CLICK_QUICK_CRAFT: i32 = 5;
 pub const CLICK_PICKUP_ALL: i32 = 6;
 
-/// 窗口槽 → Minestom 内部槽（`convert_minestom_slot_to_window_slot` 的逆映射）。
+/// 窗口槽 → 内部槽（`convert_minestom_slot_to_window_slot` 的逆映射）。
 ///
-/// 映射规则（权威来源：Java Minestom `PlayerInventoryUtils.convertWindowSlotToMinestomSlot`）：
+/// 映射规则（权威来源：Java `PlayerInventoryUtils.convertWindowSlotToSlot`）：
 /// - 合成/盔甲窗口序 `0-8`  → 内部 `36-44`（`w + 36`）
 /// - 背包窗口序 `9-35`      → 不变
 /// - 热键窗口序 `36-44`     → 内部 `0-8`（`w - 36`）

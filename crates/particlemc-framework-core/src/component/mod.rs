@@ -1,8 +1,8 @@
-﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
 //! 组件层：以 旧 ECS 方案 `Component` 形式描述实体数据。
 //!
-//! 对应 Minestom 的实体属性概念，覆盖坐标、速度、生命值、玩家标识、实例引用、
+//! 对应框架的实体属性概念，覆盖坐标、速度、生命值、玩家标识、实例引用、
 //! 方块状态与实体类层级（活体 / 生物 / 弹射物 / 掉落物 / 经验球）。这些组件是
 //! [`crate::system`] 中 tick 管线的数据载体。实体类层级以**组件组合**替代
 //! Java 继承树（`LivingEntity` / `EntityCreature` / `EntityProjectile` /

@@ -1,8 +1,8 @@
-﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
 //! 区块生成器：`ChunkGenerator` trait + 内存中的生成结果表示。
 //!
-//! 语义对齐 Minestom Java 的 `Generator`（`generate` 产出区块数据，随后才由
+//! 语义对齐框架的 `Generator`（`generate` 产出区块数据，随后才由
 //! 世界容器入库），但**不复制 Java 实现**：这里以纯数据 [`GeneratedChunk`]
 //! 承载一次生成的输出——`blocks` 为 16×16×16 = 4096 个方块状态 id，
 //! `biomes` 为 4×4×4 = 64 个生物群系 id（v1 恒为 0）。

@@ -1,8 +1,8 @@
-﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! 资源层：Minestom 的 Manager 类 `Resource` 与各类注册表。
+//! 资源层：框架的 Manager 类 `Resource` 与各类注册表。
 //!
-//! 对应 Minestom 的 `ConnectionManager` / `InstanceManager` / `CommandManager`
+//! 对应框架的 `ConnectionManager` / `InstanceManager` / `CommandManager`
 //! / `TaskScheduler`，以及方块 / 物品 / 实体类型等注册数据。除注册表外，
 //! 这些 Manager 以 `Resource` 形式提供框架 API（见
 //! `.specs/implement-framework-capabilities/`）。

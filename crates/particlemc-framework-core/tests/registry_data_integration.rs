@@ -1,4 +1,4 @@
-﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
 //! 集成测试：完整注册数据加载计数校验。
 //!
@@ -6,7 +6,7 @@
 //! 仅做计数校验（不逐条断言），避免测试对大体量数据产生脆弱依赖。
 //!
 //! 注：本文件位于 crate 的 `tests/` 目录（Cargo 集成测试的标准位置），
-//! 对应规格中 `rust/Minestom/tests/registry_data_integration.rs` 的意图。
+//! 对应规格中 `rust/ParticleMCFramework/tests/registry_data_integration.rs` 的意图。
 
 #![allow(clippy::unwrap_used, clippy::expect_used)]
 
@@ -17,7 +17,7 @@ use particlemc_framework_core::plugin::McServerPlugin;
 use particlemc_framework_core::resource::registries::{BlockRegistry, EntityTypeRegistry, ItemRegistry};
 use particlemc_framework_core::resource::{GenericRegistry, LootTableRegistry};
 
-/// 返回 Minestom 数据目录（相对当前 crate 的 `CARGO_MANIFEST_DIR`）。
+/// 返回 ParticleMC 数据目录（相对当前 crate 的 `CARGO_MANIFEST_DIR`）。
 fn data_dir() -> PathBuf {
     PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../../resources/data")
 }

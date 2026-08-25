@@ -1,8 +1,8 @@
-﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
 //! 区块序列化：将区块/区段编码为 Minecraft 1.21.11 调色板字节流。
 //!
-//! 移植自 Minestom Java `PaletteImpl` / `Palettes.pack` / `Heightmap.encode`，
+//! 移植自框架的 `PaletteImpl` / `Palettes.pack` / `Heightmap.encode`，
 //! 实现三种存储模式：
 //!
 //! - **单值模式**（`bits_per_entry = 0`）：整个区段为同一方块，直接编码其 id；
@@ -11,7 +11,7 @@
 //!
 //! 位打包与字节序规则（必须与客户端一致）：
 //! - 数据数组按「每 `u64` 从低位连续存放 `floor(64 / bits)` 个条目」打包，
-//!   与 Minecraft `BitStorage` / Minestom `Palettes.pack` 相同；每个 `u64`
+//!   与 Minecraft `BitStorage` / 框架的 `Palettes.pack` 相同；每个 `u64`
 //!   以**大端**（`to_be_bytes`）写出 8 字节，末尾不足部分补零。
 //! - 高度图为 256 个 9-bit 值**连续**打包（客户端按 `i * 9` 位偏移解析），
 //!   允许条目跨 `u64` 边界，共 36 个 `u64`。
@@ -159,7 +159,7 @@ fn indirect_bits(unique_count: usize) -> u32 {
     needed.max(BLOCK_PALETTE_MIN_BITS)
 }
 
-/// 表示 `n` 所需的位数（对应 Minestom `MathUtils.bitsToRepresent`）。
+/// 表示 `n` 所需的位数（对应框架的 `MathUtils.bitsToRepresent`）。
 ///
 /// 例如 15 → 4、16 → 5；`n = 0`（空集合）返回 0。
 fn bits_to_represent(n: usize) -> u32 {
@@ -173,7 +173,7 @@ fn bits_to_represent(n: usize) -> u32 {
 
 /// 将条目按固定位数打包为 `u64` 数组。
 ///
-/// 位运算设计意图：与 Minecraft `BitStorage` / Minestom `Palettes.pack` 一致，
+/// 位运算设计意图：与 Minecraft `BitStorage` / 框架的 `Palettes.pack` 一致，
 /// 每 `u64` 从低位（LSB）开始连续存放 `floor(64 / bits)` 个条目，剩余高位
 /// 补零；条目不跨 `u64` 边界。
 fn pack_entries(entries: &[u32], bits: u32) -> Vec<u64> {
@@ -278,7 +278,7 @@ fn write_bits(out: &mut [u64], bit_pos: &mut usize, value: u64, bits: u32) {
 /// 计算某一列 `(x, z)` 的最高实心方块高度（区块内自底向上的全局 y）。
 ///
 /// 实心定义为「非空气方块」。整列无实心方块时返回 0（区块底部之下），
-/// 与 Minestom 高度图「未找到时落回底部」的语义一致。
+/// 与框架高度图「未找到时落回底部」的语义一致。
 fn column_height(chunk: &Chunk, x: usize, z: usize, air: u32) -> u16 {
     // 自顶向下扫描区段，首个非空气方块即该列最高点。
     for section_index in (0..chunk.sections.len()).rev() {

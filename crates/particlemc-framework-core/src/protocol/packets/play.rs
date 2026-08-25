@@ -1,4 +1,4 @@
-﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
 //! 游玩阶段数据包（protocol 774 / 1.21.11 真实映射）。
 //!
@@ -5468,7 +5468,7 @@ impl Packet for DeclareCommands {
 
 /// 关闭窗口（clientbound, id 0x11，wire 名 `close_window`）。
 ///
-/// 任务清单：`window_id`(Byte)。注意 Java Minestom 实际以 VarInt 编码窗口 id。
+/// 任务清单：`window_id`(Byte)。注意 Java 实际以 VarInt 编码窗口 id。
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct CloseWindow {
     /// 窗口 id（Byte）。
@@ -5865,7 +5865,7 @@ impl Packet for DisguisedChat {
 /// 游戏测试高亮坐标（clientbound, id 0x27，wire 名 `game_test_highlight_pos`）。
 ///
 /// 任务清单：`position`(Position 协议坐标)+`solid`(Bool)+`red/green/blue/alpha`(VarInt)。
-/// Java Minestom 实际为 absolute + relative 两个 BLOCK_POSITION，本实现随任务清单。
+/// Java 实际为 absolute + relative 两个 BLOCK_POSITION，本实现随任务清单。
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct GameTestHighlightPos {
     /// 方块坐标（Position 打包）。
@@ -5943,7 +5943,7 @@ impl Packet for OpenHorseWindow {
 
 /// 初始化世界边界（clientbound, id 0x2a，wire 名 `world_border_initialize`）。
 ///
-/// `speed`(VarLong)。注意：Java Minestom 实际字段序为
+/// `speed`(VarLong)。注意：Java 实际字段序为
 /// portal_teleport_boundary → warning_time → warning_blocks，任务清单为
 /// warning_blocks → warning_time，本实现随任务清单。
 #[derive(Debug, Clone, Copy, PartialEq)]
@@ -6122,7 +6122,7 @@ impl Packet for TradeList {
 
 /// 矿车移动（clientbound, id 0x35，wire 名 `move_minecart`）。
 ///
-/// 任务清单：`entity_id`(VarInt)+`x/y/z`(Double)。Java Minestom 1.21.11 实际为
+/// 任务清单：`entity_id`(VarInt)+`x/y/z`(Double)。Java 1.21.11 实际为
 /// `entity_id` + `lerp_steps` 列表，本实现随任务清单。
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub struct MoveMinecart {
@@ -8209,7 +8209,7 @@ impl Packet for ShowDialog {
 
 /// 清除对话框（clientbound, id 0x89，wire 名 `clear_dialog`）。
 ///
-/// 任务清单：`dialog_id`(UUID)。注意 Java Minestom 实现为空包，本实现随任务清单。
+/// 任务清单：`dialog_id`(UUID)。注意 Java 实现为空包，本实现随任务清单。
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct ClearDialog {
     /// 对话框 id（UUID）。

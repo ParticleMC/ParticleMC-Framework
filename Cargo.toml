@@ -1,14 +1,6 @@
-﻿# Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
-# SPDX-License-Identifier: GPL-3.0-or-later
-# ParticleMCFramework（Rust 重写版）Cargo Workspace 根配置。
-#
-# 注意：所有直接依赖均使用精确版本锁定（`=x.y.z`），以遵守项目章程
-# 「所有依赖版本精确锁定」的约束。传递依赖的版本由 Cargo.lock 固化
-# （应用项目保留 Cargo.lock，不纳入 .gitignore）。
-
-[workspace]
-resolver = "2"
+﻿[workspace]
 members = ["crates/particlemc-framework-core", "crates/particlemc-framework-server", "crates/particlemc-framework-ecs", "crates/particlemc-framework-ecs-macros", "crates/block-bench"]
+resolver = "2"
 
 [workspace.package]
 edition = "2024"
@@ -16,32 +8,18 @@ version = "0.1.0"
 rust-version = "1.89"
 
 [workspace.dependencies]
-# 自研 ECS 内核（替代旧 ECS 方案，RM1）：本地 path 依赖，零外部依赖。
 particlemc-framework-ecs = { path = "crates/particlemc-framework-ecs", version = "=0.1.0" }
 particlemc-framework-ecs-macros = { path = "crates/particlemc-framework-ecs-macros", version = "=0.1.0" }
-
 serde = { version = "=1.0.229", features = ["derive"] }
-# 仅启用 parse（反序列化）特性：框架层只读取 TOML 数据，不做序列化输出。
-# 禁用 display 可规避 toml 0.8.20 ser.rs 与 serde 1.0.229 的 trait 导入不兼容问题。
 toml = { version = "=0.8.20", default-features = false, features = ["parse"] }
 uuid = { version = "=1.13.2", features = ["v4"] }
 tokio = { version = "=1.44.0", features = ["rt", "rt-multi-thread", "net", "io-util", "time", "sync"] }
-# Velocity modern forwarding 签名校验（HMAC-SHA256），纯 Rust、无 unsafe。
 hmac = { version = "=0.12.1" }
 sha2 = { version = "=0.10.8" }
-# zlib 压缩（T7 压缩启用）：miniz_oxide 纯 Rust 后端，无 unsafe 传递依赖，符合章程。
 flate2 = { version = "=1.1.2", default-features = false, features = ["rust_backend"] }
-# 本地安全聊天签名（T12/R12）：Ed25519 本地签名/验签，纯 Rust、无 unsafe。
-# rand_core 特性启用 `SigningKey::generate`（随机密钥生成）。在线 Mojang 验证不在范围。
 ed25519-dalek = { version = "=2.2.0", features = ["rand_core"] }
-# 密钥生成的 CSPRNG 源（OsRng，经 getrandom 提供熵）：rand_core 0.6 与 ed25519-dalek 2.x
-# 共用同一版本线（ed25519-dalek 内部依赖 rand_core = "0.6"），此处精确锁定避免漂移。
 rand_core = { version = "=0.6.4", features = ["getrandom"] }
 
-# 极致压榨发布配置（T16.3）：整程序 LTO + 单代码生成单元 + panic=abort。
-# 仅作用于 `cargo build --release` / `cargo bench`；测试（dev/test profile）不受影响。
-# `panic = "abort"` 使服务端 panic 直接终止进程（不展开栈），与 long-running
-# 服务语义一致；如需崩溃回溯，临时移除该行改用默认 unwind。
 [profile.release]
 lto = "fat"
 codegen-units = 1

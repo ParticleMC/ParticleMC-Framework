@@ -1,4 +1,4 @@
-﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
 // 全局 unsafe 禁令：默认构建零 unsafe（合 Constitution）。
 // 仅当启用 `wasm-extensions`（引入 wasmtime host FFI 的少量 unsafe）时降级为
@@ -11,11 +11,9 @@
 #![cfg_attr(test, allow(unsafe_code))]
 //! # particlemc-framework-core
 //!
-//! Minestom（Rust 重写版）的核心框架库。
+//! ParticleMC-Framework（Rust 重写版）的核心框架库。
 //!
-//! 本项目以 [Minestom](https://github.com/Minestom/Minestom) 为设计蓝本，
-//! 使用 Rust + 自研 [particlemc-framework-ecs] 内核重写服务端框架，目标是在不牺牲性能的前提
-//! 下提供模块化、可组合的 Minecraft 服务器框架（particlemc-framework-ecs 替代旧 ECS 方案，RM1）。
+//! 本项目以 Minecraft 服务端框架为设计蓝本，使用 Rust + 自研 [particlemc-framework-ecs] 内核重写服务端框架，目标是在不牺牲性能的前提下提供模块化、可组合的 Minecraft 服务器框架（particlemc-framework-ecs 替代旧 ECS 方案，RM1）。
 //!
 //! 当前交付为**可用框架层**：真实 TCP 监听、1.21.11 协议编解码、完整的
 //! Handshake → Status → Login → Configuration → Play 状态机、玩家出生与移动，

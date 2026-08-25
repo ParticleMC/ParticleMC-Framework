@@ -1,8 +1,8 @@
-﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
 //! 事件 Trait 层次体系。
 //!
-//! 对应 Java Minestom 的 `Event` / `CancellableEvent` / `AsyncEvent` /
+//! 对应框架的 `Event` / `CancellableEvent` / `AsyncEvent` /
 //! `InstanceEvent` / `EntityEvent` / `PlayerEvent` / `BlockEvent` 继承链。
 //!
 //! 所有事件均派生 `Message`（自研 ECS）+ `Debug` + `Clone`，本模块提供额外的

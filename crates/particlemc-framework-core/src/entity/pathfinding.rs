@@ -1,8 +1,8 @@
-﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
 //! 实体寻路子系统：A* 搜索、路径生成器与路径跟随器（T6）。
 //!
-//! 语义对齐 Minestom Java 的 `entity/pathfinding` 包，但以简化的纯函数
+//! 语义对齐框架的 `entity/pathfinding` 包，但以简化的纯函数
 //! 结构实现，不依赖世界实例（`is_solid` 判定由调用方以闭包注入）：
 //!
 //! - [`a_star`]：默认 8 邻地面 A*（含对角代价，八向启发式），`max_steps`

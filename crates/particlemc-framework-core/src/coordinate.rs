@@ -1,8 +1,8 @@
-﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
 //! 坐标值类型：`Vec` / `BlockVec` / `Area` / `ChunkRange`。
 //!
-//! 语义对齐 Java Minestom 的 `net.minestom.server.coordinate` 包：
+//! 语义对齐框架的坐标包：
 //! [`Vec`] 为双精度 3D 向量（长度 / 归一化 / 点积 / 叉积），[`BlockVec`] 为
 //! 整数方块坐标（floor 转换 / chunk 坐标），[`Area`] 为含边界的方块区域
 //! （contains / 迭代），[`ChunkRange`] 为区块坐标范围迭代。仅承载纯值语义，

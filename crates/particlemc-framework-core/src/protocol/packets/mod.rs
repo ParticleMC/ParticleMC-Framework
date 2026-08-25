@@ -1,4 +1,4 @@
-﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
 //! 各连接状态的最小真实数据包（1.21.11）与入站包统一枚举。
 
@@ -24,6 +24,7 @@ pub use play::{
     ActionBar,
     // ---- T20 计分板/进度/配方/对话框/BossBar ----
     Advancements,
+    BlockBreakAnimation,
     BossBar,
     BossBarAction,
     Bundle,

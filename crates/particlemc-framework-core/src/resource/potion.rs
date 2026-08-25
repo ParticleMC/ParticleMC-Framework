@@ -1,8 +1,8 @@
-﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
 //! 药水子系统（对齐 Java `net.minestom.server.potion` 语义，T14）。
 //!
-//! 对应 Minestom 的 `PotionEffect` / `TimedPotion` / `PotionEffects` / `PotionType`
+//! 对应框架的 `PotionEffect` / `TimedPotion` / `PotionEffects` / `PotionType`
 //! 概念：`PotionEffect` 描述单一药水效果（名称 / 注册表 id / 时长 / 等级），
 //! `TimedPotion` 记录该效果的过期 tick，`PotionEffects` 挂实体（旧 ECS 方案 `Component`）
 //! 统一管理一实体的全部效果（同 id 覆盖、tick 过期移除）。

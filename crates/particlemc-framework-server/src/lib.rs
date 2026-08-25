@@ -1,6 +1,6 @@
-﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Minestom（Rust 重写版）服务器入口库。
+//! ParticleMC-Framework（Rust 重写版）服务器入口库。
 //!
 //! 暴露 [`run`] 供二进制入口与集成测试复用：启动 tokio 运行时、装配自研 `App`、
 //! 绑定真实 TCP 监听并进入 20Hz 主循环。`network_receive` / `network_send` 系统

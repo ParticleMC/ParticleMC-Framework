@@ -1,8 +1,8 @@
-﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
 //! 世界快照（R7）：区块 / 实体 / 实例的序列化载体。
 //!
-//! 语义对齐 Minestom Java `snapshot/` 包：`Snapshotable` 对象在安全点（如
+//! 语义对齐框架的 `snapshot/` 包：`Snapshotable` 对象在安全点（如
 //! tick 结束）被保存为不可变快照，供服务器存档、传输与「一次性读取」场景
 //! 使用。本模块提供三组承载结构：
 //!

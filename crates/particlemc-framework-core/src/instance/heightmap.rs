@@ -1,8 +1,8 @@
-﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
 //! 高度图：每个区块列的「最高实心方块」高度表。
 //!
-//! 语义对齐 Minestom Java `Heightmap` / `MotionBlockingHeightmap`：对每列
+//! 语义对齐框架的 `Heightmap` / `MotionBlockingHeightmap`：对每列
 //! `(x, z)` 自顶向下扫描，返回首个满足判定谓词的方块所在全局 y。当前提供
 //! MOTION_BLOCKING 一种类型（实心判定由调用方闭包注入），供区块序列化
 //! （[`crate::instance::chunk_serializer`]）与后续地形查询复用。
@@ -52,7 +52,7 @@ impl Heightmap {
 /// 构建 MOTION_BLOCKING 高度图：对每列从顶向下找首个实心方块，记录其全局 y。
 ///
 /// `is_solid` 为实心判定谓词（如经注册表判定「非空气」），调用方按语义注入。
-/// 整列无实心方块时该列高度为 0，与 Minestom 高度图「未找到落回底部」一致。
+/// 整列无实心方块时该列高度为 0，与框架高度图「未找到落回底部」一致。
 pub fn build_motion_blocking(chunk: &Chunk, is_solid: impl Fn(u32) -> bool) -> Heightmap {
     let mut heights = vec![0u16; HEIGHTMAP_COLUMNS];
     for z in 0..BLOCK_DIMENSION {

@@ -1,4 +1,4 @@
-﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
 //! Minecraft 文本组件（adventure 语义对齐，含 NBT 序列化）。
 //!
@@ -8,7 +8,7 @@
 //! [`Component::to_nbt`] / [`Component::from_nbt`] 序列化，供物品组件
 //! `custom_name`(6) / `lore`(11) 等以 NBT 承载（见 [`crate::item_stack`]）。
 //!
-//! NBT 线格式对齐 Java Minestom 1.21.11 的 `ComponentNetworkBufferTypeImpl`
+//! NBT 线格式对齐框架的 `ComponentNetworkBufferTypeImpl`
 //! （写 `TAG_COMPOUND`(0x0a) 后接 anonymous Compound payload）与 adventure 的
 //! NBT 序列化约定：
 //!

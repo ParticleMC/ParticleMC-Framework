@@ -1,4 +1,4 @@
-﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
 //! 命令参数体系：类型擦除 `AnyArgument` 与有类型 `Argument<T>`，以及 `ArgumentType` 工厂。
 //!
@@ -684,9 +684,9 @@ fn parse_subargs(
     Ok((ctx, idx))
 }
 
-/// 有类型参数工厂（对齐 Minestom `ArgumentType`）。
+/// 有类型参数工厂（对齐框架 `ArgumentType`）。
 ///
-/// 工厂函数沿用 Minestom `ArgumentType` 的 PascalCase 命名（如 `Word`/`Integer`/
+/// 工厂函数沿用框架 `ArgumentType` 的 PascalCase 命名（如 `Word`/`Integer`/
 /// `Boolean`/`Enum`/`Literal`/`StringArray`/`Group`/`Loop`/`Command`），故对模块与
 /// 函数放宽 `non_snake_case`（见 `.specs/implement-command-framework/`）。
 #[allow(non_snake_case)]

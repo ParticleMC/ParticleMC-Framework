@@ -1,7 +1,7 @@
-﻿# Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+# Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
 # SPDX-License-Identifier: GPL-3.0-or-later
 # 属性注册表（R8）
-# 清单与 id 对齐 Java Minestom `AttributeImpl.REGISTRY`（Attributes.java 常量序位，
+# 清单与 id 对齐框架的 `AttributeImpl.REGISTRY`（Attributes.java 常量序位，
 # 共 35 项，id 0..=34）；default/min/max/client_sync 取自 1.21.11 原版属性数据。
 # Entries: 35
 

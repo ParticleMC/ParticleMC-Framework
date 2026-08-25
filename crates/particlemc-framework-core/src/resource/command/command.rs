@@ -1,4 +1,4 @@
-﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
 //! 命令构建器（见 `.specs/implement-command-framework/`）。
 
@@ -33,7 +33,7 @@ pub struct CommandSyntax {
 
 /// 命令：多语法、默认执行器、条件、参数回调、子命令。
 ///
-/// 对齐 Minestom `Command`：命令名 + 别名 + 多语法 + 默认执行器 + 条件 + 子命令。
+/// 对齐框架 `Command`：命令名 + 别名 + 多语法 + 默认执行器 + 条件 + 子命令。
 /// 所有持有物均为 `Send + Sync`，故 `Command` 可作为 `CommandManager`（`Resource`）
 /// 的子组件。禁用 `as` 缩窄：参数序列访问全用迭代，无裸 `[i]`。
 #[derive(Default)]

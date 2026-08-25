@@ -1,8 +1,8 @@
-﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
 //! 通用工具层：`MathUtils` / `TimeUtils` / `Validate`。
 //!
-//! 语义对齐 Java Minestom 的 `net.minestom.server.utils` 包，但**只补 Rust std
+//! 语义对齐框架的工具包，但**只补 Rust std
 //! 尚未覆盖的能力**：`clamp` / `lerp` / 整数平方根、tick ↔ 毫秒 / 秒换算、
 //! panic-free 的参数校验（返回 `Result`）。Java 中已由 std 等价覆盖的
 //! （如 `min` / `max`、`abs`、`is_between` 等）不再重复实现。

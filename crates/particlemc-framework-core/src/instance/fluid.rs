@@ -1,8 +1,8 @@
-﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
 //! 流体语义：方块状态 id → 流体描述。
 //!
-//! 语义对齐 Minestom Java `Fluid` / `FluidImpl`：区分水 / 岩浆 / 空三种，
+//! 语义对齐框架的 `Fluid` / `FluidImpl`：区分水 / 岩浆 / 空三种，
 //! 并携带高度等级 `level`（0..=15，`level == 8` 表示下落态，v1 原样透传）。
 //!
 //! **注意（v1 限制）**：`BlockRegistry` 当前仅暴露 `is_solid` / `air_id` /

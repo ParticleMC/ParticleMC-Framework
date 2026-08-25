@@ -1,8 +1,8 @@
-﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
 //! 区块持久化抽象：`ChunkLoader` trait + 内存实现。
 //!
-//! 语义对齐 Minestom Java 的 `ChunkLoader`（`load` 返回整块数据且不再应用
+//! 语义对齐框架的 `ChunkLoader`（`load` 返回整块数据且不再应用
 //! 生成器；`save` 持久化整块），但**不复制 Java 实现**。当前只提供内存快照
 //! 实现 [`MemoryChunkLoader`] 与 trait 本身，用于世界容器的加载/保存管线。
 //!

@@ -1,6 +1,6 @@
-﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! `McServerPlugin`：组装 Minestom 服务器内核的自研插件（替代旧 ECS 方案 插件，RM1）。
+//! `McServerPlugin`：组装 ParticleMC-Framework 服务器内核的自研插件（替代旧 ECS 方案 插件，RM1）。
 //!
 //! 负责把全部 Manager 类 `Resource`、全部注册表、全部 `Message`（事件）以及
 //! tick 管线系统装配进自建 `App`（包裹 `World` + `Schedule`），并把固定步长
@@ -33,12 +33,12 @@ use crate::resource::{
 use crate::schedule::configure_20hz;
 use crate::system;
 
-/// 返回 Minestom 数据目录的默认位置（相对当前 crate 的 `CARGO_MANIFEST_DIR`）。
+/// 返回 ParticleMC 数据目录的默认位置（相对当前 crate 的 `CARGO_MANIFEST_DIR`）。
 fn default_data_dir() -> PathBuf {
     PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../../resources/data")
 }
 
-/// Minestom 服务器插件。
+/// ParticleMC-Framework 服务器插件。
 ///
 /// - 默认构造（[`McServerPlugin::new`]）：加载核心注册表（方块 / 物品 / 实体类型）。
 /// - [`McServerPlugin::with_preload`]：额外加载全部世界类注册表与标签。

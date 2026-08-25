@@ -1,4 +1,4 @@
-﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
 //! 命令参数解析异常与命令结构异常（见 `.specs/implement-command-framework/`）。
 
@@ -6,7 +6,7 @@ use std::fmt;
 
 /// 参数语法异常：参数解析失败（类型不符、越界、限制不符等）时抛出。
 ///
-/// 对齐 Minestom `ArgumentSyntaxException`：仅携带 `input`（出错原文）与
+/// 对齐框架 `ArgumentSyntaxException`：仅携带 `input`（出错原文）与
 /// `error_code`（非零整型分类），不捕获栈帧（本实现直接构造，无栈开销）。
 /// 解析失败时由参数 `parse_erased` 返回，供管理器 emit 默认或自定义错误消息。
 #[derive(Debug, Clone, PartialEq, Eq)]

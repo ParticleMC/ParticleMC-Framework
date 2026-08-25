@@ -1,8 +1,8 @@
-﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
 //! 消息子系统（对齐 Java `net.minestom.server.message` 语义，T14）。
 //!
-//! Java Minestom 的 `Messenger.sendMessage` 以 [`SystemChatPacket`](crate::protocol::packets::play::SystemChatPacket)
+//! 框架的 `Messenger.sendMessage` 以 [`SystemChatPacket`](crate::protocol::packets::play::SystemChatPacket)
 //! 承载消息（adventure `Component` NBT 序列化，`overlay=false`）。本模块对齐：
 //! [`Messenger::send_message`] 构造 0x77 `SystemChatPacket`，经
 //! [`encode_clientbound`](crate::protocol::packets::encode_clientbound) 编码后按

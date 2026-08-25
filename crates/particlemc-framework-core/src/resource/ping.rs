@@ -1,4 +1,4 @@
-﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
 //! 服务器列表 Ping 子系统（对齐 Java `net.minestom.server.ping` 语义，T14）。
 //!
@@ -33,7 +33,7 @@ pub struct ServerListPing {
 }
 
 impl Default for ServerListPing {
-    /// 对齐 Java `Status.DEFAULT_DESCRIPTION`（`"Minestom Server"`）与
+    /// 对齐 Java `Status.DEFAULT_DESCRIPTION`（`"ParticleMC Server"`）与
     /// `VersionInfo.DEFAULT`（1.21.11 / 774）的默认构造。
     fn default() -> Self {
         Self {
@@ -41,7 +41,7 @@ impl Default for ServerListPing {
             protocol: 774,
             players_online: 0,
             players_max: 20,
-            description: Component::text("Minestom Server"),
+            description: Component::text("ParticleMC Server"),
             favicon: None,
         }
     }
@@ -117,7 +117,7 @@ mod tests {
         assert_eq!(ping.protocol, 774);
         assert_eq!(ping.players_online, 0);
         assert_eq!(ping.players_max, 20);
-        assert_eq!(ping.description.plain_text(), "Minestom Server");
+        assert_eq!(ping.description.plain_text(), "ParticleMC Server");
         assert_eq!(ping.favicon, None);
     }
 

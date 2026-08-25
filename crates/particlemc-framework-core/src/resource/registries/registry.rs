@@ -1,8 +1,8 @@
-﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
 //! 注册表核心数据结构与 TOML 加载器。
 //!
-//! [`Registry`] 提供「数值 id ⇄ 命名空间字符串」的双向映射，是 Minestom
+//! [`Registry`] 提供「数值 id ⇄ 命名空间字符串」的双向映射，是框架
 //! 所有注册数据（方块、物品、实体类型……）的统一承载结构。它刻意保持泛型，
 //! 由 [`BlockRegistry`] 等具名注册表在之上包装为具体的 `Resource`。
 //!
@@ -322,7 +322,7 @@ fn default_light_opacity() -> u8 {
 
 /// 方块注册项（具名定义）。
 ///
-/// 除必需的 `name` 与可选 `id` 外，额外保留 Minestom 关注的几个字段，
+/// 除必需的 `name` 与可选 `id` 外，额外保留 ParticleMC 关注的几个字段，
 /// 其余字段透传存入 [`BlockDefinition::extra`]，确保数据源信息不丢失。
 ///
 /// `light_opacity` / `light_emission` 为光照引擎（`complete-framework-gaps`

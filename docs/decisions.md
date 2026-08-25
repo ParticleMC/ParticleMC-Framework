@@ -1,15 +1,15 @@
-﻿<!-- Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+<!-- Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
 SPDX-License-Identifier: GPL-3.0-or-later -->
 # 架构决策记录（Architecture Decision Records）
 
-本项目以 [Minestom](https://github.com/Minestom/Minestom)（Java）为设计蓝本，
-使用 Rust + 自研 ECS（minestom-ecs）重写服务端框架。本文件记录关键架构决策及其理由。
+本项目以 Minecraft 服务端框架为设计蓝本，
+使用 Rust + 自研 ECS 重写服务端框架。本文件记录关键架构决策及其理由。
 
 ## ADR-001：基于 Bevy ECS 作为服务器内核（已取代）
 
 **状态**：已取代（被 ADR-015 取代；内核改为自研 ECS `minestom-ecs`）
 
-**背景**：Minestom 不提供原版逻辑，而是提供高性能、可扩展的服务器框架；
+**背景**：框架不提供原版逻辑，而是提供高性能、可扩展的服务器框架；
 游戏内容以"注册数据 + 事件系统"组织。Rust 侧需要一套成熟、高性能、
 可组合的实体组件系统（ECS）作为内核。
 
@@ -18,10 +18,10 @@ SPDX-License-Identifier: GPL-3.0-or-later -->
 
 **理由**：
 
-- `bevy_ecs` 提供高性能并行 schedule 调度、组件/资源/事件模型，与 Minestom
+- `bevy_ecs` 提供高性能并行 schedule 调度、组件/资源/事件模型，与框架
   的"系统 + 事件"范式天然契合
 - `bevy_app` 提供 `App` / `Plugin` 抽象，可将服务器功能按插件化组织，
-  对齐 Minestom 的 `Extension` 机制
+  对齐框架的 `Extension` 机制
 - `bevy_time` 提供统一的游戏时钟，便于实现心跳与定时任务
 - 本地 vendored（离线 path 依赖）保证构建可复现、无需访问网络拉取
   渲染相关的庞杂依赖树
@@ -48,7 +48,7 @@ SPDX-License-Identifier: GPL-3.0-or-later -->
 
 **状态**：已接受
 
-**背景**：Minestom 生态以注册数据（Registry）驱动：方块、物品、实体、
+**背景**：框架生态以注册数据（Registry）驱动：方块、物品、实体、
 生物群系等均通过注册表在启动时加载。
 
 **决策**：分阶段推进——
@@ -58,7 +58,7 @@ SPDX-License-Identifier: GPL-3.0-or-later -->
 2. **数据驱动**：注册项数据从 `resources/data/` 下的 TOML 文件加载，
    通过 `serde` 反序列化为强类型注册表，避免硬编码
 3. **插件化**：以 `McServerPlugin` 作为功能单元注册数据与系统，
-   对齐 Minestom 的 `Extension` 模型
+   对齐框架的 `Extension` 模型
 
 **理由**：先保证构建链路与依赖关系稳定，再逐步引入业务复杂度，
 降低集成风险。
@@ -130,7 +130,7 @@ ID，客户端会拒绝解析或误解包，登录流程无法进入 Play。
 
 - 转发 blob 使用与 Velocity 相同的 `hmac-sha256` 纯 Rust 实现，无 unsafe；
   常量时间比较防时序侧信道
-- 三层模型对齐 Minestom 的 urgent/normal 队列语义，同时把区块发送抽象为
+- 三层模型对齐框架的 urgent/normal 队列语义，同时把区块发送抽象为
   独立的信用节流器，为真实区块流水线预留接口
 - 直连与代理两种部署形态共用一套 `network_receive` 逻辑，仅身份来源不同
 

@@ -1,8 +1,8 @@
-﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
 //! 命令管理器（框架核心全对齐版，见 `.specs/implement-command-framework/`）。
 //!
-//! 提供 Minestom `CommandManager` 的完整 API：命令注册/注销/查询、语法驱动的
+//! 提供 ParticleMC-Framework `CommandManager` 的完整 API：命令注册/注销/查询、语法驱动的
 //! 解析器（`parse_command`）、执行入口（`execute` / `execute_server_command`）、
 //! 内置 `help`、未知命令回调，以及结果码（`CommandResult` / `CommandResultType`）。
 //!
@@ -18,7 +18,7 @@ use crate::resource::command::command::{Command, CommandExecutor, CommandSyntax}
 use crate::resource::command::context::CommandContext;
 use crate::resource::command::sender::{CommandSender, ServerSender};
 
-/// 命令执行结果类型（对齐 Minestom `CommandResult`）。
+/// 命令执行结果类型（对齐框架 `CommandResult`）。
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum CommandResultType {
     /// 执行成功。
@@ -42,7 +42,7 @@ pub struct CommandResult {
     pub input: String,
 }
 
-/// 命令注册错误（名/别名冲突，对齐 Minestom `IllegalStateException`）。
+/// 命令注册错误（名/别名冲突，对齐框架 `IllegalStateException`）。
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct CommandError(pub String);
 
@@ -101,7 +101,7 @@ impl CommandManager {
 
     /// 注册命令；名或别名与已注册命令冲突时返回 `Err(CommandError)`。
     ///
-    /// 查重大小写不敏感（对齐 Minestom：重复注册抛 `IllegalStateException`）。
+    /// 查重大小写不敏感（对齐框架：重复注册抛 `IllegalStateException`）。
     pub fn register(&mut self, cmd: Command) -> Result<(), CommandError> {
         let new_names = cmd.names();
         for existing in self.commands.values() {

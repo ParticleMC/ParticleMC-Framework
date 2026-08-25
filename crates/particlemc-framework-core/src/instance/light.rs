@@ -1,4 +1,4 @@
-﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
 //! 光照系统（简化 API 骨架）。
 //!
@@ -7,7 +7,7 @@
 //! `(y << 8) | (z << 4) | x`。
 //!
 //! **注意（v1 限制）**：本模块仅为存储骨架，**不实现真实的光照传播算法**
-//! （Java Minestom `LightEngine` / `SkyLight.calculateInternal` 的逐列扫描与
+//! （框架 `LightEngine` / `SkyLight.calculateInternal` 的逐列扫描与
 //! 传播）。写入值即存储值，读取原样返回；光照重算/扩散由后续批次按
 //! LightEngine 语义补齐。
 //!

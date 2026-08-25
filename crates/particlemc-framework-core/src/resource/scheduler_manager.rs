@@ -1,4 +1,4 @@
-﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
 //! 任务调度器（框架层，见 `.specs/implement-framework-capabilities/` R9）。
 //!
@@ -134,7 +134,7 @@ impl TaskScheduler {
 
     /// 延迟 `delay_ticks` 后执行一次（[`schedule_after`] 的语义别名，T14.4）。
     ///
-    /// 命名对齐 Minestom 原生命名 `runAfter`，便于既有调用方零成本迁移。
+    /// 命名对齐框架原生命名 `runAfter`，便于既有调用方零成本迁移。
     pub fn run_after(
         &mut self,
         delay_ticks: u64,
@@ -145,7 +145,7 @@ impl TaskScheduler {
 
     /// 每 `period_ticks` 执行一次周期任务（[`schedule_repeat`] 的语义别名，T14.4）。
     ///
-    /// 命名对齐 Minestom 原生命名 `runRepeating`，便于既有调用方零成本迁移。
+    /// 命名对齐框架原生命名 `runRepeating`，便于既有调用方零成本迁移。
     pub fn run_repeating(
         &mut self,
         period_ticks: u64,

@@ -1,11 +1,11 @@
-﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
 //! 自研 ECS 内核 crate：面向 Minecraft 服务端的极致性能实体组件系统。
 //!
 //! 变更标识符：`implement-custom-ecs`
 //!
 //! 本 crate 替代既有 自建 App / 自研 ECS / 自研时钟 依赖（RM1），对齐
-//! Minestom 框架层语义（静态 Archetype、世界级隔离 + 全局实例调度器、
+//! ParticleMC-Framework 框架层语义（静态 Archetype、世界级隔离 + 全局实例调度器、
 //! 跨线程命令队列），同时保持高层 API 形态（`Component` / `Resource` /
 //! `World` 等）与 旧 ECS 方案 兼容，便于 particlemc-framework-core 迁移。
 //!

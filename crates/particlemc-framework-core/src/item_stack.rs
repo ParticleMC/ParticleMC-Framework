@@ -1,4 +1,4 @@
-﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
 //! 物品栈模型与线格式编解码（Minecraft 1.21.11）。
 //!
@@ -14,7 +14,7 @@
 //! enchantments）+ 文本承载（[`ComponentValue::Text`] custom_name /
 //! [`ComponentValue::TextList`] lore，经 [`crate::text_component::Component`]↔NBT）。
 //!
-//! 组件 id 以 Java Minestom 1.21.11 `DataComponents.java` 登记序位（0 基，
+//! 组件 id 以 Minecraft 1.21.11 `DataComponents.java` 登记序位（0 基，
 //! `DataComponentImpl.register` 用 `NAMESPACES.size()` 赋 id）为权威，逐一核实：
 //!
 //! - `0` `custom_data` → [`ComponentValue::Nbt`]（NBT Compound）
@@ -42,7 +42,7 @@
 //! [`component_id`] 归一为 custom_data(0)。
 //!
 //! 未知组件 id 解码返回 [`ProtocolError::UnsupportedComponents`]（安全降级）。
-//! 线格式权威来源：Java Minestom 1.21.11 `ItemStackImpl.networkType` 与
+//! 线格式权威来源：Minecraft 1.21.11 `ItemStackImpl.networkType` 与
 //! `DataComponentMapImpl.NetworkTypeImpl`（`write`/`read`）；NBT/COMPONENT 值为
 //! `0x0a` 前导 + anonymous Compound payload（`writeNameless`，见 `NbtType`）。
 //! 空 patch 编码为 `added = 0`、`removed = 0`，即字节 `00 00`。

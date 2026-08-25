@@ -1,4 +1,4 @@
-﻿<!-- Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+<!-- Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
 SPDX-License-Identifier: GPL-3.0-or-later -->
 # Changelog
 
@@ -9,7 +9,7 @@ SPDX-License-Identifier: GPL-3.0-or-later -->
 
 ### BREAKING — 命名空间重命名（rename-minestom-to-particlemc-framework）
 
-**原因**：框架品牌名称从 "Minestom" 统一变更为 "ParticleMCFramework"，使命名空间与项目目录名保持一致。
+**原因**：框架品牌名称统一变更为 "ParticleMC-Framework"，使命名空间与项目目录名保持一致。
 
 **变更内容**：
 

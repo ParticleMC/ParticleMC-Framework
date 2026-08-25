@@ -1,8 +1,8 @@
-﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
 //! 注册表 NBT 化：把注册数据转换为配置阶段的 RegistryData / UpdateTags 包。
 //!
-//! 对应 Minestom Java 的 `RegistryContainer` / `TagManager`：在配置阶段向客户端
+//! 对应框架的 `RegistryContainer` / `TagManager`：在配置阶段向客户端
 //! 同步各注册表条目（RegistryData）与标签（UpdateTags）。本模块提供：
 //!
 //! - [`RegistrySnapshot`]：从各注册表 `Resource` 收集 name → 条目数据的映射；
@@ -104,7 +104,7 @@ impl RegistrySnapshot {
         self.registries.len()
     }
 
-    /// 从 Minestom 数据目录（`resources/data`）构建完整注册表快照。
+    /// 从 ParticleMC 数据目录（`resources/data`）构建完整注册表快照。
     ///
     /// 与测试辅助 [`tests::build_snapshot`] 使用相同的注册表映射表，供插件装配
     /// 复用：具名注册表（维度/生物群系/伤害/附魔/流体/粒子/音效/药水）+ 实体类型
@@ -428,7 +428,7 @@ mod tests {
     use super::*;
     use crate::protocol::nbt::decode_root;
 
-    /// 返回 Minestom 数据目录（相对当前 crate 的 `CARGO_MANIFEST_DIR`）。
+    /// 返回 ParticleMC 数据目录（相对当前 crate 的 `CARGO_MANIFEST_DIR`）。
     fn data_dir() -> PathBuf {
         PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../../resources/data")
     }

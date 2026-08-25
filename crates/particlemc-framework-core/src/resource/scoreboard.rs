@@ -1,4 +1,4 @@
-﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
 //! 计分板 API（框架层，见 `.specs/implement-framework-capabilities/` R8）。
 //!
@@ -22,7 +22,7 @@ const DEFAULT_DISPLAY_SLOT: i8 = -1;
 
 /// 计分板目标。
 ///
-/// 对应 Minestom 的 `Objective`（见 `.specs/implement-framework-capabilities/` R8）。
+/// 对应框架的 `Objective`（见 `.specs/implement-framework-capabilities/` R8）。
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct Objective {
     /// 目标名（协议同步键）。
@@ -37,7 +37,7 @@ pub struct Objective {
 
 /// 计分板队伍。
 ///
-/// 对应 Minestom 的 `Team`（见 `.specs/implement-framework-capabilities/` R8）。
+/// 对应框架的 `Team`（见 `.specs/implement-framework-capabilities/` R8）。
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct Team {
     /// 队伍名（协议同步键）。
