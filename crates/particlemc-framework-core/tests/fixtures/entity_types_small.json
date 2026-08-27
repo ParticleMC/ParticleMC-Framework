@@ -1,0 +1,14 @@
+{
+  "minecraft:cow": {
+    "name": "minecraft:cow",
+    "id": 0
+  },
+  "minecraft:pig": {
+    "name": "minecraft:pig",
+    "id": 1
+  },
+  "minecraft:sheep": {
+    "name": "minecraft:sheep",
+    "id": 2
+  }
+}

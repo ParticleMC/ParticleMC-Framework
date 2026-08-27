@@ -1,0 +1,30 @@
+{
+  "minecraft:crafting": {
+    "id": 0,
+    "name": "minecraft:crafting"
+  },
+  "minecraft:smelting": {
+    "id": 1,
+    "name": "minecraft:smelting"
+  },
+  "minecraft:blasting": {
+    "id": 2,
+    "name": "minecraft:blasting"
+  },
+  "minecraft:smoking": {
+    "id": 3,
+    "name": "minecraft:smoking"
+  },
+  "minecraft:campfire_cooking": {
+    "id": 4,
+    "name": "minecraft:campfire_cooking"
+  },
+  "minecraft:stonecutting": {
+    "id": 5,
+    "name": "minecraft:stonecutting"
+  },
+  "minecraft:smithing": {
+    "id": 6,
+    "name": "minecraft:smithing"
+  }
+}

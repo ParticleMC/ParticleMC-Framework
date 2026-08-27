@@ -1,0 +1,54 @@
+{
+  "minecraft:crafting_building_blocks": {
+    "id": 0,
+    "name": "minecraft:crafting_building_blocks"
+  },
+  "minecraft:crafting_redstone": {
+    "id": 1,
+    "name": "minecraft:crafting_redstone"
+  },
+  "minecraft:crafting_equipment": {
+    "id": 2,
+    "name": "minecraft:crafting_equipment"
+  },
+  "minecraft:crafting_misc": {
+    "id": 3,
+    "name": "minecraft:crafting_misc"
+  },
+  "minecraft:furnace_food": {
+    "id": 4,
+    "name": "minecraft:furnace_food"
+  },
+  "minecraft:furnace_blocks": {
+    "id": 5,
+    "name": "minecraft:furnace_blocks"
+  },
+  "minecraft:furnace_misc": {
+    "id": 6,
+    "name": "minecraft:furnace_misc"
+  },
+  "minecraft:blast_furnace_blocks": {
+    "id": 7,
+    "name": "minecraft:blast_furnace_blocks"
+  },
+  "minecraft:blast_furnace_misc": {
+    "id": 8,
+    "name": "minecraft:blast_furnace_misc"
+  },
+  "minecraft:smoker_food": {
+    "id": 9,
+    "name": "minecraft:smoker_food"
+  },
+  "minecraft:stonecutter": {
+    "id": 10,
+    "name": "minecraft:stonecutter"
+  },
+  "minecraft:smithing": {
+    "id": 11,
+    "name": "minecraft:smithing"
+  },
+  "minecraft:campfire": {
+    "id": 12,
+    "name": "minecraft:campfire"
+  }
+}

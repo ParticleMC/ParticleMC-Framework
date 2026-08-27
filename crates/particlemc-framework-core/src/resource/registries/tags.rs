@@ -1,9 +1,11 @@
-﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
 //! 标签注册表。
 //!
-//! 加载 `resources/data/tags/*.toml`，每个标签条目由 `name` 与 `values`
+//! 加载 `resources/data/tags/*.json`，每个标签条目由 `name` 与 `values`
 //! （命名空间字符串列表，可含 `#` 前缀的标签引用）组成。
+//!
+//! 同时保留 `from_toml_str` / `from_toml_file` 方法供向后兼容。
 
 use std::collections::HashMap;
 use std::path::Path;
@@ -57,17 +59,58 @@ impl TagRegistry {
         Self::from_toml_str(&text)
     }
 
-    /// 加载整个 `tags` 目录并合并所有 `.toml` 文件中的标签。
+    /// 从 JSON 文本解析对象格式，构建标签注册表。
+    ///
+    /// JSON 格式为 `{"tag_name": {"values": [...]}, ...}`。
+    ///
+    /// # 错误
+    /// 文本非法或某条目缺少 `values` 数组时返回 [`RegistryError`]。
+    pub fn from_json_str(text: &str) -> Result<Self, RegistryError> {
+        let document: serde_json::Value =
+            serde_json::from_str(text).map_err(|_| RegistryError::ParseError)?;
+        let obj = document
+            .as_object()
+            .ok_or(RegistryError::ParseError)?;
+        let mut tags = HashMap::new();
+        for (name, value) in obj {
+            let values = value
+                .get("values")
+                .and_then(|v| v.as_array())
+                .map(|arr| {
+                    arr.iter()
+                        .filter_map(|item| item.as_str().map(|s| s.to_string()))
+                        .collect()
+                })
+                .unwrap_or_default();
+            tags.insert(name.clone(), values);
+        }
+        Ok(Self { tags })
+    }
+
+    /// 从单个标签 JSON 文件加载。
+    ///
+    /// # 错误
+    /// 文件缺失、解析失败或某条目缺少 `values` 时返回 [`RegistryError`]。
+    pub fn from_json_file(path: &Path) -> Result<Self, RegistryError> {
+        let text = std::fs::read_to_string(path).map_err(|_| RegistryError::ParseError)?;
+        Self::from_json_str(&text)
+    }
+
+    /// 加载整个 `tags` 数据目录并合并所有 `.json` 文件中的标签。
+    ///
+    /// 遍历目录下所有扩展名为 `json` 的文件，逐个经
+    /// [`from_json_file`](Self::from_json_file) 解析后合并到同一张表；
+    /// 同名键以后读入的文件为准（后者覆盖前者）。
     ///
     /// # 错误
     /// 目录不可读时返回 [`RegistryError::ParseError`]。
-    pub fn load_directory(dir: &Path) -> Result<Self, RegistryError> {
+    pub fn load_json_directory(dir: &Path) -> Result<Self, RegistryError> {
         let mut merged = HashMap::new();
         let read_dir = std::fs::read_dir(dir).map_err(|_| RegistryError::ParseError)?;
         for item in read_dir {
             let path = item.map_err(|_| RegistryError::ParseError)?.path();
-            if path.extension().and_then(|ext| ext.to_str()) == Some("toml") {
-                let single = Self::from_toml_file(&path)?;
+            if path.extension().and_then(|ext| ext.to_str()) == Some("json") {
+                let single = Self::from_json_file(&path)?;
                 for (key, value) in single.tags {
                     merged.insert(key, value);
                 }

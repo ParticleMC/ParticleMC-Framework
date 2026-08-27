@@ -1,0 +1,10 @@
+{
+  "minecraft:black": {
+    "name": "minecraft:black",
+    "asset_id": "minecraft:entity/cat/cat_black"
+  },
+  "minecraft:all_black": {
+    "name": "minecraft:all_black",
+    "asset_id": "minecraft:entity/cat/cat_all_black"
+  }
+}

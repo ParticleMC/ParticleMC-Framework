@@ -1,0 +1,23 @@
+{
+  "minecraft:clock_time_marker": {
+    "name": "minecraft:clock_time_marker"
+  },
+  "minecraft:day": {
+    "name": "minecraft:day"
+  },
+  "minecraft:noon": {
+    "name": "minecraft:noon"
+  },
+  "minecraft:night": {
+    "name": "minecraft:night"
+  },
+  "minecraft:midnight": {
+    "name": "minecraft:midnight"
+  },
+  "minecraft:wake_up_from_sleep": {
+    "name": "minecraft:wake_up_from_sleep"
+  },
+  "minecraft:roll_village_siege": {
+    "name": "minecraft:roll_village_siege"
+  }
+}

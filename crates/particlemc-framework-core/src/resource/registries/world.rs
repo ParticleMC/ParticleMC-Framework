@@ -1,4 +1,4 @@
-﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
 //! 世界类具名注册表集合。
 //!
@@ -21,6 +21,11 @@ macro_rules! define_named_registry {
             /// 从 TOML 文件加载该注册表。
             pub fn from_toml_file(path: &Path) -> Result<Self, RegistryError> {
                 Ok(Self(Registry::from_toml_file(path)?))
+            }
+
+            /// 从 JSON 文件加载该注册表。
+            pub fn from_json_file(path: &Path) -> Result<Self, RegistryError> {
+                Ok(Self(Registry::from_json_file(path)?))
             }
         }
     };

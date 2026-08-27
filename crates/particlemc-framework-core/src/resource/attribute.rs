@@ -1,4 +1,4 @@
-﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
 //! 属性框架（R8）：`Attribute` 值类型、`AttributeInstance` 叠加实例与
 //! [`AttributeRegistry`] 注册表。
@@ -202,6 +202,14 @@ impl AttributeRegistry {
         })
     }
 
+    /// 从 JSON 文件加载属性注册表（路径不存在或解析失败返回
+    /// [`RegistryError`]，由调用方决定回退为空表）。
+    pub fn from_json_file(path: &Path) -> Result<Self, RegistryError> {
+        Ok(Self {
+            inner: Registry::<Attribute>::from_json_file(path)?,
+        })
+    }
+
     /// 从 TOML 文本加载属性注册表（主要供单元测试使用）。
     pub fn from_toml_str(text: &str) -> Result<Self, RegistryError> {
         Ok(Self {
@@ -400,8 +408,8 @@ mod tests {
     fn registry_loads_real_data_file() {
         // 真实注册数据：35 项，id 与 Java Attributes.java 序位一致。
         let path =
-            Path::new(env!("CARGO_MANIFEST_DIR")).join("../../resources/data/attributes.toml");
-        let registry = AttributeRegistry::from_toml_file(&path).unwrap();
+            Path::new(env!("CARGO_MANIFEST_DIR")).join("../../resources/data/attributes.json");
+        let registry = AttributeRegistry::from_json_file(&path).unwrap();
         assert_eq!(registry.len(), 35);
         assert_eq!(registry.by_name("minecraft:max_health").unwrap().id, 19);
         assert_eq!(registry.by_name("minecraft:movement_speed").unwrap().id, 22);

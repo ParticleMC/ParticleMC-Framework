@@ -1,4 +1,4 @@
-﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
 //! 区块与区段结构（世界模型骨架）。
 //!
@@ -1032,8 +1032,10 @@ mod tests {
         // 测试需向相同索引写入，使每个 (lx,lz) 位置的 sky/block 值与断言一致。
         for lz in 0..16 {
             for lx in 0..16 {
-                chunk.light_sections_mut()[0].set_sky(light_index(lx, lz, 0), (lx + lz) as u8);
-                chunk.light_sections_mut()[0].set_block(light_index(lx, lz, 0), ((lx + lz) & 0x0f) as u8);
+                let sky = ((lx + lz) & 0x0f) as u8;
+                let block = ((lx + lz + 1) & 0x0f) as u8;
+                chunk.light_sections_mut()[0].set_sky(light_index(lx, lz, 0), sky);
+                chunk.light_sections_mut()[0].set_block(light_index(lx, lz, 0), block);
             }
         }
         let boundary = chunk.extract_light_boundary(LightBoundaryDir::North);
@@ -1041,8 +1043,8 @@ mod tests {
         for lz in 0..16 {
             for lx in 0..16 {
                 let flat = lz * 16 + lx;
-                assert_eq!(boundary.sky()[flat], (lx + lz) as u8);
-                assert_eq!(boundary.block()[flat], ((lx + lz) & 0x0f) as u8);
+                assert_eq!(boundary.sky()[flat], ((lx + lz) & 0x0f) as u8);
+                assert_eq!(boundary.block()[flat], ((lx + lz + 1) & 0x0f) as u8);
             }
         }
     }
@@ -1050,16 +1052,17 @@ mod tests {
     #[test]
     fn multi_section_boundary_concatenates_sequentially() {
         let mut chunk = Chunk::new(0, 0, 3);
-        // 每个区段遍历全部 lx/lz，向 light_index(lx, lz, 15) 写入不同值以区分方向。
-        // South 方向：extract_light_boundary 读 light_index(lx, lz, 15)。
+        // 每个区段遍历全部 lx/lz，向 light_index(lx, lz, 15) 写入 0-15 内可区分值。
+        // South 方向：extract_light_boundary 读 light_index(lx, lz, 15)，两者重合。
         for section_idx in 0..3 {
             for lz in 0..16 {
                 for lx in 0..16 {
-                    let val = (section_idx + lz) as u8;
+                    let sky = ((section_idx + lz) & 0x0f) as u8;
+                    let block = ((section_idx + lz + 1) & 0x0f) as u8;
                     chunk.light_sections_mut()[section_idx]
-                        .set_sky(light_index(lx, lz, 15), val);
+                        .set_sky(light_index(lx, lz, 15), sky);
                     chunk.light_sections_mut()[section_idx]
-                        .set_block(light_index(lx, lz, 15), val.wrapping_sub(1));
+                        .set_block(light_index(lx, lz, 15), block);
                 }
             }
         }
@@ -1071,8 +1074,8 @@ mod tests {
             for lz in 0..16 {
                 for lx in 0..16 {
                     let flat = lz * 16 + lx;
-                    let expected_sky = (section_idx + lz) as u8;
-                    let expected_block = (section_idx as u8 + lz as u8).wrapping_sub(1);
+                    let expected_sky = ((section_idx + lz) & 0x0f) as u8;
+                    let expected_block = ((section_idx + lz + 1) & 0x0f) as u8;
                     assert_eq!(boundary.sky()[base + flat], expected_sky);
                     assert_eq!(boundary.block()[base + flat], expected_block);
                 }
@@ -1125,9 +1128,9 @@ mod tests {
             for lz in 0..16 {
                 for lx in 0..16 {
                     chunk.light_sections_mut()[section_idx]
-                        .set_sky(light_index(lx, 0, lz), 10 + section_idx as u8);
+                        .set_sky(light_index(lx, lz, 0), 10 + section_idx as u8);
                     chunk.light_sections_mut()[section_idx]
-                        .set_block(light_index(lx, 0, lz), 5 + section_idx as u8);
+                        .set_block(light_index(lx, lz, 0), 5 + section_idx as u8);
                 }
             }
         }

@@ -1,0 +1,130 @@
+{
+  "white": {
+    "id": 0,
+    "name": "WHITE",
+    "texture_diffuse_color": 16383998,
+    "text_color": -1,
+    "firework_color": 15790320,
+    "map_color_id": 8
+  },
+  "orange": {
+    "id": 1,
+    "name": "ORANGE",
+    "texture_diffuse_color": 16351261,
+    "text_color": -38881,
+    "firework_color": 15435844,
+    "map_color_id": 15
+  },
+  "magenta": {
+    "id": 2,
+    "name": "MAGENTA",
+    "texture_diffuse_color": 13061821,
+    "text_color": -65281,
+    "firework_color": 12801229,
+    "map_color_id": 16
+  },
+  "light_blue": {
+    "id": 3,
+    "name": "LIGHT_BLUE",
+    "texture_diffuse_color": 3847130,
+    "text_color": -6635315,
+    "firework_color": 6719955,
+    "map_color_id": 17
+  },
+  "yellow": {
+    "id": 4,
+    "name": "YELLOW",
+    "texture_diffuse_color": 16701501,
+    "text_color": -256,
+    "firework_color": 14602026,
+    "map_color_id": 18
+  },
+  "lime": {
+    "id": 5,
+    "name": "LIME",
+    "texture_diffuse_color": 8439583,
+    "text_color": -4194560,
+    "firework_color": 4312372,
+    "map_color_id": 19
+  },
+  "pink": {
+    "id": 6,
+    "name": "PINK",
+    "texture_diffuse_color": 15961002,
+    "text_color": -38476,
+    "firework_color": 14188952,
+    "map_color_id": 20
+  },
+  "gray": {
+    "id": 7,
+    "name": "GRAY",
+    "texture_diffuse_color": 4673362,
+    "text_color": -8355712,
+    "firework_color": 4408131,
+    "map_color_id": 21
+  },
+  "light_gray": {
+    "id": 8,
+    "name": "LIGHT_GRAY",
+    "texture_diffuse_color": 10329495,
+    "text_color": -2894893,
+    "firework_color": 11250603,
+    "map_color_id": 22
+  },
+  "cyan": {
+    "id": 9,
+    "name": "CYAN",
+    "texture_diffuse_color": 1481884,
+    "text_color": -16711681,
+    "firework_color": 2651799,
+    "map_color_id": 23
+  },
+  "purple": {
+    "id": 10,
+    "name": "PURPLE",
+    "texture_diffuse_color": 8991416,
+    "text_color": -6283024,
+    "firework_color": 8073150,
+    "map_color_id": 24
+  },
+  "blue": {
+    "id": 11,
+    "name": "BLUE",
+    "texture_diffuse_color": 3949738,
+    "text_color": -16776961,
+    "firework_color": 2437522,
+    "map_color_id": 25
+  },
+  "brown": {
+    "id": 12,
+    "name": "BROWN",
+    "texture_diffuse_color": 8606770,
+    "text_color": -7650029,
+    "firework_color": 5320730,
+    "map_color_id": 26
+  },
+  "green": {
+    "id": 13,
+    "name": "GREEN",
+    "texture_diffuse_color": 6192150,
+    "text_color": -16711936,
+    "firework_color": 3887386,
+    "map_color_id": 27
+  },
+  "red": {
+    "id": 14,
+    "name": "RED",
+    "texture_diffuse_color": 11546150,
+    "text_color": -65536,
+    "firework_color": 11743532,
+    "map_color_id": 28
+  },
+  "black": {
+    "id": 15,
+    "name": "BLACK",
+    "texture_diffuse_color": 1908001,
+    "text_color": -16777216,
+    "firework_color": 1973019,
+    "map_color_id": 29
+  }
+}

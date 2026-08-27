@@ -14,7 +14,7 @@ use crate::crypto::OnlineAuthContext;
 use crate::prelude::{Commands, MessageWriter, Res, ResMut};
 use uuid::Uuid;
 
-use crate::component::inventory::PlayerInventory;
+use crate::component::inventory::{PlayerInventory, CLICK_QUICK_CRAFT, CRAFTING_RESULT_SLOT};
 use crate::component::{Attributes, Health, InstanceRef, Player, Position, Velocity};
 use crate::event::{EnterPlayEvent, NetworkEvent, PlayerChat, PlayerJoin, PlayerQuit};
 use crate::network::bridge::NetworkBridge;
@@ -705,7 +705,23 @@ fn handle_packet(
             if let Some(mut guard) = scheduler.lock_world(wid)
                 && let Some(inv) = guard.world().get_mut::<PlayerInventory>(entity)
             {
+                // 直接将客户端窗口序传入：`apply_click` 入参契约为窗口序 0..=45，
+                // 其内部会再做一次窗口序 → 内部序转换。此处不再预先转换，
+                // 否则会双重转换、点击路由到错误槽位（本 bug 根因）。
                 inv.apply_click(i32::from(click.slot), click.button, click.mode);
+                // 若为 QUICK_CRAFT 模式且点击了合成结果槽（窗口序 4 → 内部序 40），
+                // 将产物暂存于 `crafting_result_pending`，供应用侧合成系统消费。
+                //（此判断须用内部序比较：为此分支内部序转换保留，仅用于判断合成结果槽 40）
+                if click.mode == CLICK_QUICK_CRAFT
+                    && crate::component::inventory::window_slot_to_minestom_slot(i32::from(
+                        click.slot,
+                    )) == CRAFTING_RESULT_SLOT
+                {
+                    let result_slot = inv.get(CRAFTING_RESULT_SLOT as usize);
+                    if !result_slot.is_air() {
+                        inv.crafting_result_pending = Some(result_slot);
+                    }
+                }
             }
         }
         InboundPacket::CloseContainer(_close) => {

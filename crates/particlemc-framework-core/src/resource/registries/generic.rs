@@ -1,20 +1,22 @@
-﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
 //! 通用变体类注册表。
 //!
 //! 承接绘画变体、横幅图案、修剪材料等「无专属结构」的注册数据，
-//! 以 `HashMap<String, toml::Value>` 原样存盘，保证任何字段都不会在加载时丢失。
+//! 以 `HashMap<String, serde_json::Value>` 原样存盘，保证任何字段都不会在加载时丢失。
+//!
+//! 同时保留 `from_toml_str` / `from_toml_file` 方法供向后兼容。
 
 use std::collections::HashMap;
 use std::path::Path;
 
 use super::registry::RegistryError;
 
-/// 通用注册表：name → 原始 TOML 值（整条 `[[entry]]`）。
+/// 通用注册表：name → 原始 JSON 值（整条对象）。
 #[derive(Default, Debug, Clone)]
 pub struct GenericRegistry {
-    /// 以条目 `name` 为键、整条 TOML 表为值的存盘。
-    pub entries: HashMap<String, toml::Value>,
+    /// 以条目 `name` 为键、整条 JSON 对象为值的存盘。
+    pub entries: HashMap<String, serde_json::Value>,
     /// 自增 id 分配器（供 [`register_or_replace`](Self::register_or_replace) 使用）。
     next_id: u32,
     /// name → 已分配 id 记录：覆盖已登记条目时据此保留原 id、不推进自增。
@@ -49,7 +51,7 @@ impl GenericRegistry {
                             .map(|id| id.to_string())
                     });
                 if let Some(key) = key {
-                    entries.insert(key, entry.clone());
+                    entries.insert(key, toml_value_to_json_value(entry));
                 }
             }
         }
@@ -60,7 +62,7 @@ impl GenericRegistry {
         })
     }
 
-    /// 从单个 TOML 文件加载通用注册表。
+    /// 从单个 JSON 文件加载通用注册表。
     ///
     /// 文件采用 `[[entry]]` 数组格式，每个条目以其 `name` 为键保留整张表。
     ///
@@ -71,20 +73,52 @@ impl GenericRegistry {
         Self::from_toml_str(&text)
     }
 
-    /// 加载整个 `generic` 数据目录并合并所有 `.toml` 文件中的条目。
+    /// 从 JSON 文本解析对象格式，构建通用注册表。
     ///
-    /// 遍历目录下所有扩展名为 `toml` 的文件，逐个经 [`from_toml_file`](Self::from_toml_file)
+    /// JSON 格式为 `{"name": {fields...}, ...}`，每个值保留完整对象。
+    ///
+    /// # 错误
+    /// 文本非法或结构不符返回 [`RegistryError::ParseError`]。
+    pub fn from_json_str(text: &str) -> Result<Self, RegistryError> {
+        let document: serde_json::Value =
+            serde_json::from_str(text).map_err(|_| RegistryError::ParseError)?;
+        let obj = document
+            .as_object()
+            .ok_or(RegistryError::ParseError)?;
+        let mut entries = HashMap::new();
+        for (key, value) in obj {
+            entries.insert(key.clone(), value.clone());
+        }
+        Ok(Self {
+            entries,
+            next_id: 0,
+            ids: HashMap::new(),
+        })
+    }
+
+    /// 从单个 JSON 文件加载通用注册表。
+    ///
+    /// # 错误
+    /// 文件缺失或解析失败返回 [`RegistryError::ParseError`]。
+    pub fn from_json_file(path: &Path) -> Result<Self, RegistryError> {
+        let text = std::fs::read_to_string(path).map_err(|_| RegistryError::ParseError)?;
+        Self::from_json_str(&text)
+    }
+
+    /// 加载整个 `generic` 数据目录并合并所有 `.json` 文件中的条目。
+    ///
+    /// 遍历目录下所有扩展名为 `json` 的文件，逐个经 [`from_json_file`](Self::from_json_file)
     /// 解析后合并到同一张表；同名键以后读入的文件为准（后者覆盖前者）。
     ///
     /// # 错误
     /// 目录不可读或任一文件解析失败返回 [`RegistryError::ParseError`]。
-    pub fn load_directory(dir: &Path) -> Result<Self, RegistryError> {
+    pub fn load_json_directory(dir: &Path) -> Result<Self, RegistryError> {
         let mut merged = HashMap::new();
         let read_dir = std::fs::read_dir(dir).map_err(|_| RegistryError::ParseError)?;
         for item in read_dir {
             let path = item.map_err(|_| RegistryError::ParseError)?.path();
-            if path.extension().and_then(|ext| ext.to_str()) == Some("toml") {
-                let single = Self::from_toml_file(&path)?;
+            if path.extension().and_then(|ext| ext.to_str()) == Some("json") {
+                let single = Self::from_json_file(&path)?;
                 for (key, value) in single.entries {
                     merged.insert(key, value);
                 }
@@ -98,7 +132,7 @@ impl GenericRegistry {
     }
 
     /// 按 name 查询原始条目。
-    pub fn get(&self, name: &str) -> Option<&toml::Value> {
+    pub fn get(&self, name: &str) -> Option<&serde_json::Value> {
         self.entries.get(name)
     }
 
@@ -115,7 +149,7 @@ impl GenericRegistry {
     /// 覆盖或注册一个原始条目：name 已存在时替换值；不存在时新增条目。
     ///
     /// 本注册表以 name 为唯一键（无数值 id），故恒返回 `Ok(())`。
-    pub fn override_value(&mut self, name: &str, value: toml::Value) -> Result<(), RegistryError> {
+    pub fn override_value(&mut self, name: &str, value: serde_json::Value) -> Result<(), RegistryError> {
         self.entries.insert(name.to_string(), value);
         Ok(())
     }
@@ -132,7 +166,7 @@ impl GenericRegistry {
     pub fn register_or_replace(
         &mut self,
         name: impl Into<String>,
-        value: toml::Value,
+        value: serde_json::Value,
     ) -> Result<u32, RegistryError> {
         let name = name.into();
         // 已登记：替换值并保留原 id，不推进自增序号。
@@ -205,136 +239,110 @@ mod tests {
     }
 
     #[test]
-    fn from_toml_str_uses_name_key_and_id_fallback_key() {
-        // 同时包含：有 name 条目、无 name 仅有整数 id 条目、无 name 无 id 条目。
+    fn from_json_str_uses_name_key() {
+        // JSON 格式以键名为唯一标识，无 fallback。
         let text = r#"
-[[entry]]
-name = "minecraft:ambient"
-type = "ambient"
-
-[[entry]]
-id = 0
-type = "master"
-
-[[entry]]
-type = "orphan"
-"#;
-        let registry = GenericRegistry::from_toml_str(text).unwrap();
+        {
+            "minecraft:ambient": { "type": "ambient" },
+            "minecraft:orphan": { "type": "orphan" }
+        }
+        "#;
+        let registry = GenericRegistry::from_json_str(text).unwrap();
         assert_eq!(registry.len(), 2);
-        // name 优先作为键，整条表被保留。
         assert_eq!(entry_type(&registry, "minecraft:ambient"), Some("ambient"));
-        // 无 name 时回退整数 id，0 转十进制字符串 "0"。
-        assert_eq!(entry_type(&registry, "0"), Some("master"));
-        // 无 name 无 id 的条目被跳过。
-        assert!(registry.get("orphan").is_none());
+        assert_eq!(entry_type(&registry, "minecraft:orphan"), Some("orphan"));
     }
 
     #[test]
-    fn from_toml_str_id_fallback_keeps_full_entry() {
-        // 兜底键对应的表应为完整原始条目（含 type 字段），而非仅 id。
-        let text = r#"
-[[entry]]
-id = 3
-type = "weather"
-"#;
-        let registry = GenericRegistry::from_toml_str(text).unwrap();
-        let entry = registry.get("3").unwrap();
-        assert_eq!(entry.get("id").and_then(|v| v.as_integer()), Some(3));
-        assert_eq!(entry.get("type").and_then(|v| v.as_str()), Some("weather"));
+    fn from_json_str_empty_or_missing_object_yields_empty() {
+        // 空字符串与 null 无法解析为 JSON 对象，应返回 ParseError。
+        assert!(matches!(
+            GenericRegistry::from_json_str(""),
+            Err(RegistryError::ParseError)
+        ));
+        assert!(matches!(
+            GenericRegistry::from_json_str("null"),
+            Err(RegistryError::ParseError)
+        ));
+        // 空对象应返回空注册表。
+        assert!(GenericRegistry::from_json_str("{}").unwrap().is_empty());
     }
 
     #[test]
-    fn from_toml_str_empty_or_missing_entry_array_yields_empty() {
-        // 空文本与无 entry 数组的文本都应得到空表而非错误。
-        assert!(GenericRegistry::from_toml_str("").unwrap().is_empty());
-        assert!(
-            GenericRegistry::from_toml_str("name = \"x\"")
-                .unwrap()
-                .is_empty()
-        );
-    }
-
-    #[test]
-    fn load_directory_merges_all_toml_files_with_last_key_winning() {
+    fn load_json_directory_merges_all_json_files_with_last_key_winning() {
         let dir = TempDir::new();
         dir.write(
-            "first.toml",
+            "first.json",
             r#"
-[[entry]]
-name = "minecraft:shared"
-type = "first"
-
-[[entry]]
-name = "minecraft:only_a"
-type = "a"
-"#,
+        {
+            "minecraft:shared": { "type": "first" },
+            "minecraft:only_a": { "type": "a" }
+        }
+        "#,
         );
         dir.write(
-            "second.toml",
+            "second.json",
             r#"
-[[entry]]
-id = 5
-type = "five"
-
-[[entry]]
-name = "minecraft:shared"
-type = "second"
-"#,
+        {
+            "minecraft:shared": { "type": "second" },
+            "minecraft:only_b": { "type": "b" }
+        }
+        "#,
         );
-        // 非 toml 扩展名文件应被忽略。
-        dir.write("ignore.txt", "name = \"minecraft:ignored\"");
+        // 非 json 扩展名文件应被忽略。
+        dir.write("ignore.toml", "name = \"minecraft:ignored\"");
 
-        let registry = GenericRegistry::load_directory(dir.path()).unwrap();
-        // shared / only_a / "5" 三条，ignore.txt 不参与。
+        let registry = GenericRegistry::load_json_directory(dir.path()).unwrap();
+        // shared / only_a / only_b 三条，ignore.toml 不参与。
         assert_eq!(registry.len(), 3);
         // 同名键：后读取的文件覆盖前者。
         assert_eq!(entry_type(&registry, "minecraft:shared"), Some("second"));
         assert_eq!(entry_type(&registry, "minecraft:only_a"), Some("a"));
-        assert_eq!(entry_type(&registry, "5"), Some("five"));
+        assert_eq!(entry_type(&registry, "minecraft:only_b"), Some("b"));
     }
 
     #[test]
-    fn load_directory_empty_dir_yields_empty_registry() {
+    fn load_json_directory_empty_dir_yields_empty_registry() {
         let dir = TempDir::new();
-        let registry = GenericRegistry::load_directory(dir.path()).unwrap();
+        let registry = GenericRegistry::load_json_directory(dir.path()).unwrap();
         assert!(registry.is_empty());
     }
 
     #[test]
-    fn load_directory_missing_dir_returns_parse_error() {
+    fn load_json_directory_missing_dir_returns_parse_error() {
         let missing = Path::new("does/not/exist/generic");
         assert!(matches!(
-            GenericRegistry::load_directory(missing),
+            GenericRegistry::load_json_directory(missing),
             Err(RegistryError::ParseError)
         ));
     }
 
     #[test]
-    fn load_directory_bad_file_returns_parse_error() {
+    fn load_json_directory_bad_file_returns_parse_error() {
         let dir = TempDir::new();
-        dir.write("broken.toml", "this is not = = valid toml @@@");
+        dir.write("broken.json", "this is not = = valid json @@@");
         assert!(matches!(
-            GenericRegistry::load_directory(dir.path()),
+            GenericRegistry::load_json_directory(dir.path()),
             Err(RegistryError::ParseError)
         ));
     }
 
     #[test]
     fn override_value_replaces_existing_entry() {
-        let mut registry = GenericRegistry::from_toml_str(
+        let mut registry = GenericRegistry::from_json_str(
             r#"
-[[entry]]
-name = "minecraft:shared"
-type = "old"
-"#,
+        {
+            "minecraft:shared": { "type": "old" }
+        }
+        "#,
         )
         .unwrap();
-        let replacement = toml::toml! {
-            type = "new"
-            strength = 3
-        };
+        let replacement = serde_json::json!({
+            "type": "new",
+            "strength": 3
+        });
         registry
-            .override_value("minecraft:shared", toml::Value::Table(replacement))
+            .override_value("minecraft:shared", replacement)
             .unwrap();
         assert_eq!(registry.len(), 1);
         assert_eq!(entry_type(&registry, "minecraft:shared"), Some("new"));
@@ -342,7 +350,7 @@ type = "old"
             registry
                 .get("minecraft:shared")
                 .and_then(|v| v.get("strength"))
-                .and_then(|v| v.as_integer()),
+                .and_then(|v| v.as_u64()),
             Some(3)
         );
     }
@@ -351,7 +359,7 @@ type = "old"
     fn override_value_new_name_inserts() {
         let mut registry = GenericRegistry::new();
         registry
-            .override_value("minecraft:brand_new", toml::toml! { type = "x" }.into())
+            .override_value("minecraft:brand_new", serde_json::json!({"type": "x"}))
             .unwrap();
         assert_eq!(registry.len(), 1);
         assert_eq!(entry_type(&registry, "minecraft:brand_new"), Some("x"));
@@ -361,16 +369,16 @@ type = "old"
     fn register_or_replace_assigns_sequential_ids() {
         let mut registry = GenericRegistry::new();
         let first = registry
-            .register_or_replace("minecraft:a", toml::toml! { type = "a" }.into())
+            .register_or_replace("minecraft:a", serde_json::json!({"type": "a"}))
             .unwrap();
         let second = registry
-            .register_or_replace("minecraft:b", toml::toml! { type = "b" }.into())
+            .register_or_replace("minecraft:b", serde_json::json!({"type": "b"}))
             .unwrap();
         assert_eq!(first, 1);
         assert_eq!(second, 2);
         // 已存在：替换值并返回同一 id。
         let again = registry
-            .register_or_replace("minecraft:a", toml::toml! { type = "a2" }.into())
+            .register_or_replace("minecraft:a", serde_json::json!({"type": "a2"}))
             .unwrap();
         assert_eq!(again, 1);
         assert_eq!(entry_type(&registry, "minecraft:a"), Some("a2"));
@@ -382,23 +390,50 @@ type = "old"
         let mut registry = GenericRegistry::new();
         // 前两次登记分配 id 1、2。
         let first = registry
-            .register_or_replace("minecraft:a", toml::toml! { type = "a" }.into())
+            .register_or_replace("minecraft:a", serde_json::json!({"type": "a"}))
             .unwrap();
         let second = registry
-            .register_or_replace("minecraft:b", toml::toml! { type = "b" }.into())
+            .register_or_replace("minecraft:b", serde_json::json!({"type": "b"}))
             .unwrap();
         assert_eq!(first, 1);
         assert_eq!(second, 2);
         // 覆盖已登记条目：返回原 id、条目数不变，且不推进自增序号。
         let overwritten = registry
-            .register_or_replace("minecraft:a", toml::toml! { type = "a2" }.into())
+            .register_or_replace("minecraft:a", serde_json::json!({"type": "a2"}))
             .unwrap();
         assert_eq!(overwritten, 1);
         assert_eq!(registry.len(), 2);
         // 后续新 name 应从推进后的 next_id 继续分配 → id = 3。
         let third = registry
-            .register_or_replace("minecraft:c", toml::toml! { type = "c" }.into())
+            .register_or_replace("minecraft:c", serde_json::json!({"type": "c"}))
             .unwrap();
         assert_eq!(third, 3);
+    }
+}
+
+pub(crate) fn toml_value_to_json_value(v: &toml::Value) -> serde_json::Value {
+    match v {
+        toml::Value::String(s) => serde_json::Value::String(s.clone()),
+        toml::Value::Integer(i) => {
+            serde_json::Value::Number(serde_json::Number::from(*i))
+        }
+        toml::Value::Float(f) => {
+            match serde_json::Number::from_f64(*f) {
+                Some(n) => serde_json::Value::Number(n),
+                None => serde_json::Value::Number(serde_json::Number::from(0)),
+            }
+        }
+        toml::Value::Boolean(b) => serde_json::Value::Bool(*b),
+        toml::Value::Array(arr) => {
+            serde_json::Value::Array(arr.iter().map(toml_value_to_json_value).collect())
+        }
+        toml::Value::Table(tbl) => {
+            let mut obj = serde_json::Map::new();
+            for (k, v) in tbl {
+                obj.insert(k.clone(), toml_value_to_json_value(v));
+            }
+            serde_json::Value::Object(obj)
+        }
+        toml::Value::Datetime(dt) => serde_json::Value::String(dt.to_string()),
     }
 }

@@ -73,7 +73,7 @@ impl RegistrySnapshot {
             .iter()
             .map(|(name, value)| SnapshotEntry {
                 name: name.clone(),
-                value: value.clone(),
+                value: serde_json_value_to_toml(value),
             })
             .collect();
         self.registries.push(SnapshotRegistry {
@@ -195,10 +195,10 @@ trait ToTomlValue {
 
 impl ToTomlValue for GenericDefinition {
     fn to_toml_value(&self) -> toml::Value {
-        // 反序列化时 flatten 收集的是 HashMap，而 toml::Value::Table 要求
-        // toml::map::Map，经 FromIterator 转换回映射表
-        let mut table: toml::map::Map<String, toml::Value> =
-            self.extra.clone().into_iter().collect();
+        let mut table = toml::map::Map::new();
+        for (k, v) in &self.extra {
+            table.insert(k.clone(), serde_json_value_to_toml(v));
+        }
         table.insert("name".to_string(), toml::Value::String(self.name.clone()));
         if let Some(id) = self.id {
             table.insert("id".to_string(), toml::Value::Integer(i64::from(id)));
@@ -207,10 +207,39 @@ impl ToTomlValue for GenericDefinition {
     }
 }
 
+fn serde_json_value_to_toml(v: &serde_json::Value) -> toml::Value {
+    match v {
+        serde_json::Value::Null => toml::Value::Integer(0),
+        serde_json::Value::Bool(b) => toml::Value::Integer(*b as i64),
+        serde_json::Value::Number(n) => {
+            if let Some(i) = n.as_i64() {
+                toml::Value::Integer(i)
+            } else if let Some(f) = n.as_f64() {
+                toml::Value::Float(f)
+            } else {
+                toml::Value::Integer(0)
+            }
+        }
+        serde_json::Value::String(s) => toml::Value::String(s.clone()),
+        serde_json::Value::Array(arr) => {
+            toml::Value::Array(arr.iter().map(serde_json_value_to_toml).collect())
+        }
+        serde_json::Value::Object(obj) => {
+            let mut table = toml::map::Map::new();
+            for (k, v) in obj {
+                table.insert(k.clone(), serde_json_value_to_toml(v));
+            }
+            toml::Value::Table(table)
+        }
+    }
+}
+
 impl ToTomlValue for EntityTypeDefinition {
     fn to_toml_value(&self) -> toml::Value {
-        let mut table: toml::map::Map<String, toml::Value> =
-            self.extra.clone().into_iter().collect();
+        let mut table = toml::map::Map::new();
+        for (k, v) in &self.extra {
+            table.insert(k.clone(), serde_json_value_to_toml(v));
+        }
         table.insert("name".to_string(), toml::Value::String(self.name.clone()));
         if let Some(id) = self.id {
             table.insert("id".to_string(), toml::Value::Integer(i64::from(id)));
@@ -450,39 +479,39 @@ mod tests {
             ("minecraft:potion_effect", "potion_effects.toml"),
         ];
         for (registry_id, file) in named {
-            let registry = Registry::<GenericDefinition>::from_toml_file(&data.join(file)).unwrap();
+            let registry = Registry::<GenericDefinition>::from_json_file(&data.join(&file.replace(".toml", ".json"))).unwrap();
             snapshot.push_named_definitions(registry_id, &registry);
         }
         snapshot.push_entity_types(
-            &Registry::<EntityTypeDefinition>::from_toml_file(&data.join("entity_types.toml"))
+            &Registry::<EntityTypeDefinition>::from_json_file(&data.join("entity_types.json"))
                 .unwrap(),
         );
 
-        // 通用注册表（每个 generic/*.toml 对应一个同步注册表）
+        // 通用注册表（每个 generic/*.json 对应一个同步注册表）
         let generic = data.join("generic");
         let generic_files: &[(&str, &str)] = &[
-            ("minecraft:attribute", "attribute.toml"),
-            ("minecraft:banner_pattern", "banner_pattern.toml"),
-            ("minecraft:chat_type", "chat_type.toml"),
-            ("minecraft:instrument", "instrument.toml"),
-            ("minecraft:jukebox_song", "jukebox_song.toml"),
-            ("minecraft:painting_variant", "painting_variant.toml"),
-            ("minecraft:trim_material", "trim_material.toml"),
-            ("minecraft:trim_pattern", "trim_pattern.toml"),
-            ("minecraft:cat_variant", "cat_variant.toml"),
-            ("minecraft:chicken_variant", "chicken_variant.toml"),
-            ("minecraft:cow_variant", "cow_variant.toml"),
-            ("minecraft:frog_variant", "frog_variant.toml"),
-            ("minecraft:pig_variant", "pig_variant.toml"),
-            ("minecraft:wolf_variant", "wolf_variant.toml"),
-            ("minecraft:wolf_sound_variant", "wolf_sound_variant.toml"),
-            ("minecraft:dialog", "dialog.toml"),
-            ("minecraft:game_event", "game_event.toml"),
-            ("minecraft:world_clock", "world_clock.toml"),
-            ("minecraft:timeline", "timeline.toml"),
+            ("minecraft:attribute", "attribute.json"),
+            ("minecraft:banner_pattern", "banner_pattern.json"),
+            ("minecraft:chat_type", "chat_type.json"),
+            ("minecraft:instrument", "instrument.json"),
+            ("minecraft:jukebox_song", "jukebox_song.json"),
+            ("minecraft:painting_variant", "painting_variant.json"),
+            ("minecraft:trim_material", "trim_material.json"),
+            ("minecraft:trim_pattern", "trim_pattern.json"),
+            ("minecraft:cat_variant", "cat_variant.json"),
+            ("minecraft:chicken_variant", "chicken_variant.json"),
+            ("minecraft:cow_variant", "cow_variant.json"),
+            ("minecraft:frog_variant", "frog_variant.json"),
+            ("minecraft:pig_variant", "pig_variant.json"),
+            ("minecraft:wolf_variant", "wolf_variant.json"),
+            ("minecraft:wolf_sound_variant", "wolf_sound_variant.json"),
+            ("minecraft:dialog", "dialog.json"),
+            ("minecraft:game_event", "game_event.json"),
+            ("minecraft:world_clock", "world_clock.json"),
+            ("minecraft:timeline", "timeline.json"),
         ];
         for (registry_id, file) in generic_files {
-            let registry = GenericRegistry::from_toml_file(&generic.join(file)).unwrap();
+            let registry = GenericRegistry::from_json_file(&generic.join(file)).unwrap();
             snapshot.push_generic(registry_id, &registry);
         }
         snapshot

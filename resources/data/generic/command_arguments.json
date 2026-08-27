@@ -1,0 +1,230 @@
+{
+  "brigadier:bool": {
+    "id": 0,
+    "name": "brigadier:bool"
+  },
+  "brigadier:float": {
+    "id": 1,
+    "name": "brigadier:float"
+  },
+  "brigadier:double": {
+    "id": 2,
+    "name": "brigadier:double"
+  },
+  "brigadier:integer": {
+    "id": 3,
+    "name": "brigadier:integer"
+  },
+  "brigadier:long": {
+    "id": 4,
+    "name": "brigadier:long"
+  },
+  "brigadier:string": {
+    "id": 5,
+    "name": "brigadier:string"
+  },
+  "minecraft:entity": {
+    "id": 6,
+    "name": "minecraft:entity"
+  },
+  "minecraft:game_profile": {
+    "id": 7,
+    "name": "minecraft:game_profile"
+  },
+  "minecraft:block_pos": {
+    "id": 8,
+    "name": "minecraft:block_pos"
+  },
+  "minecraft:column_pos": {
+    "id": 9,
+    "name": "minecraft:column_pos"
+  },
+  "minecraft:vec3": {
+    "id": 10,
+    "name": "minecraft:vec3"
+  },
+  "minecraft:vec2": {
+    "id": 11,
+    "name": "minecraft:vec2"
+  },
+  "minecraft:block_state": {
+    "id": 12,
+    "name": "minecraft:block_state"
+  },
+  "minecraft:block_predicate": {
+    "id": 13,
+    "name": "minecraft:block_predicate"
+  },
+  "minecraft:item_stack": {
+    "id": 14,
+    "name": "minecraft:item_stack"
+  },
+  "minecraft:item_predicate": {
+    "id": 15,
+    "name": "minecraft:item_predicate"
+  },
+  "minecraft:color": {
+    "id": 16,
+    "name": "minecraft:color"
+  },
+  "minecraft:hex_color": {
+    "id": 17,
+    "name": "minecraft:hex_color"
+  },
+  "minecraft:component": {
+    "id": 18,
+    "name": "minecraft:component"
+  },
+  "minecraft:style": {
+    "id": 19,
+    "name": "minecraft:style"
+  },
+  "minecraft:message": {
+    "id": 20,
+    "name": "minecraft:message"
+  },
+  "minecraft:nbt_compound_tag": {
+    "id": 21,
+    "name": "minecraft:nbt_compound_tag"
+  },
+  "minecraft:nbt_tag": {
+    "id": 22,
+    "name": "minecraft:nbt_tag"
+  },
+  "minecraft:nbt_path": {
+    "id": 23,
+    "name": "minecraft:nbt_path"
+  },
+  "minecraft:objective": {
+    "id": 24,
+    "name": "minecraft:objective"
+  },
+  "minecraft:objective_criteria": {
+    "id": 25,
+    "name": "minecraft:objective_criteria"
+  },
+  "minecraft:operation": {
+    "id": 26,
+    "name": "minecraft:operation"
+  },
+  "minecraft:particle": {
+    "id": 27,
+    "name": "minecraft:particle"
+  },
+  "minecraft:angle": {
+    "id": 28,
+    "name": "minecraft:angle"
+  },
+  "minecraft:rotation": {
+    "id": 29,
+    "name": "minecraft:rotation"
+  },
+  "minecraft:scoreboard_slot": {
+    "id": 30,
+    "name": "minecraft:scoreboard_slot"
+  },
+  "minecraft:score_holder": {
+    "id": 31,
+    "name": "minecraft:score_holder"
+  },
+  "minecraft:swizzle": {
+    "id": 32,
+    "name": "minecraft:swizzle"
+  },
+  "minecraft:team": {
+    "id": 33,
+    "name": "minecraft:team"
+  },
+  "minecraft:item_slot": {
+    "id": 34,
+    "name": "minecraft:item_slot"
+  },
+  "minecraft:item_slots": {
+    "id": 35,
+    "name": "minecraft:item_slots"
+  },
+  "minecraft:resource_location": {
+    "id": 36,
+    "name": "minecraft:resource_location"
+  },
+  "minecraft:function": {
+    "id": 37,
+    "name": "minecraft:function"
+  },
+  "minecraft:entity_anchor": {
+    "id": 38,
+    "name": "minecraft:entity_anchor"
+  },
+  "minecraft:int_range": {
+    "id": 39,
+    "name": "minecraft:int_range"
+  },
+  "minecraft:float_range": {
+    "id": 40,
+    "name": "minecraft:float_range"
+  },
+  "minecraft:dimension": {
+    "id": 41,
+    "name": "minecraft:dimension"
+  },
+  "minecraft:gamemode": {
+    "id": 42,
+    "name": "minecraft:gamemode"
+  },
+  "minecraft:time": {
+    "id": 43,
+    "name": "minecraft:time"
+  },
+  "minecraft:resource_or_tag": {
+    "id": 44,
+    "name": "minecraft:resource_or_tag"
+  },
+  "minecraft:resource_or_tag_key": {
+    "id": 45,
+    "name": "minecraft:resource_or_tag_key"
+  },
+  "minecraft:resource": {
+    "id": 46,
+    "name": "minecraft:resource"
+  },
+  "minecraft:resource_key": {
+    "id": 47,
+    "name": "minecraft:resource_key"
+  },
+  "minecraft:resource_selector": {
+    "id": 48,
+    "name": "minecraft:resource_selector"
+  },
+  "minecraft:template_mirror": {
+    "id": 49,
+    "name": "minecraft:template_mirror"
+  },
+  "minecraft:template_rotation": {
+    "id": 50,
+    "name": "minecraft:template_rotation"
+  },
+  "minecraft:heightmap": {
+    "id": 51,
+    "name": "minecraft:heightmap"
+  },
+  "minecraft:loot_table": {
+    "id": 52,
+    "name": "minecraft:loot_table"
+  },
+  "minecraft:loot_predicate": {
+    "id": 53,
+    "name": "minecraft:loot_predicate"
+  },
+  "minecraft:loot_modifier": {
+    "id": 54,
+    "name": "minecraft:loot_modifier"
+  },
+  "minecraft:dialog": {
+    "id": 55,
+    "name": "minecraft:dialog"
+  },
+  "minecraft:uuid": {
+    "id": 56,
+    "name": "minecraft:uuid"
+  }
+}

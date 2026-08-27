@@ -1,15 +1,16 @@
 // Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! 注册表核心数据结构与 TOML 加载器。
+//! 注册表核心数据结构与 TOML/JSON 加载器。
 //!
 //! [`Registry`] 提供「数值 id ⇄ 命名空间字符串」的双向映射，是框架
 //! 所有注册数据（方块、物品、实体类型……）的统一承载结构。它刻意保持泛型，
 //! 由 [`BlockRegistry`] 等具名注册表在之上包装为具体的 `Resource`。
 //!
 //! 加载器 [`Registry::from_toml_str`] / [`Registry::from_toml_file`] 读取
-//! `tools/gen_registry_data.py` 生成的 `[[entry]]` 数组 TOML，兼容「有 id」
-//! 与「无 id（自动编号）」两种数据源，且对解析失败一律返回 [`RegistryError`]
-//! 而非 panic，满足骨架层对错误分支 100% 覆盖的要求。
+//! `[[entry]]` 数组 TOML；[`Registry::from_json_str`] /
+//! [`Registry::from_json_file`] 读取 JSON 对象（键为命名空间名称，值为条目字段）。
+//! 两种格式均兼容「有 id」与「无 id（自动编号）」数据源，且对解析失败一律
+//! 返回 [`RegistryError`] 而非 panic，满足骨架层对错误分支 100% 覆盖的要求。
 
 use std::collections::HashMap;
 use std::fmt;
@@ -311,6 +312,50 @@ where
         let text = std::fs::read_to_string(path).map_err(|_| RegistryError::ParseError)?;
         Self::from_toml_str(&text)
     }
+
+    /// 从 JSON 文本解析对象格式，构建注册表。
+    ///
+    /// JSON 格式为 `{"name": {fields...}, ...}`，其中键为命名空间名称，
+    /// 值为条目字段对象（包含 `name`、可选 `id` 及其他字段）。
+    /// 每条目通过 [`RegistryEntry::entry_id`] 决定 id：若数据源提供了 id
+    /// 则使用之，否则按出现顺序自动编号（从 0 开始）。
+    ///
+    /// # 错误
+    /// JSON 非法或条目无法反序列化返回 [`RegistryError::ParseError`]。
+    pub fn from_json_str(text: &str) -> Result<Self, RegistryError> {
+        let document: serde_json::Value =
+            serde_json::from_str(text).map_err(|_| RegistryError::ParseError)?;
+        let obj = document
+            .as_object()
+            .ok_or(RegistryError::ParseError)?;
+
+        let mut registry = Registry::new();
+        let mut auto_id: u32 = 0;
+        for (key, value) in obj {
+            let item: T =
+                serde_json::from_value(value.clone()).map_err(|_| RegistryError::ParseError)?;
+            let id = item.entry_id().unwrap_or_else(|| {
+                let assigned = auto_id;
+                auto_id = auto_id.saturating_add(1);
+                assigned
+            });
+            // 验证 key 与 item.name 一致（JSON 格式的键即为 name）。
+            if key != item.entry_name() {
+                return Err(RegistryError::ParseError);
+            }
+            registry.insert_at(id, key.to_string(), item)?;
+        }
+        Ok(registry)
+    }
+
+    /// 从 JSON 文件加载注册表（包装 [`from_json_str`](Self::from_json_str)）。
+    ///
+    /// # 错误
+    /// 路径不存在或无法读取时返回 [`RegistryError::ParseError`]。
+    pub fn from_json_file(path: &Path) -> Result<Self, RegistryError> {
+        let text = std::fs::read_to_string(path).map_err(|_| RegistryError::ParseError)?;
+        Self::from_json_str(&text)
+    }
 }
 
 /// 方块不透明度默认值（15 = 完全不透明，阻挡全部天空光）。
@@ -403,29 +448,26 @@ pub struct BlockDefinition {
     pub light_emission: u8,
     /// 其余透传字段，避免任何数据在加载阶段被丢弃。
     #[serde(flatten)]
-    pub extra: HashMap<String, toml::Value>,
+    pub extra: HashMap<String, serde_json::Value>,
 }
 
 /// 方块状态定义（预留扩展结构，当前数据源未产出）。
-///
-/// `properties` 表在 TOML 中以 `properties = { name = index, ... }` 形式提供，
-/// 将各属性名映射为 `0..15` 的连续槽位索引；缺省时回退为空映射。
-#[derive(Debug, Clone, PartialEq, Deserialize, Default)]
-pub struct BlockStateDef {
-    /// 状态 id。
-    #[serde(default)]
-    pub id: Option<u32>,
-    /// 属性名到槽位索引的映射（0..15）。
     ///
-    /// TOML 侧以可选的 `properties` 表提供，如
-    /// `properties = { waterlogged = 0, north = 1 }`。
+    /// `properties` 表在 JSON 中以对象形式提供，如
+    /// `"properties": { "waterlogged": 0, "north": 1 }`。
     /// 未提供时回退为空 HashMap，调用方应对空映射做防御处理。
-    #[serde(rename = "properties", default)]
-    pub property_indices: HashMap<String, u8>,
-    /// 透传字段。
-    #[serde(flatten)]
-    pub extra: HashMap<String, toml::Value>,
-}
+    #[derive(Debug, Clone, PartialEq, Deserialize, Default)]
+    pub struct BlockStateDef {
+        /// 状态 id。
+        #[serde(default)]
+        pub id: Option<u32>,
+        /// 属性名到槽位索引的映射（0..15）。
+        #[serde(rename = "properties", default)]
+        pub property_indices: HashMap<String, u8>,
+        /// 透传字段。
+        #[serde(flatten)]
+        pub extra: HashMap<String, serde_json::Value>,
+    }
 
 impl RegistryEntry for BlockDefinition {
     fn entry_name(&self) -> &str {
@@ -452,7 +494,7 @@ pub struct ItemDefinition {
     pub max_stack_size: Option<u32>,
     /// 透传字段。
     #[serde(flatten)]
-    pub extra: HashMap<String, toml::Value>,
+    pub extra: HashMap<String, serde_json::Value>,
 }
 
 impl RegistryEntry for ItemDefinition {
@@ -483,7 +525,7 @@ pub struct EntityTypeDefinition {
     pub height: Option<f64>,
     /// 透传字段。
     #[serde(flatten)]
-    pub extra: HashMap<String, toml::Value>,
+    pub extra: HashMap<String, serde_json::Value>,
 }
 
 impl RegistryEntry for EntityTypeDefinition {
@@ -508,7 +550,7 @@ pub struct GenericDefinition {
     pub name: String,
     /// 透传字段。
     #[serde(flatten)]
-    pub extra: HashMap<String, toml::Value>,
+    pub extra: HashMap<String, serde_json::Value>,
 }
 
 impl RegistryEntry for GenericDefinition {
@@ -645,13 +687,77 @@ mod tests {
     }
 
     #[test]
-    fn from_toml_str_without_ids_auto_numbers() {
-        let registry: Registry<GenericDefinition> = Registry::from_toml_str(BIOMES_SMALL).unwrap();
+    fn from_json_str_with_explicit_ids() {
+        let json = r#"
+        {
+            "minecraft:air": { "name": "minecraft:air", "id": 0, "translationKey": "block.minecraft.air" },
+            "minecraft:stone": { "name": "minecraft:stone", "id": 1, "translationKey": "block.minecraft.stone", "hardness": 1.5, "soundGroup": "stone" },
+            "minecraft:grass": { "name": "minecraft:grass", "id": 2, "translationKey": "block.minecraft.grass" }
+        }
+        "#;
+        let registry: Registry<BlockDefinition> = Registry::from_json_str(json).unwrap();
         assert_eq!(registry.len(), 3);
-        // 无 id 数据源按出现顺序自动从 0 编号
-        assert_eq!(registry.get_id("minecraft:plains"), Some(0));
-        assert_eq!(registry.get_id("minecraft:desert"), Some(1));
-        assert_eq!(registry.get_id("minecraft:ocean"), Some(2));
+        assert_eq!(registry.get_id("minecraft:stone"), Some(1));
+        assert_eq!(registry.get_id("minecraft:grass"), Some(2));
+        let stone = registry.get(1).unwrap();
+        assert_eq!(stone.name, "minecraft:stone");
+        assert_eq!(
+            stone.translation_key.as_deref(),
+            Some("block.minecraft.stone")
+        );
+        assert_eq!(stone.hardness, Some(1.5));
+        // 透传字段保留：显式命名的字段（translationKey/hardness 等）已被消费，
+        // 只有未在结构体中定义的字段（如 soundGroup）会进入 extra。
+        assert!(stone.extra.contains_key("soundGroup"));
+    }
+
+    #[test]
+    fn from_json_str_without_ids_auto_numbers() {
+        let json = r#"
+        {
+            "minecraft:plains": { "name": "minecraft:plains" },
+            "minecraft:desert": { "name": "minecraft:desert" },
+            "minecraft:ocean": { "name": "minecraft:ocean" }
+        }
+        "#;
+        let registry: Registry<GenericDefinition> = Registry::from_json_str(json).unwrap();
+        assert_eq!(registry.len(), 3);
+        // 无 id 数据源按插入顺序自动编号（从 0 开始）。
+        // 注意：serde_json::Map 在默认特征下保持插入顺序，因此断言顺序。
+        let ids: Vec<_> = registry
+            .get_id("minecraft:plains")
+            .into_iter()
+            .chain(registry.get_id("minecraft:desert"))
+            .chain(registry.get_id("minecraft:ocean"))
+            .collect();
+        assert_eq!(ids.len(), 3);
+        // 三个 id 应互不相同且都在 0..=2 范围内
+        let mut expected = vec![0u32, 1, 2];
+        expected.sort();
+        let mut actual = ids;
+        actual.sort();
+        assert_eq!(actual, expected);
+    }
+
+    #[test]
+    fn from_json_str_rejects_missing_object() {
+        let result: Result<Registry<GenericDefinition>, RegistryError> =
+            Registry::from_json_str("[\"oops\"]");
+        assert_eq!(result, Err(RegistryError::ParseError));
+    }
+
+    #[test]
+    fn from_json_str_rejects_malformed_json() {
+        let result: Result<Registry<GenericDefinition>, RegistryError> =
+            Registry::from_json_str("this is not = = valid json @@@");
+        assert_eq!(result, Err(RegistryError::ParseError));
+    }
+
+    #[test]
+    fn from_json_file_missing_path_returns_parse_error() {
+        let missing = std::path::Path::new("does/not/exist/blocks.json");
+        let result = Registry::<BlockDefinition>::from_json_file(missing);
+        assert_eq!(result, Err(RegistryError::ParseError));
     }
 
     #[test]

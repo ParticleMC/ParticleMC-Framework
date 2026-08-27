@@ -89,7 +89,7 @@ fn fluid_level(block_id: u32, registry: &BlockRegistry) -> u8 {
         .0
         .get(block_id)
         .and_then(|def| def.extra.get("level"))
-        .and_then(toml::Value::as_integer)
+        .and_then(|v| v.as_i64())
         .unwrap_or(0);
     u8::try_from(level).unwrap_or(0)
 }

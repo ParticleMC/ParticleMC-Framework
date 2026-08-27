@@ -1,12 +1,14 @@
-﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
 //! 战利品表注册表。
 //!
-//! 加载 `resources/data/loot_tables/*.toml`，每个条目为一张战利品表。
+//! 加载 `resources/data/loot_tables/*.json`，每个条目为一张战利品表。
 //! `pools` 是嵌套复杂结构（entries / functions / conditions），刻意以
-//! `toml::Value` 原样保留、不做严格反序列化，避免嵌套结构解析失败导致
+//! `serde_json::Value` 原样保留、不做严格反序列化，避免嵌套结构解析失败导致
 //! 整张表丢失；同时整条 entry 也会完整保留在 [`LootTable::raw`] 中，
 //! 保证任何顶层附加字段（如 entry 级 `functions`）零丢失。
+//!
+//! 同时保留 `from_toml_str` / `from_toml_file` 方法供向后兼容。
 
 use std::collections::HashMap;
 use std::path::Path;
@@ -15,20 +17,20 @@ use super::registry::RegistryError;
 
 /// 单张战利品表。
 ///
-/// `name` 是唯一键；`pools` 以原始 `toml::Value` 存盘；
+/// `name` 是唯一键；`pools` 以原始 `serde_json::Value` 存盘；
 /// `raw` 恒为整条 entry 的保真副本（含所有顶层字段）。
 #[derive(Debug, Clone, PartialEq)]
 pub struct LootTable {
-    /// 战利品表名称（TOML `name`，唯一键）。
+    /// 战利品表名称（JSON 键，唯一键）。
     pub name: String,
-    /// 战利品表类型（TOML `type`，如 `"minecraft:block"`），缺省空串。
+    /// 战利品表类型（JSON `type`，如 `"minecraft:block"`），缺省空串。
     pub table_type: String,
-    /// 随机序列标识（TOML `random_sequence`），缺省空串。
+    /// 随机序列标识（JSON `random_sequence`），缺省空串。
     pub random_sequence: String,
-    /// 战利品池（TOML `pools`）原始值，缺失时为 `None`。
-    pub pools: Option<toml::Value>,
+    /// 战利品池（JSON `pools`）原始值，缺失时为 `None`。
+    pub pools: Option<serde_json::Value>,
     /// 整条 entry 保真副本，含顶层附加字段，零丢失。
-    pub raw: toml::Value,
+    pub raw: serde_json::Value,
 }
 
 /// 战利品表注册表：名称 → 战利品表。
@@ -69,7 +71,16 @@ impl LootTableRegistry {
                     .unwrap_or_default()
                     .to_string();
                 // pools 缺失时保持 None；raw 恒为整条 entry 的保真副本。
-                let pools = entry.get("pools").cloned();
+                let pools_val = entry.get("pools").cloned();
+                let pools = match &pools_val {
+                    Some(toml::Value::Array(_)) => {
+                        Some(super::generic::toml_value_to_json_value(
+                            pools_val.as_ref().unwrap(),
+                        ))
+                    }
+                    _ => None,
+                };
+                let raw = super::generic::toml_value_to_json_value(entry);
                 entries.insert(
                     name.clone(),
                     LootTable {
@@ -77,7 +88,7 @@ impl LootTableRegistry {
                         table_type,
                         random_sequence,
                         pools,
-                        raw: entry.clone(),
+                        raw,
                     },
                 );
             }
@@ -94,22 +105,74 @@ impl LootTableRegistry {
         Self::from_toml_str(&text)
     }
 
-    /// 加载整个战利品表数据目录并合并所有 `.toml` 文件中的条目。
+    /// 从 JSON 文本解析对象格式，构建战利品表注册表。
     ///
-    /// 遍历目录下所有扩展名为 `toml` 的文件，逐个经
-    /// [`from_toml_file`](Self::from_toml_file) 解析后合并到同一张表；
+    /// JSON 格式为 `{"minecraft:blocks/nether_brick_fence": {...}, ...}`，
+    /// 每个值为完整的 Minecraft loot table JSON 对象。
+    ///
+    /// # 错误
+    /// 文本非法或结构不符返回 [`RegistryError::ParseError`]。
+    pub fn from_json_str(text: &str) -> Result<Self, RegistryError> {
+        let document: serde_json::Value =
+            serde_json::from_str(text).map_err(|_| RegistryError::ParseError)?;
+        let obj = document
+            .as_object()
+            .ok_or(RegistryError::ParseError)?;
+        let mut entries = HashMap::new();
+        for (key, value) in obj {
+            // 将整条 loot table JSON 包装为 LootTable
+            let name = key.clone();
+            let table_type = value
+                .get("type")
+                .and_then(|v| v.as_str())
+                .unwrap_or_default()
+                .to_string();
+            let random_sequence = value
+                .get("random_sequence")
+                .and_then(|v| v.as_str())
+                .unwrap_or_default()
+                .to_string();
+            let pools = value.get("pools").cloned();
+            let raw = value.clone();
+            entries.insert(
+                name.clone(),
+                LootTable {
+                    name,
+                    table_type,
+                    random_sequence,
+                    pools,
+                    raw,
+                },
+            );
+        }
+        Ok(Self { entries })
+    }
+
+    /// 从单个 JSON 文件加载战利品表注册表。
+    ///
+    /// # 错误
+    /// 文件缺失或内容无法解析时返回 [`RegistryError::ParseError`]。
+    pub fn from_json_file(path: &Path) -> Result<Self, RegistryError> {
+        let text = std::fs::read_to_string(path).map_err(|_| RegistryError::ParseError)?;
+        Self::from_json_str(&text)
+    }
+
+    /// 加载整个战利品表数据目录并合并所有 `.json` 文件中的条目。
+    ///
+    /// 遍历目录下所有扩展名为 `json` 的文件，逐个经
+    /// [`from_json_file`](Self::from_json_file) 解析后合并到同一张表；
     /// 同名键以后读入的文件为准（后者覆盖前者），语义与
-    /// [`GenericRegistry::load_directory`](super::generic::GenericRegistry::load_directory) 对齐。
+    /// [`GenericRegistry::load_json_directory`](super::generic::GenericRegistry::load_json_directory) 对齐。
     ///
     /// # 错误
     /// 目录不可读或任一文件解析失败时返回 [`RegistryError::ParseError`]。
-    pub fn load_directory(dir: &Path) -> Result<Self, RegistryError> {
+    pub fn load_json_directory(dir: &Path) -> Result<Self, RegistryError> {
         let mut merged = HashMap::new();
         let read_dir = std::fs::read_dir(dir).map_err(|_| RegistryError::ParseError)?;
         for item in read_dir {
             let path = item.map_err(|_| RegistryError::ParseError)?.path();
-            if path.extension().and_then(|ext| ext.to_str()) == Some("toml") {
-                let single = Self::from_toml_file(&path)?;
+            if path.extension().and_then(|ext| ext.to_str()) == Some("json") {
+                let single = Self::from_json_file(&path)?;
                 for (key, value) in single.entries {
                     merged.insert(key, value);
                 }
@@ -297,39 +360,45 @@ name = "minecraft:bare"
     }
 
     #[test]
-    fn load_directory_merges_all_toml_files_with_last_key_winning() {
+    fn load_json_directory_merges_all_json_files_with_last_key_winning() {
         let dir = TempDir::new();
         dir.write(
-            "first.toml",
+            "first.json",
             r#"
-[[entry]]
-name = "minecraft:shared"
-type = "minecraft:block"
-pools = [ { rolls = 1.0 } ]
-random_sequence = "minecraft:blocks/shared"
-
-[[entry]]
-name = "minecraft:only_a"
-type = "minecraft:chest"
-"#,
+        {
+            "minecraft:shared": {
+                "name": "minecraft:shared",
+                "type": "minecraft:block",
+                "pools": [{"rolls": 1.0}],
+                "random_sequence": "minecraft:blocks/shared"
+            },
+            "minecraft:only_a": {
+                "name": "minecraft:only_a",
+                "type": "minecraft:chest"
+            }
+        }
+        "#,
         );
         dir.write(
-            "second.toml",
+            "second.json",
             r#"
-[[entry]]
-name = "minecraft:shared"
-type = "minecraft:entity"
-
-[[entry]]
-name = "minecraft:only_b"
-type = "minecraft:gameplay"
-"#,
+        {
+            "minecraft:shared": {
+                "name": "minecraft:shared",
+                "type": "minecraft:entity"
+            },
+            "minecraft:only_b": {
+                "name": "minecraft:only_b",
+                "type": "minecraft:gameplay"
+            }
+        }
+        "#,
         );
-        // 非 toml 扩展名文件应被忽略。
-        dir.write("ignore.txt", "[[entry]]\nname = \"minecraft:ignored\"\n");
+        // 非 json 扩展名文件应被忽略。
+        dir.write("ignore.toml", "[[entry]]\nname = \"minecraft:ignored\"\n");
 
-        let registry = LootTableRegistry::load_directory(dir.path()).unwrap();
-        // shared / only_a / only_b 三条，ignore.txt 不参与。
+        let registry = LootTableRegistry::load_json_directory(dir.path()).unwrap();
+        // shared / only_a / only_b 三条，ignore.toml 不参与。
         assert_eq!(registry.len(), 3);
         // 同名键：后读取的文件覆盖前者。
         assert_eq!(
@@ -348,20 +417,20 @@ type = "minecraft:gameplay"
     }
 
     #[test]
-    fn load_directory_missing_dir_returns_parse_error() {
+    fn load_json_directory_missing_dir_returns_parse_error() {
         let missing = Path::new("does/not/exist/loot_tables");
         assert!(matches!(
-            LootTableRegistry::load_directory(missing),
+            LootTableRegistry::load_json_directory(missing),
             Err(RegistryError::ParseError)
         ));
     }
 
     #[test]
-    fn load_directory_bad_file_returns_parse_error() {
+    fn load_json_directory_bad_file_returns_parse_error() {
         let dir = TempDir::new();
-        dir.write("broken.toml", "this is not = = valid toml @@@");
+        dir.write("broken.json", "this is not = = valid json @@@");
         assert!(matches!(
-            LootTableRegistry::load_directory(dir.path()),
+            LootTableRegistry::load_json_directory(dir.path()),
             Err(RegistryError::ParseError)
         ));
     }

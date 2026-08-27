@@ -1,0 +1,356 @@
+{
+  "advance_time": {
+    "name": "advance_time",
+    "id": 0,
+    "default": "true",
+    "type": "boolean"
+  },
+  "advance_weather": {
+    "name": "advance_weather",
+    "id": 1,
+    "default": "true",
+    "type": "boolean"
+  },
+  "allow_entering_nether_using_portals": {
+    "name": "allow_entering_nether_using_portals",
+    "id": 2,
+    "default": "true",
+    "type": "boolean"
+  },
+  "block_drops": {
+    "name": "block_drops",
+    "id": 3,
+    "default": "true",
+    "type": "boolean"
+  },
+  "block_explosion_drop_decay": {
+    "name": "block_explosion_drop_decay",
+    "id": 4,
+    "default": "true",
+    "type": "boolean"
+  },
+  "command_blocks_work": {
+    "name": "command_blocks_work",
+    "id": 5,
+    "default": "true",
+    "type": "boolean"
+  },
+  "command_block_output": {
+    "name": "command_block_output",
+    "id": 6,
+    "default": "true",
+    "type": "boolean"
+  },
+  "drowning_damage": {
+    "name": "drowning_damage",
+    "id": 7,
+    "default": "true",
+    "type": "boolean"
+  },
+  "elytra_movement_check": {
+    "name": "elytra_movement_check",
+    "id": 8,
+    "default": "true",
+    "type": "boolean"
+  },
+  "ender_pearls_vanish_on_death": {
+    "name": "ender_pearls_vanish_on_death",
+    "id": 9,
+    "default": "true",
+    "type": "boolean"
+  },
+  "entity_drops": {
+    "name": "entity_drops",
+    "id": 10,
+    "default": "true",
+    "type": "boolean"
+  },
+  "fall_damage": {
+    "name": "fall_damage",
+    "id": 11,
+    "default": "true",
+    "type": "boolean"
+  },
+  "fire_damage": {
+    "name": "fire_damage",
+    "id": 12,
+    "default": "true",
+    "type": "boolean"
+  },
+  "fire_spread_radius_around_player": {
+    "name": "fire_spread_radius_around_player",
+    "id": 13,
+    "default": "128",
+    "type": "integer"
+  },
+  "forgive_dead_players": {
+    "name": "forgive_dead_players",
+    "id": 14,
+    "default": "true",
+    "type": "boolean"
+  },
+  "freeze_damage": {
+    "name": "freeze_damage",
+    "id": 15,
+    "default": "true",
+    "type": "boolean"
+  },
+  "global_sound_events": {
+    "name": "global_sound_events",
+    "id": 16,
+    "default": "true",
+    "type": "boolean"
+  },
+  "immediate_respawn": {
+    "name": "immediate_respawn",
+    "id": 17,
+    "default": "false",
+    "type": "boolean"
+  },
+  "keep_inventory": {
+    "name": "keep_inventory",
+    "id": 18,
+    "default": "false",
+    "type": "boolean"
+  },
+  "lava_source_conversion": {
+    "name": "lava_source_conversion",
+    "id": 19,
+    "default": "false",
+    "type": "boolean"
+  },
+  "limited_crafting": {
+    "name": "limited_crafting",
+    "id": 20,
+    "default": "false",
+    "type": "boolean"
+  },
+  "locator_bar": {
+    "name": "locator_bar",
+    "id": 21,
+    "default": "true",
+    "type": "boolean"
+  },
+  "log_admin_commands": {
+    "name": "log_admin_commands",
+    "id": 22,
+    "default": "true",
+    "type": "boolean"
+  },
+  "max_block_modifications": {
+    "name": "max_block_modifications",
+    "id": 23,
+    "default": "32768",
+    "type": "integer"
+  },
+  "max_command_forks": {
+    "name": "max_command_forks",
+    "id": 24,
+    "default": "65536",
+    "type": "integer"
+  },
+  "max_command_sequence_length": {
+    "name": "max_command_sequence_length",
+    "id": 25,
+    "default": "65536",
+    "type": "integer"
+  },
+  "max_entity_cramming": {
+    "name": "max_entity_cramming",
+    "id": 26,
+    "default": "24",
+    "type": "integer"
+  },
+  "max_minecart_speed": {
+    "name": "max_minecart_speed",
+    "id": 27,
+    "default": "8",
+    "type": "integer"
+  },
+  "max_snow_accumulation_height": {
+    "name": "max_snow_accumulation_height",
+    "id": 28,
+    "default": "1",
+    "type": "integer"
+  },
+  "mob_drops": {
+    "name": "mob_drops",
+    "id": 29,
+    "default": "true",
+    "type": "boolean"
+  },
+  "mob_explosion_drop_decay": {
+    "name": "mob_explosion_drop_decay",
+    "id": 30,
+    "default": "true",
+    "type": "boolean"
+  },
+  "mob_griefing": {
+    "name": "mob_griefing",
+    "id": 31,
+    "default": "true",
+    "type": "boolean"
+  },
+  "natural_health_regeneration": {
+    "name": "natural_health_regeneration",
+    "id": 32,
+    "default": "true",
+    "type": "boolean"
+  },
+  "player_movement_check": {
+    "name": "player_movement_check",
+    "id": 33,
+    "default": "true",
+    "type": "boolean"
+  },
+  "players_nether_portal_creative_delay": {
+    "name": "players_nether_portal_creative_delay",
+    "id": 34,
+    "default": "0",
+    "type": "integer"
+  },
+  "players_nether_portal_default_delay": {
+    "name": "players_nether_portal_default_delay",
+    "id": 35,
+    "default": "80",
+    "type": "integer"
+  },
+  "players_sleeping_percentage": {
+    "name": "players_sleeping_percentage",
+    "id": 36,
+    "default": "100",
+    "type": "integer"
+  },
+  "projectiles_can_break_blocks": {
+    "name": "projectiles_can_break_blocks",
+    "id": 37,
+    "default": "true",
+    "type": "boolean"
+  },
+  "pvp": {
+    "name": "pvp",
+    "id": 38,
+    "default": "true",
+    "type": "boolean"
+  },
+  "raids": {
+    "name": "raids",
+    "id": 39,
+    "default": "true",
+    "type": "boolean"
+  },
+  "random_tick_speed": {
+    "name": "random_tick_speed",
+    "id": 40,
+    "default": "3",
+    "type": "integer"
+  },
+  "reduced_debug_info": {
+    "name": "reduced_debug_info",
+    "id": 41,
+    "default": "false",
+    "type": "boolean"
+  },
+  "respawn_radius": {
+    "name": "respawn_radius",
+    "id": 42,
+    "default": "10",
+    "type": "integer"
+  },
+  "send_command_feedback": {
+    "name": "send_command_feedback",
+    "id": 43,
+    "default": "true",
+    "type": "boolean"
+  },
+  "show_advancement_messages": {
+    "name": "show_advancement_messages",
+    "id": 44,
+    "default": "true",
+    "type": "boolean"
+  },
+  "show_death_messages": {
+    "name": "show_death_messages",
+    "id": 45,
+    "default": "true",
+    "type": "boolean"
+  },
+  "spawner_blocks_work": {
+    "name": "spawner_blocks_work",
+    "id": 46,
+    "default": "true",
+    "type": "boolean"
+  },
+  "spawn_mobs": {
+    "name": "spawn_mobs",
+    "id": 47,
+    "default": "true",
+    "type": "boolean"
+  },
+  "spawn_monsters": {
+    "name": "spawn_monsters",
+    "id": 48,
+    "default": "true",
+    "type": "boolean"
+  },
+  "spawn_patrols": {
+    "name": "spawn_patrols",
+    "id": 49,
+    "default": "true",
+    "type": "boolean"
+  },
+  "spawn_phantoms": {
+    "name": "spawn_phantoms",
+    "id": 50,
+    "default": "true",
+    "type": "boolean"
+  },
+  "spawn_wandering_traders": {
+    "name": "spawn_wandering_traders",
+    "id": 51,
+    "default": "true",
+    "type": "boolean"
+  },
+  "spawn_wardens": {
+    "name": "spawn_wardens",
+    "id": 52,
+    "default": "true",
+    "type": "boolean"
+  },
+  "spectators_generate_chunks": {
+    "name": "spectators_generate_chunks",
+    "id": 53,
+    "default": "true",
+    "type": "boolean"
+  },
+  "spread_vines": {
+    "name": "spread_vines",
+    "id": 54,
+    "default": "true",
+    "type": "boolean"
+  },
+  "tnt_explodes": {
+    "name": "tnt_explodes",
+    "id": 55,
+    "default": "true",
+    "type": "boolean"
+  },
+  "tnt_explosion_drop_decay": {
+    "name": "tnt_explosion_drop_decay",
+    "id": 56,
+    "default": "false",
+    "type": "boolean"
+  },
+  "universal_anger": {
+    "name": "universal_anger",
+    "id": 57,
+    "default": "false",
+    "type": "boolean"
+  },
+  "water_source_conversion": {
+    "name": "water_source_conversion",
+    "id": 58,
+    "default": "true",
+    "type": "boolean"
+  }
+}

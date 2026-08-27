@@ -48,6 +48,12 @@ pub struct PlayerInventory {
     pub game_mode: GameMode,
     /// 合成拖拽（QUICK_CRAFT, 模式 5）跨次点击状态；无拖拽时为默认值。
     pub quick_craft: QuickCraftState,
+    /// 待应用层合成系统处理的快捷合成结果。
+    ///
+    /// 当玩家以 QUICK_CRAFT 模式点击合成结果槽（内部序 40）时，
+    /// [`apply_click`](Self::apply_click) 会将产物暂存于此；
+    /// 应用侧 [`crate::systems::crafting::crafting`] 系统消费后清空。
+    pub crafting_result_pending: Option<ItemStack>,
 }
 
 /// `[ItemStack; 46]` 长度超过 32，Rust 不提供数组成员 `Default`；
@@ -86,6 +92,7 @@ impl PlayerInventory {
             full_sync: true,
             game_mode: GameMode::Survival,
             quick_craft: QuickCraftState::default(),
+            crafting_result_pending: None,
         }
     }
 
@@ -755,6 +762,10 @@ pub const CLICK_CLONE: i32 = 3;
 pub const CLICK_THROW: i32 = 4;
 pub const CLICK_QUICK_CRAFT: i32 = 5;
 pub const CLICK_PICKUP_ALL: i32 = 6;
+
+/// 工作台合成结果槽的内部序（窗口序 4 → 内部序 40）。
+/// 用于应用层合成系统判断快捷合成点击的目标槽位。
+pub const CRAFTING_RESULT_SLOT: i32 = 40;
 
 /// 窗口槽 → 内部槽（`convert_minestom_slot_to_window_slot` 的逆映射）。
 ///

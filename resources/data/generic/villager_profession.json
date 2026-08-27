@@ -1,0 +1,75 @@
+{
+  "minecraft:none": {
+    "name": "minecraft:none",
+    "id": 0
+  },
+  "minecraft:armorer": {
+    "name": "minecraft:armorer",
+    "id": 1,
+    "work_sound": "minecraft:entity.villager.work_armorer"
+  },
+  "minecraft:butcher": {
+    "name": "minecraft:butcher",
+    "id": 2,
+    "work_sound": "minecraft:entity.villager.work_butcher"
+  },
+  "minecraft:cartographer": {
+    "name": "minecraft:cartographer",
+    "id": 3,
+    "work_sound": "minecraft:entity.villager.work_cartographer"
+  },
+  "minecraft:cleric": {
+    "name": "minecraft:cleric",
+    "id": 4,
+    "work_sound": "minecraft:entity.villager.work_cleric"
+  },
+  "minecraft:farmer": {
+    "name": "minecraft:farmer",
+    "id": 5,
+    "work_sound": "minecraft:entity.villager.work_farmer"
+  },
+  "minecraft:fisherman": {
+    "name": "minecraft:fisherman",
+    "id": 6,
+    "work_sound": "minecraft:entity.villager.work_fisherman"
+  },
+  "minecraft:fletcher": {
+    "name": "minecraft:fletcher",
+    "id": 7,
+    "work_sound": "minecraft:entity.villager.work_fletcher"
+  },
+  "minecraft:leatherworker": {
+    "name": "minecraft:leatherworker",
+    "id": 8,
+    "work_sound": "minecraft:entity.villager.work_leatherworker"
+  },
+  "minecraft:librarian": {
+    "name": "minecraft:librarian",
+    "id": 9,
+    "work_sound": "minecraft:entity.villager.work_librarian"
+  },
+  "minecraft:mason": {
+    "name": "minecraft:mason",
+    "id": 10,
+    "work_sound": "minecraft:entity.villager.work_mason"
+  },
+  "minecraft:nitwit": {
+    "name": "minecraft:nitwit",
+    "id": 11
+  },
+  "minecraft:shepherd": {
+    "name": "minecraft:shepherd",
+    "id": 12,
+    "work_sound": "minecraft:entity.villager.work_shepherd"
+  },
+  "minecraft:toolsmith": {
+    "name": "minecraft:toolsmith",
+    "id": 13,
+    "work_sound": "minecraft:entity.villager.work_toolsmith"
+  },
+  "minecraft:weaponsmith": {
+    "name": "minecraft:weaponsmith",
+    "id": 14,
+    "work_sound": "minecraft:entity.villager.work_weaponsmith"
+  }
+}

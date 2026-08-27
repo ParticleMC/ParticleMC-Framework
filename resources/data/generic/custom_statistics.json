@@ -1,0 +1,310 @@
+{
+  "minecraft:leave_game": {
+    "name": "minecraft:leave_game",
+    "id": 0
+  },
+  "minecraft:play_time": {
+    "name": "minecraft:play_time",
+    "id": 1
+  },
+  "minecraft:total_world_time": {
+    "name": "minecraft:total_world_time",
+    "id": 2
+  },
+  "minecraft:time_since_death": {
+    "name": "minecraft:time_since_death",
+    "id": 3
+  },
+  "minecraft:time_since_rest": {
+    "name": "minecraft:time_since_rest",
+    "id": 4
+  },
+  "minecraft:sneak_time": {
+    "name": "minecraft:sneak_time",
+    "id": 5
+  },
+  "minecraft:walk_one_cm": {
+    "name": "minecraft:walk_one_cm",
+    "id": 6
+  },
+  "minecraft:crouch_one_cm": {
+    "name": "minecraft:crouch_one_cm",
+    "id": 7
+  },
+  "minecraft:sprint_one_cm": {
+    "name": "minecraft:sprint_one_cm",
+    "id": 8
+  },
+  "minecraft:walk_on_water_one_cm": {
+    "name": "minecraft:walk_on_water_one_cm",
+    "id": 9
+  },
+  "minecraft:fall_one_cm": {
+    "name": "minecraft:fall_one_cm",
+    "id": 10
+  },
+  "minecraft:climb_one_cm": {
+    "name": "minecraft:climb_one_cm",
+    "id": 11
+  },
+  "minecraft:fly_one_cm": {
+    "name": "minecraft:fly_one_cm",
+    "id": 12
+  },
+  "minecraft:walk_under_water_one_cm": {
+    "name": "minecraft:walk_under_water_one_cm",
+    "id": 13
+  },
+  "minecraft:minecart_one_cm": {
+    "name": "minecraft:minecart_one_cm",
+    "id": 14
+  },
+  "minecraft:boat_one_cm": {
+    "name": "minecraft:boat_one_cm",
+    "id": 15
+  },
+  "minecraft:pig_one_cm": {
+    "name": "minecraft:pig_one_cm",
+    "id": 16
+  },
+  "minecraft:happy_ghast_one_cm": {
+    "name": "minecraft:happy_ghast_one_cm",
+    "id": 17
+  },
+  "minecraft:horse_one_cm": {
+    "name": "minecraft:horse_one_cm",
+    "id": 18
+  },
+  "minecraft:aviate_one_cm": {
+    "name": "minecraft:aviate_one_cm",
+    "id": 19
+  },
+  "minecraft:swim_one_cm": {
+    "name": "minecraft:swim_one_cm",
+    "id": 20
+  },
+  "minecraft:strider_one_cm": {
+    "name": "minecraft:strider_one_cm",
+    "id": 21
+  },
+  "minecraft:nautilus_one_cm": {
+    "name": "minecraft:nautilus_one_cm",
+    "id": 22
+  },
+  "minecraft:jump": {
+    "name": "minecraft:jump",
+    "id": 23
+  },
+  "minecraft:drop": {
+    "name": "minecraft:drop",
+    "id": 24
+  },
+  "minecraft:damage_dealt": {
+    "name": "minecraft:damage_dealt",
+    "id": 25
+  },
+  "minecraft:damage_dealt_absorbed": {
+    "name": "minecraft:damage_dealt_absorbed",
+    "id": 26
+  },
+  "minecraft:damage_dealt_resisted": {
+    "name": "minecraft:damage_dealt_resisted",
+    "id": 27
+  },
+  "minecraft:damage_taken": {
+    "name": "minecraft:damage_taken",
+    "id": 28
+  },
+  "minecraft:damage_blocked_by_shield": {
+    "name": "minecraft:damage_blocked_by_shield",
+    "id": 29
+  },
+  "minecraft:damage_absorbed": {
+    "name": "minecraft:damage_absorbed",
+    "id": 30
+  },
+  "minecraft:damage_resisted": {
+    "name": "minecraft:damage_resisted",
+    "id": 31
+  },
+  "minecraft:deaths": {
+    "name": "minecraft:deaths",
+    "id": 32
+  },
+  "minecraft:mob_kills": {
+    "name": "minecraft:mob_kills",
+    "id": 33
+  },
+  "minecraft:animals_bred": {
+    "name": "minecraft:animals_bred",
+    "id": 34
+  },
+  "minecraft:player_kills": {
+    "name": "minecraft:player_kills",
+    "id": 35
+  },
+  "minecraft:fish_caught": {
+    "name": "minecraft:fish_caught",
+    "id": 36
+  },
+  "minecraft:talked_to_villager": {
+    "name": "minecraft:talked_to_villager",
+    "id": 37
+  },
+  "minecraft:traded_with_villager": {
+    "name": "minecraft:traded_with_villager",
+    "id": 38
+  },
+  "minecraft:eat_cake_slice": {
+    "name": "minecraft:eat_cake_slice",
+    "id": 39
+  },
+  "minecraft:fill_cauldron": {
+    "name": "minecraft:fill_cauldron",
+    "id": 40
+  },
+  "minecraft:use_cauldron": {
+    "name": "minecraft:use_cauldron",
+    "id": 41
+  },
+  "minecraft:clean_armor": {
+    "name": "minecraft:clean_armor",
+    "id": 42
+  },
+  "minecraft:clean_banner": {
+    "name": "minecraft:clean_banner",
+    "id": 43
+  },
+  "minecraft:clean_shulker_box": {
+    "name": "minecraft:clean_shulker_box",
+    "id": 44
+  },
+  "minecraft:interact_with_brewingstand": {
+    "name": "minecraft:interact_with_brewingstand",
+    "id": 45
+  },
+  "minecraft:interact_with_beacon": {
+    "name": "minecraft:interact_with_beacon",
+    "id": 46
+  },
+  "minecraft:inspect_dropper": {
+    "name": "minecraft:inspect_dropper",
+    "id": 47
+  },
+  "minecraft:inspect_hopper": {
+    "name": "minecraft:inspect_hopper",
+    "id": 48
+  },
+  "minecraft:inspect_dispenser": {
+    "name": "minecraft:inspect_dispenser",
+    "id": 49
+  },
+  "minecraft:play_noteblock": {
+    "name": "minecraft:play_noteblock",
+    "id": 50
+  },
+  "minecraft:tune_noteblock": {
+    "name": "minecraft:tune_noteblock",
+    "id": 51
+  },
+  "minecraft:pot_flower": {
+    "name": "minecraft:pot_flower",
+    "id": 52
+  },
+  "minecraft:trigger_trapped_chest": {
+    "name": "minecraft:trigger_trapped_chest",
+    "id": 53
+  },
+  "minecraft:open_enderchest": {
+    "name": "minecraft:open_enderchest",
+    "id": 54
+  },
+  "minecraft:enchant_item": {
+    "name": "minecraft:enchant_item",
+    "id": 55
+  },
+  "minecraft:play_record": {
+    "name": "minecraft:play_record",
+    "id": 56
+  },
+  "minecraft:interact_with_furnace": {
+    "name": "minecraft:interact_with_furnace",
+    "id": 57
+  },
+  "minecraft:interact_with_crafting_table": {
+    "name": "minecraft:interact_with_crafting_table",
+    "id": 58
+  },
+  "minecraft:open_chest": {
+    "name": "minecraft:open_chest",
+    "id": 59
+  },
+  "minecraft:sleep_in_bed": {
+    "name": "minecraft:sleep_in_bed",
+    "id": 60
+  },
+  "minecraft:open_shulker_box": {
+    "name": "minecraft:open_shulker_box",
+    "id": 61
+  },
+  "minecraft:open_barrel": {
+    "name": "minecraft:open_barrel",
+    "id": 62
+  },
+  "minecraft:interact_with_blast_furnace": {
+    "name": "minecraft:interact_with_blast_furnace",
+    "id": 63
+  },
+  "minecraft:interact_with_smoker": {
+    "name": "minecraft:interact_with_smoker",
+    "id": 64
+  },
+  "minecraft:interact_with_lectern": {
+    "name": "minecraft:interact_with_lectern",
+    "id": 65
+  },
+  "minecraft:interact_with_campfire": {
+    "name": "minecraft:interact_with_campfire",
+    "id": 66
+  },
+  "minecraft:interact_with_cartography_table": {
+    "name": "minecraft:interact_with_cartography_table",
+    "id": 67
+  },
+  "minecraft:interact_with_loom": {
+    "name": "minecraft:interact_with_loom",
+    "id": 68
+  },
+  "minecraft:interact_with_stonecutter": {
+    "name": "minecraft:interact_with_stonecutter",
+    "id": 69
+  },
+  "minecraft:bell_ring": {
+    "name": "minecraft:bell_ring",
+    "id": 70
+  },
+  "minecraft:raid_trigger": {
+    "name": "minecraft:raid_trigger",
+    "id": 71
+  },
+  "minecraft:raid_win": {
+    "name": "minecraft:raid_win",
+    "id": 72
+  },
+  "minecraft:interact_with_anvil": {
+    "name": "minecraft:interact_with_anvil",
+    "id": 73
+  },
+  "minecraft:interact_with_grindstone": {
+    "name": "minecraft:interact_with_grindstone",
+    "id": 74
+  },
+  "minecraft:target_hit": {
+    "name": "minecraft:target_hit",
+    "id": 75
+  },
+  "minecraft:interact_with_smithing_table": {
+    "name": "minecraft:interact_with_smithing_table",
+    "id": 76
+  }
+}

@@ -1,0 +1,198 @@
+{
+  "minecraft:furnace": {
+    "name": "minecraft:furnace",
+    "id": 0
+  },
+  "minecraft:chest": {
+    "name": "minecraft:chest",
+    "id": 1
+  },
+  "minecraft:trapped_chest": {
+    "name": "minecraft:trapped_chest",
+    "id": 2
+  },
+  "minecraft:ender_chest": {
+    "name": "minecraft:ender_chest",
+    "id": 3
+  },
+  "minecraft:jukebox": {
+    "name": "minecraft:jukebox",
+    "id": 4
+  },
+  "minecraft:dispenser": {
+    "name": "minecraft:dispenser",
+    "id": 5
+  },
+  "minecraft:dropper": {
+    "name": "minecraft:dropper",
+    "id": 6
+  },
+  "minecraft:sign": {
+    "name": "minecraft:sign",
+    "id": 7
+  },
+  "minecraft:hanging_sign": {
+    "name": "minecraft:hanging_sign",
+    "id": 8
+  },
+  "minecraft:mob_spawner": {
+    "name": "minecraft:mob_spawner",
+    "id": 9
+  },
+  "minecraft:creaking_heart": {
+    "name": "minecraft:creaking_heart",
+    "id": 10
+  },
+  "minecraft:piston": {
+    "name": "minecraft:piston",
+    "id": 11
+  },
+  "minecraft:brewing_stand": {
+    "name": "minecraft:brewing_stand",
+    "id": 12
+  },
+  "minecraft:enchanting_table": {
+    "name": "minecraft:enchanting_table",
+    "id": 13
+  },
+  "minecraft:end_portal": {
+    "name": "minecraft:end_portal",
+    "id": 14
+  },
+  "minecraft:beacon": {
+    "name": "minecraft:beacon",
+    "id": 15
+  },
+  "minecraft:skull": {
+    "name": "minecraft:skull",
+    "id": 16
+  },
+  "minecraft:daylight_detector": {
+    "name": "minecraft:daylight_detector",
+    "id": 17
+  },
+  "minecraft:hopper": {
+    "name": "minecraft:hopper",
+    "id": 18
+  },
+  "minecraft:comparator": {
+    "name": "minecraft:comparator",
+    "id": 19
+  },
+  "minecraft:banner": {
+    "name": "minecraft:banner",
+    "id": 20
+  },
+  "minecraft:structure_block": {
+    "name": "minecraft:structure_block",
+    "id": 21
+  },
+  "minecraft:end_gateway": {
+    "name": "minecraft:end_gateway",
+    "id": 22
+  },
+  "minecraft:command_block": {
+    "name": "minecraft:command_block",
+    "id": 23
+  },
+  "minecraft:shulker_box": {
+    "name": "minecraft:shulker_box",
+    "id": 24
+  },
+  "minecraft:bed": {
+    "name": "minecraft:bed",
+    "id": 25
+  },
+  "minecraft:conduit": {
+    "name": "minecraft:conduit",
+    "id": 26
+  },
+  "minecraft:barrel": {
+    "name": "minecraft:barrel",
+    "id": 27
+  },
+  "minecraft:smoker": {
+    "name": "minecraft:smoker",
+    "id": 28
+  },
+  "minecraft:blast_furnace": {
+    "name": "minecraft:blast_furnace",
+    "id": 29
+  },
+  "minecraft:lectern": {
+    "name": "minecraft:lectern",
+    "id": 30
+  },
+  "minecraft:bell": {
+    "name": "minecraft:bell",
+    "id": 31
+  },
+  "minecraft:jigsaw": {
+    "name": "minecraft:jigsaw",
+    "id": 32
+  },
+  "minecraft:campfire": {
+    "name": "minecraft:campfire",
+    "id": 33
+  },
+  "minecraft:beehive": {
+    "name": "minecraft:beehive",
+    "id": 34
+  },
+  "minecraft:sculk_sensor": {
+    "name": "minecraft:sculk_sensor",
+    "id": 35
+  },
+  "minecraft:calibrated_sculk_sensor": {
+    "name": "minecraft:calibrated_sculk_sensor",
+    "id": 36
+  },
+  "minecraft:sculk_catalyst": {
+    "name": "minecraft:sculk_catalyst",
+    "id": 37
+  },
+  "minecraft:sculk_shrieker": {
+    "name": "minecraft:sculk_shrieker",
+    "id": 38
+  },
+  "minecraft:chiseled_bookshelf": {
+    "name": "minecraft:chiseled_bookshelf",
+    "id": 39
+  },
+  "minecraft:shelf": {
+    "name": "minecraft:shelf",
+    "id": 40
+  },
+  "minecraft:brushable_block": {
+    "name": "minecraft:brushable_block",
+    "id": 41
+  },
+  "minecraft:decorated_pot": {
+    "name": "minecraft:decorated_pot",
+    "id": 42
+  },
+  "minecraft:crafter": {
+    "name": "minecraft:crafter",
+    "id": 43
+  },
+  "minecraft:trial_spawner": {
+    "name": "minecraft:trial_spawner",
+    "id": 44
+  },
+  "minecraft:vault": {
+    "name": "minecraft:vault",
+    "id": 45
+  },
+  "minecraft:test_block": {
+    "name": "minecraft:test_block",
+    "id": 46
+  },
+  "minecraft:test_instance_block": {
+    "name": "minecraft:test_instance_block",
+    "id": 47
+  },
+  "minecraft:copper_golem_statue": {
+    "name": "minecraft:copper_golem_statue",
+    "id": 48
+  }
+}

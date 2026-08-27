@@ -1,4 +1,4 @@
-﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
 //! 物品注册表：以 `Resource` 形式承载 `Registry<ItemDefinition>`。
 
@@ -14,6 +14,11 @@ impl ItemRegistry {
     /// 从 TOML 文件加载物品注册表。
     pub fn from_toml_file(path: &Path) -> Result<Self, RegistryError> {
         Ok(Self(Registry::from_toml_file(path)?))
+    }
+
+    /// 从 JSON 文件加载物品注册表。
+    pub fn from_json_file(path: &Path) -> Result<Self, RegistryError> {
+        Ok(Self(Registry::from_json_file(path)?))
     }
 
     /// 覆盖或注册一个物品条目：name 已存在时保留原 id、替换 value；

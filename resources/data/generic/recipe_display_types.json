@@ -1,0 +1,22 @@
+{
+  "minecraft:crafting_shapeless": {
+    "id": 0,
+    "name": "minecraft:crafting_shapeless"
+  },
+  "minecraft:crafting_shaped": {
+    "id": 1,
+    "name": "minecraft:crafting_shaped"
+  },
+  "minecraft:furnace": {
+    "id": 2,
+    "name": "minecraft:furnace"
+  },
+  "minecraft:stonecutter": {
+    "id": 3,
+    "name": "minecraft:stonecutter"
+  },
+  "minecraft:smithing": {
+    "id": 4,
+    "name": "minecraft:smithing"
+  }
+}

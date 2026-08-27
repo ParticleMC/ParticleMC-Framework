@@ -1,4 +1,4 @@
-﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
 //! 附魔承载与注册表（R11）。
 //!
@@ -240,6 +240,34 @@ impl EnchantmentRegistry {
         Ok(registry)
     }
 
+    /// 从 JSON 文本加载附魔注册表（主要供单元测试使用）。
+    ///
+    /// JSON 格式为 `{"name": {...}, ...}`，按键顺序分配序位 id（从 0 开始）。
+    ///
+    /// # 错误
+    /// 文本非法或缺少 `name` 字段时返回 [`RegistryError::ParseError`]。
+    pub fn from_json_str(text: &str) -> Result<Self, RegistryError> {
+        let document: serde_json::Value =
+            serde_json::from_str(text).map_err(|_| RegistryError::ParseError)?;
+        let obj = document
+            .as_object()
+            .ok_or(RegistryError::ParseError)?;
+        let mut registry = EnchantmentRegistry::default();
+        for (index, (name, _value)) in obj.iter().enumerate() {
+            let id = u32::try_from(index).map_err(|_| RegistryError::ParseError)?;
+            registry.by_id.insert(
+                id,
+                Enchantment {
+                    name: name.clone(),
+                    id,
+                    level: 0,
+                },
+            );
+            registry.by_name.insert(name.clone(), id);
+        }
+        Ok(registry)
+    }
+
     /// 从 TOML 文件加载附魔注册表。
     ///
     /// # 错误
@@ -247,6 +275,18 @@ impl EnchantmentRegistry {
     pub fn from_toml_file(path: &Path) -> Result<Self, RegistryError> {
         let text = std::fs::read_to_string(path).map_err(|_| RegistryError::ParseError)?;
         Self::from_toml_str(&text)
+    }
+
+    /// 从 JSON 文件加载附魔注册表。
+    ///
+    /// JSON 格式为 `{"minecraft:sharpness": {...}, ...}`，每个值为附魔字段对象。
+    /// 按 JSON 键顺序分配序位 id（从 0 开始）。
+    ///
+    /// # 错误
+    /// 路径不存在或无法读取时返回 [`RegistryError::ParseError`]。
+    pub fn from_json_file(path: &Path) -> Result<Self, RegistryError> {
+        let text = std::fs::read_to_string(path).map_err(|_| RegistryError::ParseError)?;
+        Self::from_json_str(&text)
     }
 
     /// 按注册表序位查询附魔条目。
@@ -504,8 +544,8 @@ mod tests {
     fn registry_loads_real_data_file() {
         // 真实注册数据：43 项，序位对齐 Java Enchantments.java。
         let path =
-            Path::new(env!("CARGO_MANIFEST_DIR")).join("../../resources/data/enchantments.toml");
-        let registry = EnchantmentRegistry::from_toml_file(&path).unwrap();
+            Path::new(env!("CARGO_MANIFEST_DIR")).join("../../resources/data/enchantments.json");
+        let registry = EnchantmentRegistry::from_json_file(&path).unwrap();
         assert_eq!(registry.len(), 43);
         assert_eq!(registry.by_name("minecraft:sharpness").unwrap().id, 32);
         assert_eq!(registry.by_name("minecraft:power").unwrap().id, 22);

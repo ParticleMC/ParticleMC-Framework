@@ -1,0 +1,18 @@
+{
+  "minecraft:redstone_experiments": {
+    "name": "minecraft:redstone_experiments",
+    "id": 0
+  },
+  "minecraft:vanilla": {
+    "name": "minecraft:vanilla",
+    "id": 1
+  },
+  "minecraft:trade_rebalance": {
+    "name": "minecraft:trade_rebalance",
+    "id": 2
+  },
+  "minecraft:minecart_improvements": {
+    "name": "minecraft:minecart_improvements",
+    "id": 3
+  }
+}

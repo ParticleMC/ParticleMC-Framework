@@ -1,4 +1,4 @@
-﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
 //! 统计体系（T13，对应 spec R13）。
 //!
@@ -82,6 +82,43 @@ impl StatisticRegistry {
     pub fn from_toml_file(path: &Path) -> Result<Self, RegistryError> {
         let text = std::fs::read_to_string(path).map_err(|_| RegistryError::ParseError)?;
         Self::from_toml_str(&text)
+    }
+
+    /// 从 JSON 文本解析对象格式，构建统计注册表。
+    ///
+    /// JSON 格式为 `{"name": {"name": ..., "category": N, "id": M}, ...}`，
+    /// 键为命名空间名称，值与条目对象一致。
+    ///
+    /// # 错误
+    /// 文本非法、结构不符或 name 重复时返回 [`RegistryError`]。
+    pub fn from_json_str(text: &str) -> Result<Self, RegistryError> {
+        let document: serde_json::Value =
+            serde_json::from_str(text).map_err(|_| RegistryError::ParseError)?;
+        let obj = document.as_object().ok_or(RegistryError::ParseError)?;
+        let mut by_name = HashMap::with_capacity(obj.len());
+        for (key, value) in obj {
+            let stat: Statistic = serde_json::from_value(value.clone())
+                .map_err(|_| RegistryError::ParseError)?;
+            if stat.name != *key {
+                return Err(RegistryError::ParseError);
+            }
+            if by_name.contains_key(&stat.name) {
+                return Err(RegistryError::DuplicateName);
+            }
+            by_name.insert(stat.name.clone(), stat);
+        }
+        Ok(Self { by_name })
+    }
+
+    /// 从单个 JSON 文件加载统计注册表。
+    ///
+    /// JSON 格式为 `{"name": {category, id}, ...}`，按键顺序从 0 开始分配序位。
+    ///
+    /// # 错误
+    /// 文件缺失或解析失败返回 [`RegistryError::ParseError`]。
+    pub fn from_json_file(path: &Path) -> Result<Self, RegistryError> {
+        let text = std::fs::read_to_string(path).map_err(|_| RegistryError::ParseError)?;
+        Self::from_json_str(&text)
     }
 
     /// 按命名空间名称查询统计定义。
@@ -263,8 +300,8 @@ id = 24
     #[test]
     fn real_data_file_loads() {
         let path =
-            Path::new(env!("CARGO_MANIFEST_DIR")).join("../../resources/data/statistics.toml");
-        let registry = StatisticRegistry::from_toml_file(&path).unwrap();
+            Path::new(env!("CARGO_MANIFEST_DIR")).join("../../resources/data/statistics.json");
+        let registry = StatisticRegistry::from_json_file(&path).unwrap();
         assert!(registry.len() >= 5, "实际 {} 条", registry.len());
         assert_eq!(registry.by_name("minecraft:walk_one_cm").unwrap().id, 6);
         assert_eq!(

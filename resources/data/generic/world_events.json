@@ -1,0 +1,330 @@
+{
+  "sound_dispenser_dispense": {
+    "name": "sound_dispenser_dispense",
+    "id": 1000
+  },
+  "sound_dispenser_fail": {
+    "name": "sound_dispenser_fail",
+    "id": 1001
+  },
+  "sound_dispenser_projectile_launch": {
+    "name": "sound_dispenser_projectile_launch",
+    "id": 1002
+  },
+  "sound_firework_shoot": {
+    "name": "sound_firework_shoot",
+    "id": 1004
+  },
+  "sound_extinguish_fire": {
+    "name": "sound_extinguish_fire",
+    "id": 1009
+  },
+  "sound_play_jukebox_song": {
+    "name": "sound_play_jukebox_song",
+    "id": 1010
+  },
+  "sound_stop_jukebox_song": {
+    "name": "sound_stop_jukebox_song",
+    "id": 1011
+  },
+  "sound_ghast_warning": {
+    "name": "sound_ghast_warning",
+    "id": 1015
+  },
+  "sound_ghast_fireball": {
+    "name": "sound_ghast_fireball",
+    "id": 1016
+  },
+  "sound_dragon_fireball": {
+    "name": "sound_dragon_fireball",
+    "id": 1017
+  },
+  "sound_blaze_fireball": {
+    "name": "sound_blaze_fireball",
+    "id": 1018
+  },
+  "sound_zombie_wooden_door": {
+    "name": "sound_zombie_wooden_door",
+    "id": 1019
+  },
+  "sound_zombie_iron_door": {
+    "name": "sound_zombie_iron_door",
+    "id": 1020
+  },
+  "sound_zombie_door_crash": {
+    "name": "sound_zombie_door_crash",
+    "id": 1021
+  },
+  "sound_wither_block_break": {
+    "name": "sound_wither_block_break",
+    "id": 1022
+  },
+  "sound_wither_boss_spawn": {
+    "name": "sound_wither_boss_spawn",
+    "id": 1023
+  },
+  "sound_wither_boss_shoot": {
+    "name": "sound_wither_boss_shoot",
+    "id": 1024
+  },
+  "sound_bat_liftoff": {
+    "name": "sound_bat_liftoff",
+    "id": 1025
+  },
+  "sound_zombie_infected": {
+    "name": "sound_zombie_infected",
+    "id": 1026
+  },
+  "sound_zombie_converted": {
+    "name": "sound_zombie_converted",
+    "id": 1027
+  },
+  "sound_dragon_death": {
+    "name": "sound_dragon_death",
+    "id": 1028
+  },
+  "sound_anvil_broken": {
+    "name": "sound_anvil_broken",
+    "id": 1029
+  },
+  "sound_anvil_used": {
+    "name": "sound_anvil_used",
+    "id": 1030
+  },
+  "sound_anvil_land": {
+    "name": "sound_anvil_land",
+    "id": 1031
+  },
+  "sound_portal_travel": {
+    "name": "sound_portal_travel",
+    "id": 1032
+  },
+  "sound_chorus_grow": {
+    "name": "sound_chorus_grow",
+    "id": 1033
+  },
+  "sound_chorus_death": {
+    "name": "sound_chorus_death",
+    "id": 1034
+  },
+  "sound_brewing_stand_brew": {
+    "name": "sound_brewing_stand_brew",
+    "id": 1035
+  },
+  "sound_end_portal_spawn": {
+    "name": "sound_end_portal_spawn",
+    "id": 1038
+  },
+  "sound_phantom_bite": {
+    "name": "sound_phantom_bite",
+    "id": 1039
+  },
+  "sound_zombie_to_drowned": {
+    "name": "sound_zombie_to_drowned",
+    "id": 1040
+  },
+  "sound_husk_to_zombie": {
+    "name": "sound_husk_to_zombie",
+    "id": 1041
+  },
+  "sound_grindstone_used": {
+    "name": "sound_grindstone_used",
+    "id": 1042
+  },
+  "sound_page_turn": {
+    "name": "sound_page_turn",
+    "id": 1043
+  },
+  "sound_smithing_table_used": {
+    "name": "sound_smithing_table_used",
+    "id": 1044
+  },
+  "sound_pointed_dripstone_land": {
+    "name": "sound_pointed_dripstone_land",
+    "id": 1045
+  },
+  "sound_drip_lava_into_cauldron": {
+    "name": "sound_drip_lava_into_cauldron",
+    "id": 1046
+  },
+  "sound_drip_water_into_cauldron": {
+    "name": "sound_drip_water_into_cauldron",
+    "id": 1047
+  },
+  "sound_skeleton_to_stray": {
+    "name": "sound_skeleton_to_stray",
+    "id": 1048
+  },
+  "sound_crafter_craft": {
+    "name": "sound_crafter_craft",
+    "id": 1049
+  },
+  "sound_crafter_fail": {
+    "name": "sound_crafter_fail",
+    "id": 1050
+  },
+  "sound_wind_charge_shoot": {
+    "name": "sound_wind_charge_shoot",
+    "id": 1051
+  },
+  "composter_fill": {
+    "name": "composter_fill",
+    "id": 1500
+  },
+  "lava_fizz": {
+    "name": "lava_fizz",
+    "id": 1501
+  },
+  "redstone_torch_burnout": {
+    "name": "redstone_torch_burnout",
+    "id": 1502
+  },
+  "end_portal_frame_fill": {
+    "name": "end_portal_frame_fill",
+    "id": 1503
+  },
+  "dripstone_drip": {
+    "name": "dripstone_drip",
+    "id": 1504
+  },
+  "particles_and_sound_plant_growth": {
+    "name": "particles_and_sound_plant_growth",
+    "id": 1505
+  },
+  "particles_shoot_smoke": {
+    "name": "particles_shoot_smoke",
+    "id": 2000
+  },
+  "particles_destroy_block": {
+    "name": "particles_destroy_block",
+    "id": 2001
+  },
+  "particles_spell_potion_splash": {
+    "name": "particles_spell_potion_splash",
+    "id": 2002
+  },
+  "particles_eye_of_ender_death": {
+    "name": "particles_eye_of_ender_death",
+    "id": 2003
+  },
+  "particles_mobblock_spawn": {
+    "name": "particles_mobblock_spawn",
+    "id": 2004
+  },
+  "particles_dragon_fireball_splash": {
+    "name": "particles_dragon_fireball_splash",
+    "id": 2006
+  },
+  "particles_instant_potion_splash": {
+    "name": "particles_instant_potion_splash",
+    "id": 2007
+  },
+  "particles_dragon_block_break": {
+    "name": "particles_dragon_block_break",
+    "id": 2008
+  },
+  "particles_water_evaporating": {
+    "name": "particles_water_evaporating",
+    "id": 2009
+  },
+  "particles_shoot_white_smoke": {
+    "name": "particles_shoot_white_smoke",
+    "id": 2010
+  },
+  "particles_bee_growth": {
+    "name": "particles_bee_growth",
+    "id": 2011
+  },
+  "particles_turtle_egg_placement": {
+    "name": "particles_turtle_egg_placement",
+    "id": 2012
+  },
+  "particles_smash_attack": {
+    "name": "particles_smash_attack",
+    "id": 2013
+  },
+  "animation_end_gateway_spawn": {
+    "name": "animation_end_gateway_spawn",
+    "id": 3000
+  },
+  "animation_dragon_summon_roar": {
+    "name": "animation_dragon_summon_roar",
+    "id": 3001
+  },
+  "particles_electric_spark": {
+    "name": "particles_electric_spark",
+    "id": 3002
+  },
+  "particles_and_sound_wax_on": {
+    "name": "particles_and_sound_wax_on",
+    "id": 3003
+  },
+  "particles_wax_off": {
+    "name": "particles_wax_off",
+    "id": 3004
+  },
+  "particles_scrape": {
+    "name": "particles_scrape",
+    "id": 3005
+  },
+  "particles_sculk_charge": {
+    "name": "particles_sculk_charge",
+    "id": 3006
+  },
+  "particles_sculk_shriek": {
+    "name": "particles_sculk_shriek",
+    "id": 3007
+  },
+  "particles_and_sound_brush_block_complete": {
+    "name": "particles_and_sound_brush_block_complete",
+    "id": 3008
+  },
+  "particles_egg_crack": {
+    "name": "particles_egg_crack",
+    "id": 3009
+  },
+  "particles_trial_spawner_spawn": {
+    "name": "particles_trial_spawner_spawn",
+    "id": 3011
+  },
+  "particles_trial_spawner_spawn_mob_at": {
+    "name": "particles_trial_spawner_spawn_mob_at",
+    "id": 3012
+  },
+  "particles_trial_spawner_detect_player": {
+    "name": "particles_trial_spawner_detect_player",
+    "id": 3013
+  },
+  "animation_trial_spawner_eject_item": {
+    "name": "animation_trial_spawner_eject_item",
+    "id": 3014
+  },
+  "animation_vault_activate": {
+    "name": "animation_vault_activate",
+    "id": 3015
+  },
+  "animation_vault_deactivate": {
+    "name": "animation_vault_deactivate",
+    "id": 3016
+  },
+  "animation_vault_eject_item": {
+    "name": "animation_vault_eject_item",
+    "id": 3017
+  },
+  "animation_spawn_cobweb": {
+    "name": "animation_spawn_cobweb",
+    "id": 3018
+  },
+  "particles_trial_spawner_detect_player_ominous": {
+    "name": "particles_trial_spawner_detect_player_ominous",
+    "id": 3019
+  },
+  "particles_trial_spawner_become_ominous": {
+    "name": "particles_trial_spawner_become_ominous",
+    "id": 3020
+  },
+  "particles_trial_spawner_spawn_item": {
+    "name": "particles_trial_spawner_spawn_item",
+    "id": 3021
+  }
+}

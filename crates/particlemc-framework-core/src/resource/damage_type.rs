@@ -1,4 +1,4 @@
-﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
 //! 伤害类型注册表与伤害值类型（T7，对应 spec R5）。
 //!
@@ -68,6 +68,17 @@ impl DamageTypeRegistry {
     pub fn from_toml_file(path: &Path) -> Result<Self, RegistryError> {
         Ok(Self {
             inner: Registry::<DamageType>::from_toml_file(path)?,
+        })
+    }
+
+    /// 从 JSON 文件加载伤害类型注册表。
+    ///
+    /// # 错误
+    /// 路径不存在或条目无法反序列化时返回 [`RegistryError`]，由调用方决定
+    /// 回退为空表。
+    pub fn from_json_file(path: &Path) -> Result<Self, RegistryError> {
+        Ok(Self {
+            inner: Registry::<DamageType>::from_json_file(path)?,
         })
     }
 
@@ -189,8 +200,8 @@ mod tests {
     fn registry_loads_real_data_file_with_aligned_ids() {
         // 真实注册数据：50 项，id 与 Java DamageTypes 常量清单序位一致（0 基）。
         let path =
-            Path::new(env!("CARGO_MANIFEST_DIR")).join("../../resources/data/damage_types.toml");
-        let registry = DamageTypeRegistry::from_toml_file(&path).unwrap();
+            Path::new(env!("CARGO_MANIFEST_DIR")).join("../../resources/data/damage_types.json");
+        let registry = DamageTypeRegistry::from_json_file(&path).unwrap();
         assert_eq!(registry.len(), 50);
         // 首尾与任务要求的 common 类型 id 核对。
         assert_eq!(registry.by_id(0).unwrap().name, "minecraft:wither");
@@ -257,6 +268,7 @@ mod tests {
             amount: 5.0,
             source: DamageSource::Entity(7),
             damage_type: None,
+            cancelled: false,
         });
         app.update();
         app.update();

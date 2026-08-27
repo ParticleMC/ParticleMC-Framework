@@ -1,0 +1,34 @@
+{
+  "minecraft:empty": {
+    "id": 0,
+    "name": "minecraft:empty"
+  },
+  "minecraft:any_fuel": {
+    "id": 1,
+    "name": "minecraft:any_fuel"
+  },
+  "minecraft:item": {
+    "id": 2,
+    "name": "minecraft:item"
+  },
+  "minecraft:item_stack": {
+    "id": 3,
+    "name": "minecraft:item_stack"
+  },
+  "minecraft:tag": {
+    "id": 4,
+    "name": "minecraft:tag"
+  },
+  "minecraft:smithing_trim": {
+    "id": 5,
+    "name": "minecraft:smithing_trim"
+  },
+  "minecraft:with_remainder": {
+    "id": 6,
+    "name": "minecraft:with_remainder"
+  },
+  "minecraft:composite": {
+    "id": 7,
+    "name": "minecraft:composite"
+  }
+}

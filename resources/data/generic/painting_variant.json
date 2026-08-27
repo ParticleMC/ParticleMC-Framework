@@ -1,0 +1,696 @@
+{
+  "minecraft:bouquet": {
+    "name": "minecraft:bouquet",
+    "asset_id": "minecraft:bouquet",
+    "height": 3,
+    "width": 3,
+    "author": {
+      "color": "gray",
+      "translate": "painting.minecraft.bouquet.author"
+    },
+    "title": {
+      "color": "yellow",
+      "translate": "painting.minecraft.bouquet.title"
+    }
+  },
+  "minecraft:wither": {
+    "name": "minecraft:wither",
+    "asset_id": "minecraft:wither",
+    "height": 2,
+    "width": 2,
+    "title": {
+      "color": "yellow",
+      "translate": "painting.minecraft.wither.title"
+    }
+  },
+  "minecraft:alban": {
+    "name": "minecraft:alban",
+    "asset_id": "minecraft:alban",
+    "height": 1,
+    "width": 1,
+    "author": {
+      "color": "gray",
+      "translate": "painting.minecraft.alban.author"
+    },
+    "title": {
+      "color": "yellow",
+      "translate": "painting.minecraft.alban.title"
+    }
+  },
+  "minecraft:unpacked": {
+    "name": "minecraft:unpacked",
+    "asset_id": "minecraft:unpacked",
+    "height": 4,
+    "width": 4,
+    "author": {
+      "color": "gray",
+      "translate": "painting.minecraft.unpacked.author"
+    },
+    "title": {
+      "color": "yellow",
+      "translate": "painting.minecraft.unpacked.title"
+    }
+  },
+  "minecraft:aztec": {
+    "name": "minecraft:aztec",
+    "asset_id": "minecraft:aztec",
+    "height": 1,
+    "width": 1,
+    "author": {
+      "color": "gray",
+      "translate": "painting.minecraft.aztec.author"
+    },
+    "title": {
+      "color": "yellow",
+      "translate": "painting.minecraft.aztec.title"
+    }
+  },
+  "minecraft:match": {
+    "name": "minecraft:match",
+    "asset_id": "minecraft:match",
+    "height": 2,
+    "width": 2,
+    "author": {
+      "color": "gray",
+      "translate": "painting.minecraft.match.author"
+    },
+    "title": {
+      "color": "yellow",
+      "translate": "painting.minecraft.match.title"
+    }
+  },
+  "minecraft:finding": {
+    "name": "minecraft:finding",
+    "asset_id": "minecraft:finding",
+    "height": 2,
+    "width": 4,
+    "author": {
+      "color": "gray",
+      "translate": "painting.minecraft.finding.author"
+    },
+    "title": {
+      "color": "yellow",
+      "translate": "painting.minecraft.finding.title"
+    }
+  },
+  "minecraft:baroque": {
+    "name": "minecraft:baroque",
+    "asset_id": "minecraft:baroque",
+    "height": 2,
+    "width": 2,
+    "author": {
+      "color": "gray",
+      "translate": "painting.minecraft.baroque.author"
+    },
+    "title": {
+      "color": "yellow",
+      "translate": "painting.minecraft.baroque.title"
+    }
+  },
+  "minecraft:endboss": {
+    "name": "minecraft:endboss",
+    "asset_id": "minecraft:endboss",
+    "height": 3,
+    "width": 3,
+    "author": {
+      "color": "gray",
+      "translate": "painting.minecraft.endboss.author"
+    },
+    "title": {
+      "color": "yellow",
+      "translate": "painting.minecraft.endboss.title"
+    }
+  },
+  "minecraft:orb": {
+    "name": "minecraft:orb",
+    "asset_id": "minecraft:orb",
+    "height": 4,
+    "width": 4,
+    "author": {
+      "color": "gray",
+      "translate": "painting.minecraft.orb.author"
+    },
+    "title": {
+      "color": "yellow",
+      "translate": "painting.minecraft.orb.title"
+    }
+  },
+  "minecraft:aztec2": {
+    "name": "minecraft:aztec2",
+    "asset_id": "minecraft:aztec2",
+    "height": 1,
+    "width": 1,
+    "author": {
+      "color": "gray",
+      "translate": "painting.minecraft.aztec2.author"
+    },
+    "title": {
+      "color": "yellow",
+      "translate": "painting.minecraft.aztec2.title"
+    }
+  },
+  "minecraft:sunflowers": {
+    "name": "minecraft:sunflowers",
+    "asset_id": "minecraft:sunflowers",
+    "height": 3,
+    "width": 3,
+    "author": {
+      "color": "gray",
+      "translate": "painting.minecraft.sunflowers.author"
+    },
+    "title": {
+      "color": "yellow",
+      "translate": "painting.minecraft.sunflowers.title"
+    }
+  },
+  "minecraft:changing": {
+    "name": "minecraft:changing",
+    "asset_id": "minecraft:changing",
+    "height": 2,
+    "width": 4,
+    "author": {
+      "color": "gray",
+      "translate": "painting.minecraft.changing.author"
+    },
+    "title": {
+      "color": "yellow",
+      "translate": "painting.minecraft.changing.title"
+    }
+  },
+  "minecraft:wasteland": {
+    "name": "minecraft:wasteland",
+    "asset_id": "minecraft:wasteland",
+    "height": 1,
+    "width": 1,
+    "author": {
+      "color": "gray",
+      "translate": "painting.minecraft.wasteland.author"
+    },
+    "title": {
+      "color": "yellow",
+      "translate": "painting.minecraft.wasteland.title"
+    }
+  },
+  "minecraft:donkey_kong": {
+    "name": "minecraft:donkey_kong",
+    "asset_id": "minecraft:donkey_kong",
+    "height": 3,
+    "width": 4,
+    "author": {
+      "color": "gray",
+      "translate": "painting.minecraft.donkey_kong.author"
+    },
+    "title": {
+      "color": "yellow",
+      "translate": "painting.minecraft.donkey_kong.title"
+    }
+  },
+  "minecraft:bust": {
+    "name": "minecraft:bust",
+    "asset_id": "minecraft:bust",
+    "height": 2,
+    "width": 2,
+    "author": {
+      "color": "gray",
+      "translate": "painting.minecraft.bust.author"
+    },
+    "title": {
+      "color": "yellow",
+      "translate": "painting.minecraft.bust.title"
+    }
+  },
+  "minecraft:pool": {
+    "name": "minecraft:pool",
+    "asset_id": "minecraft:pool",
+    "height": 1,
+    "width": 2,
+    "author": {
+      "color": "gray",
+      "translate": "painting.minecraft.pool.author"
+    },
+    "title": {
+      "color": "yellow",
+      "translate": "painting.minecraft.pool.title"
+    }
+  },
+  "minecraft:pigscene": {
+    "name": "minecraft:pigscene",
+    "asset_id": "minecraft:pigscene",
+    "height": 4,
+    "width": 4,
+    "author": {
+      "color": "gray",
+      "translate": "painting.minecraft.pigscene.author"
+    },
+    "title": {
+      "color": "yellow",
+      "translate": "painting.minecraft.pigscene.title"
+    }
+  },
+  "minecraft:burning_skull": {
+    "name": "minecraft:burning_skull",
+    "asset_id": "minecraft:burning_skull",
+    "height": 4,
+    "width": 4,
+    "author": {
+      "color": "gray",
+      "translate": "painting.minecraft.burning_skull.author"
+    },
+    "title": {
+      "color": "yellow",
+      "translate": "painting.minecraft.burning_skull.title"
+    }
+  },
+  "minecraft:fire": {
+    "name": "minecraft:fire",
+    "asset_id": "minecraft:fire",
+    "height": 2,
+    "width": 2,
+    "title": {
+      "color": "yellow",
+      "translate": "painting.minecraft.fire.title"
+    }
+  },
+  "minecraft:sea": {
+    "name": "minecraft:sea",
+    "asset_id": "minecraft:sea",
+    "height": 1,
+    "width": 2,
+    "author": {
+      "color": "gray",
+      "translate": "painting.minecraft.sea.author"
+    },
+    "title": {
+      "color": "yellow",
+      "translate": "painting.minecraft.sea.title"
+    }
+  },
+  "minecraft:sunset": {
+    "name": "minecraft:sunset",
+    "asset_id": "minecraft:sunset",
+    "height": 1,
+    "width": 2,
+    "author": {
+      "color": "gray",
+      "translate": "painting.minecraft.sunset.author"
+    },
+    "title": {
+      "color": "yellow",
+      "translate": "painting.minecraft.sunset.title"
+    }
+  },
+  "minecraft:pond": {
+    "name": "minecraft:pond",
+    "asset_id": "minecraft:pond",
+    "height": 4,
+    "width": 3,
+    "author": {
+      "color": "gray",
+      "translate": "painting.minecraft.pond.author"
+    },
+    "title": {
+      "color": "yellow",
+      "translate": "painting.minecraft.pond.title"
+    }
+  },
+  "minecraft:humble": {
+    "name": "minecraft:humble",
+    "asset_id": "minecraft:humble",
+    "height": 2,
+    "width": 2,
+    "author": {
+      "color": "gray",
+      "translate": "painting.minecraft.humble.author"
+    },
+    "title": {
+      "color": "yellow",
+      "translate": "painting.minecraft.humble.title"
+    }
+  },
+  "minecraft:tides": {
+    "name": "minecraft:tides",
+    "asset_id": "minecraft:tides",
+    "height": 3,
+    "width": 3,
+    "author": {
+      "color": "gray",
+      "translate": "painting.minecraft.tides.author"
+    },
+    "title": {
+      "color": "yellow",
+      "translate": "painting.minecraft.tides.title"
+    }
+  },
+  "minecraft:prairie_ride": {
+    "name": "minecraft:prairie_ride",
+    "asset_id": "minecraft:prairie_ride",
+    "height": 2,
+    "width": 1,
+    "author": {
+      "color": "gray",
+      "translate": "painting.minecraft.prairie_ride.author"
+    },
+    "title": {
+      "color": "yellow",
+      "translate": "painting.minecraft.prairie_ride.title"
+    }
+  },
+  "minecraft:fern": {
+    "name": "minecraft:fern",
+    "asset_id": "minecraft:fern",
+    "height": 3,
+    "width": 3,
+    "author": {
+      "color": "gray",
+      "translate": "painting.minecraft.fern.author"
+    },
+    "title": {
+      "color": "yellow",
+      "translate": "painting.minecraft.fern.title"
+    }
+  },
+  "minecraft:passage": {
+    "name": "minecraft:passage",
+    "asset_id": "minecraft:passage",
+    "height": 2,
+    "width": 4,
+    "author": {
+      "color": "gray",
+      "translate": "painting.minecraft.passage.author"
+    },
+    "title": {
+      "color": "yellow",
+      "translate": "painting.minecraft.passage.title"
+    }
+  },
+  "minecraft:lowmist": {
+    "name": "minecraft:lowmist",
+    "asset_id": "minecraft:lowmist",
+    "height": 2,
+    "width": 4,
+    "author": {
+      "color": "gray",
+      "translate": "painting.minecraft.lowmist.author"
+    },
+    "title": {
+      "color": "yellow",
+      "translate": "painting.minecraft.lowmist.title"
+    }
+  },
+  "minecraft:courbet": {
+    "name": "minecraft:courbet",
+    "asset_id": "minecraft:courbet",
+    "height": 1,
+    "width": 2,
+    "author": {
+      "color": "gray",
+      "translate": "painting.minecraft.courbet.author"
+    },
+    "title": {
+      "color": "yellow",
+      "translate": "painting.minecraft.courbet.title"
+    }
+  },
+  "minecraft:wanderer": {
+    "name": "minecraft:wanderer",
+    "asset_id": "minecraft:wanderer",
+    "height": 2,
+    "width": 1,
+    "author": {
+      "color": "gray",
+      "translate": "painting.minecraft.wanderer.author"
+    },
+    "title": {
+      "color": "yellow",
+      "translate": "painting.minecraft.wanderer.title"
+    }
+  },
+  "minecraft:backyard": {
+    "name": "minecraft:backyard",
+    "asset_id": "minecraft:backyard",
+    "height": 4,
+    "width": 3,
+    "author": {
+      "color": "gray",
+      "translate": "painting.minecraft.backyard.author"
+    },
+    "title": {
+      "color": "yellow",
+      "translate": "painting.minecraft.backyard.title"
+    }
+  },
+  "minecraft:earth": {
+    "name": "minecraft:earth",
+    "asset_id": "minecraft:earth",
+    "height": 2,
+    "width": 2,
+    "title": {
+      "color": "yellow",
+      "translate": "painting.minecraft.earth.title"
+    }
+  },
+  "minecraft:skull_and_roses": {
+    "name": "minecraft:skull_and_roses",
+    "asset_id": "minecraft:skull_and_roses",
+    "height": 2,
+    "width": 2,
+    "author": {
+      "color": "gray",
+      "translate": "painting.minecraft.skull_and_roses.author"
+    },
+    "title": {
+      "color": "yellow",
+      "translate": "painting.minecraft.skull_and_roses.title"
+    }
+  },
+  "minecraft:cavebird": {
+    "name": "minecraft:cavebird",
+    "asset_id": "minecraft:cavebird",
+    "height": 3,
+    "width": 3,
+    "author": {
+      "color": "gray",
+      "translate": "painting.minecraft.cavebird.author"
+    },
+    "title": {
+      "color": "yellow",
+      "translate": "painting.minecraft.cavebird.title"
+    }
+  },
+  "minecraft:fighters": {
+    "name": "minecraft:fighters",
+    "asset_id": "minecraft:fighters",
+    "height": 2,
+    "width": 4,
+    "author": {
+      "color": "gray",
+      "translate": "painting.minecraft.fighters.author"
+    },
+    "title": {
+      "color": "yellow",
+      "translate": "painting.minecraft.fighters.title"
+    }
+  },
+  "minecraft:cotan": {
+    "name": "minecraft:cotan",
+    "asset_id": "minecraft:cotan",
+    "height": 3,
+    "width": 3,
+    "author": {
+      "color": "gray",
+      "translate": "painting.minecraft.cotan.author"
+    },
+    "title": {
+      "color": "yellow",
+      "translate": "painting.minecraft.cotan.title"
+    }
+  },
+  "minecraft:creebet": {
+    "name": "minecraft:creebet",
+    "asset_id": "minecraft:creebet",
+    "height": 1,
+    "width": 2,
+    "author": {
+      "color": "gray",
+      "translate": "painting.minecraft.creebet.author"
+    },
+    "title": {
+      "color": "yellow",
+      "translate": "painting.minecraft.creebet.title"
+    }
+  },
+  "minecraft:owlemons": {
+    "name": "minecraft:owlemons",
+    "asset_id": "minecraft:owlemons",
+    "height": 3,
+    "width": 3,
+    "author": {
+      "color": "gray",
+      "translate": "painting.minecraft.owlemons.author"
+    },
+    "title": {
+      "color": "yellow",
+      "translate": "painting.minecraft.owlemons.title"
+    }
+  },
+  "minecraft:graham": {
+    "name": "minecraft:graham",
+    "asset_id": "minecraft:graham",
+    "height": 2,
+    "width": 1,
+    "author": {
+      "color": "gray",
+      "translate": "painting.minecraft.graham.author"
+    },
+    "title": {
+      "color": "yellow",
+      "translate": "painting.minecraft.graham.title"
+    }
+  },
+  "minecraft:dennis": {
+    "name": "minecraft:dennis",
+    "asset_id": "minecraft:dennis",
+    "height": 3,
+    "width": 3,
+    "author": {
+      "color": "gray",
+      "translate": "painting.minecraft.dennis.author"
+    },
+    "title": {
+      "color": "yellow",
+      "translate": "painting.minecraft.dennis.title"
+    }
+  },
+  "minecraft:meditative": {
+    "name": "minecraft:meditative",
+    "asset_id": "minecraft:meditative",
+    "height": 1,
+    "width": 1,
+    "author": {
+      "color": "gray",
+      "translate": "painting.minecraft.meditative.author"
+    },
+    "title": {
+      "color": "yellow",
+      "translate": "painting.minecraft.meditative.title"
+    }
+  },
+  "minecraft:kebab": {
+    "name": "minecraft:kebab",
+    "asset_id": "minecraft:kebab",
+    "height": 1,
+    "width": 1,
+    "author": {
+      "color": "gray",
+      "translate": "painting.minecraft.kebab.author"
+    },
+    "title": {
+      "color": "yellow",
+      "translate": "painting.minecraft.kebab.title"
+    }
+  },
+  "minecraft:stage": {
+    "name": "minecraft:stage",
+    "asset_id": "minecraft:stage",
+    "height": 2,
+    "width": 2,
+    "author": {
+      "color": "gray",
+      "translate": "painting.minecraft.stage.author"
+    },
+    "title": {
+      "color": "yellow",
+      "translate": "painting.minecraft.stage.title"
+    }
+  },
+  "minecraft:bomb": {
+    "name": "minecraft:bomb",
+    "asset_id": "minecraft:bomb",
+    "height": 1,
+    "width": 1,
+    "author": {
+      "color": "gray",
+      "translate": "painting.minecraft.bomb.author"
+    },
+    "title": {
+      "color": "yellow",
+      "translate": "painting.minecraft.bomb.title"
+    }
+  },
+  "minecraft:plant": {
+    "name": "minecraft:plant",
+    "asset_id": "minecraft:plant",
+    "height": 1,
+    "width": 1,
+    "author": {
+      "color": "gray",
+      "translate": "painting.minecraft.plant.author"
+    },
+    "title": {
+      "color": "yellow",
+      "translate": "painting.minecraft.plant.title"
+    }
+  },
+  "minecraft:water": {
+    "name": "minecraft:water",
+    "asset_id": "minecraft:water",
+    "height": 2,
+    "width": 2,
+    "title": {
+      "color": "yellow",
+      "translate": "painting.minecraft.water.title"
+    }
+  },
+  "minecraft:pointer": {
+    "name": "minecraft:pointer",
+    "asset_id": "minecraft:pointer",
+    "height": 4,
+    "width": 4,
+    "author": {
+      "color": "gray",
+      "translate": "painting.minecraft.pointer.author"
+    },
+    "title": {
+      "color": "yellow",
+      "translate": "painting.minecraft.pointer.title"
+    }
+  },
+  "minecraft:skeleton": {
+    "name": "minecraft:skeleton",
+    "asset_id": "minecraft:skeleton",
+    "height": 3,
+    "width": 4,
+    "author": {
+      "color": "gray",
+      "translate": "painting.minecraft.skeleton.author"
+    },
+    "title": {
+      "color": "yellow",
+      "translate": "painting.minecraft.skeleton.title"
+    }
+  },
+  "minecraft:void": {
+    "name": "minecraft:void",
+    "asset_id": "minecraft:void",
+    "height": 2,
+    "width": 2,
+    "author": {
+      "color": "gray",
+      "translate": "painting.minecraft.void.author"
+    },
+    "title": {
+      "color": "yellow",
+      "translate": "painting.minecraft.void.title"
+    }
+  },
+  "minecraft:wind": {
+    "name": "minecraft:wind",
+    "asset_id": "minecraft:wind",
+    "height": 2,
+    "width": 2,
+    "title": {
+      "color": "yellow",
+      "translate": "painting.minecraft.wind.title"
+    }
+  }
+}

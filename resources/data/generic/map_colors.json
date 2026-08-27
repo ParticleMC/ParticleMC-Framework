@@ -1,0 +1,312 @@
+{
+  "terracotta_brown": {
+    "id": 48,
+    "color": 4993571,
+    "name": "TERRACOTTA_BROWN"
+  },
+  "raw_iron": {
+    "id": 60,
+    "color": 14200723,
+    "name": "RAW_IRON"
+  },
+  "color_purple": {
+    "id": 24,
+    "color": 8339378,
+    "name": "COLOR_PURPLE"
+  },
+  "terracotta_light_blue": {
+    "id": 39,
+    "color": 7367818,
+    "name": "TERRACOTTA_LIGHT_BLUE"
+  },
+  "terracotta_cyan": {
+    "id": 45,
+    "color": 5725276,
+    "name": "TERRACOTTA_CYAN"
+  },
+  "terracotta_light_gray": {
+    "id": 44,
+    "color": 8874850,
+    "name": "TERRACOTTA_LIGHT_GRAY"
+  },
+  "podzol": {
+    "id": 34,
+    "color": 8476209,
+    "name": "PODZOL"
+  },
+  "color_light_blue": {
+    "id": 17,
+    "color": 6724056,
+    "name": "COLOR_LIGHT_BLUE"
+  },
+  "color_brown": {
+    "id": 26,
+    "color": 6704179,
+    "name": "COLOR_BROWN"
+  },
+  "terracotta_red": {
+    "id": 50,
+    "color": 9321518,
+    "name": "TERRACOTTA_RED"
+  },
+  "lapis": {
+    "id": 32,
+    "color": 4882687,
+    "name": "LAPIS"
+  },
+  "fire": {
+    "id": 4,
+    "color": 16711680,
+    "name": "FIRE"
+  },
+  "dirt": {
+    "id": 10,
+    "color": 9923917,
+    "name": "DIRT"
+  },
+  "none": {
+    "id": 0,
+    "color": 0,
+    "name": "NONE"
+  },
+  "clay": {
+    "id": 9,
+    "color": 10791096,
+    "name": "CLAY"
+  },
+  "terracotta_orange": {
+    "id": 37,
+    "color": 10441252,
+    "name": "TERRACOTTA_ORANGE"
+  },
+  "terracotta_gray": {
+    "id": 43,
+    "color": 3746083,
+    "name": "TERRACOTTA_GRAY"
+  },
+  "terracotta_green": {
+    "id": 49,
+    "color": 5001770,
+    "name": "TERRACOTTA_GREEN"
+  },
+  "wood": {
+    "id": 13,
+    "color": 9402184,
+    "name": "WOOD"
+  },
+  "crimson_hyphae": {
+    "id": 54,
+    "color": 6035741,
+    "name": "CRIMSON_HYPHAE"
+  },
+  "warped_nylium": {
+    "id": 55,
+    "color": 1474182,
+    "name": "WARPED_NYLIUM"
+  },
+  "color_black": {
+    "id": 29,
+    "color": 1644825,
+    "name": "COLOR_BLACK"
+  },
+  "terracotta_blue": {
+    "id": 47,
+    "color": 4996700,
+    "name": "TERRACOTTA_BLUE"
+  },
+  "crimson_stem": {
+    "id": 53,
+    "color": 9715553,
+    "name": "CRIMSON_STEM"
+  },
+  "nether": {
+    "id": 35,
+    "color": 7340544,
+    "name": "NETHER"
+  },
+  "color_cyan": {
+    "id": 23,
+    "color": 5013401,
+    "name": "COLOR_CYAN"
+  },
+  "plant": {
+    "id": 7,
+    "color": 31744,
+    "name": "PLANT"
+  },
+  "quartz": {
+    "id": 14,
+    "color": 16776437,
+    "name": "QUARTZ"
+  },
+  "color_orange": {
+    "id": 15,
+    "color": 14188339,
+    "name": "COLOR_ORANGE"
+  },
+  "terracotta_magenta": {
+    "id": 38,
+    "color": 9787244,
+    "name": "TERRACOTTA_MAGENTA"
+  },
+  "warped_stem": {
+    "id": 56,
+    "color": 3837580,
+    "name": "WARPED_STEM"
+  },
+  "terracotta_purple": {
+    "id": 46,
+    "color": 8014168,
+    "name": "TERRACOTTA_PURPLE"
+  },
+  "terracotta_white": {
+    "id": 36,
+    "color": 13742497,
+    "name": "TERRACOTTA_WHITE"
+  },
+  "terracotta_pink": {
+    "id": 42,
+    "color": 10505550,
+    "name": "TERRACOTTA_PINK"
+  },
+  "terracotta_light_green": {
+    "id": 41,
+    "color": 6780213,
+    "name": "TERRACOTTA_LIGHT_GREEN"
+  },
+  "color_magenta": {
+    "id": 16,
+    "color": 11685080,
+    "name": "COLOR_MAGENTA"
+  },
+  "stone": {
+    "id": 11,
+    "color": 7368816,
+    "name": "STONE"
+  },
+  "color_yellow": {
+    "id": 18,
+    "color": 15066419,
+    "name": "COLOR_YELLOW"
+  },
+  "warped_hyphae": {
+    "id": 57,
+    "color": 5647422,
+    "name": "WARPED_HYPHAE"
+  },
+  "ice": {
+    "id": 5,
+    "color": 10526975,
+    "name": "ICE"
+  },
+  "terracotta_yellow": {
+    "id": 40,
+    "color": 12223780,
+    "name": "TERRACOTTA_YELLOW"
+  },
+  "emerald": {
+    "id": 33,
+    "color": 55610,
+    "name": "EMERALD"
+  },
+  "grass": {
+    "id": 1,
+    "color": 8368696,
+    "name": "GRASS"
+  },
+  "crimson_nylium": {
+    "id": 52,
+    "color": 12398641,
+    "name": "CRIMSON_NYLIUM"
+  },
+  "terracotta_black": {
+    "id": 51,
+    "color": 2430480,
+    "name": "TERRACOTTA_BLACK"
+  },
+  "deepslate": {
+    "id": 59,
+    "color": 6579300,
+    "name": "DEEPSLATE"
+  },
+  "diamond": {
+    "id": 31,
+    "color": 6085589,
+    "name": "DIAMOND"
+  },
+  "color_gray": {
+    "id": 21,
+    "color": 5000268,
+    "name": "COLOR_GRAY"
+  },
+  "warped_wart_block": {
+    "id": 58,
+    "color": 1356933,
+    "name": "WARPED_WART_BLOCK"
+  },
+  "color_blue": {
+    "id": 25,
+    "color": 3361970,
+    "name": "COLOR_BLUE"
+  },
+  "color_pink": {
+    "id": 20,
+    "color": 15892389,
+    "name": "COLOR_PINK"
+  },
+  "wool": {
+    "id": 3,
+    "color": 13092807,
+    "name": "WOOL"
+  },
+  "snow": {
+    "id": 8,
+    "color": 16777215,
+    "name": "SNOW"
+  },
+  "color_light_green": {
+    "id": 19,
+    "color": 8375321,
+    "name": "COLOR_LIGHT_GREEN"
+  },
+  "water": {
+    "id": 12,
+    "color": 4210943,
+    "name": "WATER"
+  },
+  "sand": {
+    "id": 2,
+    "color": 16247203,
+    "name": "SAND"
+  },
+  "color_light_gray": {
+    "id": 22,
+    "color": 10066329,
+    "name": "COLOR_LIGHT_GRAY"
+  },
+  "glow_lichen": {
+    "id": 61,
+    "color": 8365974,
+    "name": "GLOW_LICHEN"
+  },
+  "metal": {
+    "id": 6,
+    "color": 10987431,
+    "name": "METAL"
+  },
+  "color_green": {
+    "id": 27,
+    "color": 6717235,
+    "name": "COLOR_GREEN"
+  },
+  "gold": {
+    "id": 30,
+    "color": 16445005,
+    "name": "GOLD"
+  },
+  "color_red": {
+    "id": 28,
+    "color": 10040115,
+    "name": "COLOR_RED"
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "minecraft:play_time": {
+    "name": "minecraft:play_time",
+    "category": 8,
+    "id": 1
+  },
+  "minecraft:walk_one_cm": {
+    "name": "minecraft:walk_one_cm",
+    "category": 8,
+    "id": 6
+  },
+  "minecraft:jump": {
+    "name": "minecraft:jump",
+    "category": 8,
+    "id": 23
+  },
+  "minecraft:deaths": {
+    "name": "minecraft:deaths",
+    "category": 8,
+    "id": 32
+  },
+  "minecraft:mob_kills": {
+    "name": "minecraft:mob_kills",
+    "category": 8,
+    "id": 33
+  },
+  "minecraft:mine_block": {
+    "name": "minecraft:mine_block",
+    "category": 0,
+    "id": 1
+  },
+  "minecraft:use_item": {
+    "name": "minecraft:use_item",
+    "category": 2,
+    "id": 1
+  },
+  "minecraft:kill_entity": {
+    "name": "minecraft:kill_entity",
+    "category": 6,
+    "id": 150
+  },
+  "minecraft:killed_by": {
+    "name": "minecraft:killed_by",
+    "category": 7,
+    "id": 150
+  }
+}

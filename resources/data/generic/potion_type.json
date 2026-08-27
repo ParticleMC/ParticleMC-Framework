@@ -1,0 +1,186 @@
+{
+  "minecraft:water": {
+    "name": "minecraft:water",
+    "id": 0
+  },
+  "minecraft:mundane": {
+    "name": "minecraft:mundane",
+    "id": 1
+  },
+  "minecraft:thick": {
+    "name": "minecraft:thick",
+    "id": 2
+  },
+  "minecraft:awkward": {
+    "name": "minecraft:awkward",
+    "id": 3
+  },
+  "minecraft:night_vision": {
+    "name": "minecraft:night_vision",
+    "id": 4
+  },
+  "minecraft:long_night_vision": {
+    "name": "minecraft:long_night_vision",
+    "id": 5
+  },
+  "minecraft:invisibility": {
+    "name": "minecraft:invisibility",
+    "id": 6
+  },
+  "minecraft:long_invisibility": {
+    "name": "minecraft:long_invisibility",
+    "id": 7
+  },
+  "minecraft:leaping": {
+    "name": "minecraft:leaping",
+    "id": 8
+  },
+  "minecraft:long_leaping": {
+    "name": "minecraft:long_leaping",
+    "id": 9
+  },
+  "minecraft:strong_leaping": {
+    "name": "minecraft:strong_leaping",
+    "id": 10
+  },
+  "minecraft:fire_resistance": {
+    "name": "minecraft:fire_resistance",
+    "id": 11
+  },
+  "minecraft:long_fire_resistance": {
+    "name": "minecraft:long_fire_resistance",
+    "id": 12
+  },
+  "minecraft:swiftness": {
+    "name": "minecraft:swiftness",
+    "id": 13
+  },
+  "minecraft:long_swiftness": {
+    "name": "minecraft:long_swiftness",
+    "id": 14
+  },
+  "minecraft:strong_swiftness": {
+    "name": "minecraft:strong_swiftness",
+    "id": 15
+  },
+  "minecraft:slowness": {
+    "name": "minecraft:slowness",
+    "id": 16
+  },
+  "minecraft:long_slowness": {
+    "name": "minecraft:long_slowness",
+    "id": 17
+  },
+  "minecraft:strong_slowness": {
+    "name": "minecraft:strong_slowness",
+    "id": 18
+  },
+  "minecraft:turtle_master": {
+    "name": "minecraft:turtle_master",
+    "id": 19
+  },
+  "minecraft:long_turtle_master": {
+    "name": "minecraft:long_turtle_master",
+    "id": 20
+  },
+  "minecraft:strong_turtle_master": {
+    "name": "minecraft:strong_turtle_master",
+    "id": 21
+  },
+  "minecraft:water_breathing": {
+    "name": "minecraft:water_breathing",
+    "id": 22
+  },
+  "minecraft:long_water_breathing": {
+    "name": "minecraft:long_water_breathing",
+    "id": 23
+  },
+  "minecraft:healing": {
+    "name": "minecraft:healing",
+    "id": 24
+  },
+  "minecraft:strong_healing": {
+    "name": "minecraft:strong_healing",
+    "id": 25
+  },
+  "minecraft:harming": {
+    "name": "minecraft:harming",
+    "id": 26
+  },
+  "minecraft:strong_harming": {
+    "name": "minecraft:strong_harming",
+    "id": 27
+  },
+  "minecraft:poison": {
+    "name": "minecraft:poison",
+    "id": 28
+  },
+  "minecraft:long_poison": {
+    "name": "minecraft:long_poison",
+    "id": 29
+  },
+  "minecraft:strong_poison": {
+    "name": "minecraft:strong_poison",
+    "id": 30
+  },
+  "minecraft:regeneration": {
+    "name": "minecraft:regeneration",
+    "id": 31
+  },
+  "minecraft:long_regeneration": {
+    "name": "minecraft:long_regeneration",
+    "id": 32
+  },
+  "minecraft:strong_regeneration": {
+    "name": "minecraft:strong_regeneration",
+    "id": 33
+  },
+  "minecraft:strength": {
+    "name": "minecraft:strength",
+    "id": 34
+  },
+  "minecraft:long_strength": {
+    "name": "minecraft:long_strength",
+    "id": 35
+  },
+  "minecraft:strong_strength": {
+    "name": "minecraft:strong_strength",
+    "id": 36
+  },
+  "minecraft:weakness": {
+    "name": "minecraft:weakness",
+    "id": 37
+  },
+  "minecraft:long_weakness": {
+    "name": "minecraft:long_weakness",
+    "id": 38
+  },
+  "minecraft:luck": {
+    "name": "minecraft:luck",
+    "id": 39
+  },
+  "minecraft:slow_falling": {
+    "name": "minecraft:slow_falling",
+    "id": 40
+  },
+  "minecraft:long_slow_falling": {
+    "name": "minecraft:long_slow_falling",
+    "id": 41
+  },
+  "minecraft:wind_charged": {
+    "name": "minecraft:wind_charged",
+    "id": 42
+  },
+  "minecraft:weaving": {
+    "name": "minecraft:weaving",
+    "id": 43
+  },
+  "minecraft:oozing": {
+    "name": "minecraft:oozing",
+    "id": 44
+  },
+  "minecraft:infested": {
+    "name": "minecraft:infested",
+    "id": 45
+  }
+}

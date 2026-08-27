@@ -1,4 +1,4 @@
-﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
 //! 事件层（`Message`）与事件总线。
 //!
@@ -89,6 +89,8 @@ pub struct EntityDamage {
     pub source: DamageSource,
     /// 伤害类型（T7 追加：注册表条目，`None` 表示未指定）。
     pub damage_type: Option<DamageType>,
+    /// 是否已取消（前置钩子置为 `true` 时跳过伤害结算）。
+    pub cancelled: bool,
 }
 
 /// 实体死亡事件。
@@ -318,6 +320,7 @@ mod tests {
             amount: 5.0,
             source: DamageSource::Entity(7),
             damage_type: None,
+            cancelled: false,
         });
 
         // 自研 ECS 消息时序：write_message 后跨两帧——第一次 update 置

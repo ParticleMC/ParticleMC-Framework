@@ -1,0 +1,46 @@
+{
+  "0": {
+    "id": 0,
+    "type": "master"
+  },
+  "1": {
+    "id": 1,
+    "type": "music"
+  },
+  "2": {
+    "id": 2,
+    "type": "record"
+  },
+  "3": {
+    "id": 3,
+    "type": "weather"
+  },
+  "4": {
+    "id": 4,
+    "type": "block"
+  },
+  "5": {
+    "id": 5,
+    "type": "hostile"
+  },
+  "6": {
+    "id": 6,
+    "type": "neutral"
+  },
+  "7": {
+    "id": 7,
+    "type": "player"
+  },
+  "8": {
+    "id": 8,
+    "type": "ambient"
+  },
+  "9": {
+    "id": 9,
+    "type": "voice"
+  },
+  "10": {
+    "id": 10,
+    "type": "ui"
+  }
+}

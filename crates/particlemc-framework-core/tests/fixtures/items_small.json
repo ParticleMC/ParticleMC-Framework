@@ -1,0 +1,11 @@
+{
+  "item1": {
+    "name": "item1",
+    "id": 0,
+    "maxStackSize": 64
+  },
+  "item2": {
+    "name": "item2",
+    "id": 1
+  }
+}

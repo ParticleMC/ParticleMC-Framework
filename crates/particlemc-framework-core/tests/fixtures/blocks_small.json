@@ -1,0 +1,19 @@
+{
+  "minecraft:air": {
+    "name": "minecraft:air",
+    "id": 0,
+    "translationKey": "block.minecraft.air"
+  },
+  "minecraft:stone": {
+    "name": "minecraft:stone",
+    "id": 1,
+    "translationKey": "block.minecraft.stone",
+    "hardness": 1.5,
+    "soundGroup": "stone"
+  },
+  "minecraft:grass": {
+    "name": "minecraft:grass",
+    "id": 2,
+    "translationKey": "block.minecraft.grass"
+  }
+}

@@ -195,68 +195,68 @@ impl Plugin for McServerPlugin {
 
         // 3. 核心注册表（方块 / 物品 / 实体类型）始终加载。
         app.insert_resource(
-            BlockRegistry::from_toml_file(&self.data_dir.join("blocks.toml")).unwrap_or_default(),
+            BlockRegistry::from_json_file(&self.data_dir.join("blocks.json")).unwrap_or_default(),
         )
         .insert_resource(
-            ItemRegistry::from_toml_file(&self.data_dir.join("items.toml")).unwrap_or_default(),
+            ItemRegistry::from_json_file(&self.data_dir.join("items.json")).unwrap_or_default(),
         )
         .insert_resource(
-            EntityTypeRegistry::from_toml_file(&self.data_dir.join("entity_types.toml"))
+            EntityTypeRegistry::from_json_file(&self.data_dir.join("entity_types.json"))
                 .unwrap_or_default(),
         );
 
         // 3.1 通用注册表与战利品表：始终加载（R4），覆盖 generic/ 与 loot_tables/ 全部注册数据。
         //     目录缺失或解析失败时回退为空表（unwrap_or_default），不 panic。
         app.insert_resource(
-            GenericRegistry::load_directory(&self.data_dir.join("generic")).unwrap_or_default(),
+            GenericRegistry::load_json_directory(&self.data_dir.join("generic")).unwrap_or_default(),
         )
         .insert_resource(
-            LootTableRegistry::load_directory(&self.data_dir.join("loot_tables"))
+            LootTableRegistry::load_json_directory(&self.data_dir.join("loot_tables"))
                 .unwrap_or_default(),
         );
 
-        // 3.2 属性注册表（R8）：始终加载，`attributes.toml` 缺失或解析失败时回退为空表。
+        // 3.2 属性注册表（R8）：始终加载，`attributes.json` 缺失或解析失败时回退为空表。
         app.insert_resource(
-            AttributeRegistry::from_toml_file(&self.data_dir.join("attributes.toml"))
+            AttributeRegistry::from_json_file(&self.data_dir.join("attributes.json"))
                 .unwrap_or_default(),
         );
 
         // 4. 世界类注册表与标签：仅在全量预热时加载。
         if self.load_all {
             app.insert_resource(
-                BiomeRegistry::from_toml_file(&self.data_dir.join("biomes.toml"))
+                BiomeRegistry::from_json_file(&self.data_dir.join("biomes.json"))
                     .unwrap_or_default(),
             )
             .insert_resource(
-                DimensionTypeRegistry::from_toml_file(&self.data_dir.join("dimension_types.toml"))
+                DimensionTypeRegistry::from_json_file(&self.data_dir.join("dimension_types.json"))
                     .unwrap_or_default(),
             )
             .insert_resource(
-                FluidRegistry::from_toml_file(&self.data_dir.join("fluids.toml"))
+                FluidRegistry::from_json_file(&self.data_dir.join("fluids.json"))
                     .unwrap_or_default(),
             )
             .insert_resource(
-                ParticleRegistry::from_toml_file(&self.data_dir.join("particles.toml"))
+                ParticleRegistry::from_json_file(&self.data_dir.join("particles.json"))
                     .unwrap_or_default(),
             )
             .insert_resource(
-                SoundEventRegistry::from_toml_file(&self.data_dir.join("sound_events.toml"))
+                SoundEventRegistry::from_json_file(&self.data_dir.join("sound_events.json"))
                     .unwrap_or_default(),
             )
             .insert_resource(
-                DamageTypeRegistry::from_toml_file(&self.data_dir.join("damage_types.toml"))
+                DamageTypeRegistry::from_json_file(&self.data_dir.join("damage_types.json"))
                     .unwrap_or_default(),
             )
             .insert_resource(
-                EnchantmentRegistry::from_toml_file(&self.data_dir.join("enchantments.toml"))
+                EnchantmentRegistry::from_json_file(&self.data_dir.join("enchantments.json"))
                     .unwrap_or_default(),
             )
             .insert_resource(
-                PotionEffectRegistry::from_toml_file(&self.data_dir.join("potion_effects.toml"))
+                PotionEffectRegistry::from_json_file(&self.data_dir.join("potion_effects.json"))
                     .unwrap_or_default(),
             )
             .insert_resource(
-                TagRegistry::load_directory(&self.data_dir.join("tags")).unwrap_or_default(),
+                TagRegistry::load_json_directory(&self.data_dir.join("tags")).unwrap_or_default(),
             );
         } else {
             app.init_resource::<BiomeRegistry>()
@@ -295,8 +295,7 @@ impl Plugin for McServerPlugin {
             .add_message::<event::EntityInteract>()
             .add_message::<event::PlayerActionEvent>()
             .add_message::<event::BlockInteractionRejected>()
-            .add_message::<event::PlayerUseItem>()
-            .add_message::<event::PlayerAnimation>();
+            .add_message::<event::PlayerUseItem>();
 
         // PacketSendEvent 已弃用（发包统一走 ClientNetwork 队列），此处仅保留注册
         // 以兼容 `tick_end` 等旧引用，故局部豁免弃用警告。

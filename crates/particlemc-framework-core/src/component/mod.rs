@@ -39,7 +39,7 @@ pub use entity_meta::{EntityMeta, EntityMetadataMap, EntityMetadataValue};
 pub use experience_orb::ExperienceOrb;
 pub use health::Health;
 pub use instance_ref::InstanceRef;
-pub use inventory::{PlayerInventory, QuickCraftState, convert_minestom_slot_to_window_slot};
+pub use inventory::{PlayerInventory, QuickCraftState, convert_minestom_slot_to_window_slot, CRAFTING_RESULT_SLOT};
 pub use item_entity::ItemEntity;
 pub use living::{EntityAIGroup, HurtResult, Living};
 pub use player::{GameMode, Player};

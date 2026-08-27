@@ -1,0 +1,25 @@
+{
+  "minecraft:in_overworld": {
+    "values": [
+      "#minecraft:universal",
+      "minecraft:day",
+      "minecraft:moon",
+      "minecraft:early_game"
+    ]
+  },
+  "minecraft:in_nether": {
+    "values": [
+      "#minecraft:universal"
+    ]
+  },
+  "minecraft:in_end": {
+    "values": [
+      "#minecraft:universal"
+    ]
+  },
+  "minecraft:universal": {
+    "values": [
+      "minecraft:villager_schedule"
+    ]
+  }
+}

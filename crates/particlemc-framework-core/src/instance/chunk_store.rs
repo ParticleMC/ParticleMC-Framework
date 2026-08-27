@@ -1,4 +1,4 @@
-﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
 //! 实例区块存储（`ChunkStore`）：作为实例 World 的只读/可变 `Resource`，
 //! 承载原 `InstanceContainer` 的区块数据、脏标记、生成器与持久化器。
@@ -46,7 +46,16 @@ pub struct ChunkStore {
     /// 最大加载区块数；`None` 表示不限制（向后兼容）。
     max_chunks: Option<usize>,
     /// LRU 访问顺序（最新访问在前）；仅用于淘汰决策，不参与相等性比较。
+    /// 属运行时状态，克隆时重置为空。
     access_order: VecDeque<(i32, i32)>,
+    /// 区块首次加载的 FIFO 插入顺序（最早加载的在队头，`pop_front` 即最早插入）。
+    ///
+    /// 选用 `VecDeque` 而非其他集合：与 `access_order` 结构一致、队首/队尾两端
+    /// 均 O(1)——新加载区块 `push_back` 到队尾，最早插入区块 `pop_front` 直取；
+    /// 且便于克隆时整体保留。该字段是区块集合的数据元信息（相对加载次序）而非
+    /// 运行时访问痕迹，区别于克隆重置的 `access_order`，从而保证克隆副本的淘汰
+    /// 仍能确定性回退到 FIFO 顺序（见 `evict_lru` 退化路径）。
+    insertion_order: VecDeque<(i32, i32)>,
     /// 世界配置的每区块区段数（默认 1，向后兼容）。
     section_count: usize,
 }
@@ -64,8 +73,10 @@ impl std::fmt::Debug for ChunkStore {
 }
 
 impl Clone for ChunkStore {
-    /// 克隆数据部分（区块 + 脏标记）；生成器与持久化器不可克隆，置为 `None`。
-    /// `access_order` 为运行时状态，克隆重置为空；`max_chunks` 作为配置保留。
+    /// 克隆数据部分（区块 + 脏标记 + 插入顺序）；生成器与持久化器不可克隆，置为
+    /// `None`。`access_order`/动态分片为运行时状态，克隆重置为空；`max_chunks` 与
+    /// `insertion_order`（区块数据元信息）作为数据随克隆保留，使副本在无访问记录
+    /// 时仍能依插入顺序确定性执行 FIFO 淘汰。
     fn clone(&self) -> Self {
         Self {
             chunks: self.chunks.clone(),
@@ -78,6 +89,8 @@ impl Clone for ChunkStore {
             max_chunks: self.max_chunks,
             // 访问顺序为运行时状态，克隆重置。
             access_order: VecDeque::new(),
+            // 插入顺序为区块数据元信息，克隆保留以便确定性 FIFO 淘汰。
+            insertion_order: self.insertion_order.clone(),
             section_count: self.section_count,
         }
     }
@@ -105,6 +118,7 @@ impl ChunkStore {
             registry: None,
             max_chunks: None,
             access_order: VecDeque::new(),
+            insertion_order: VecDeque::new(),
             section_count: 1,
         }
     }
@@ -136,12 +150,17 @@ impl ChunkStore {
             if let Some((evict_x, evict_z)) = self.access_order.pop_back() {
                 if self.chunks.contains_key(&(evict_x, evict_z)) {
                     self.chunks.remove(&(evict_x, evict_z));
+                    // 同步放弃插入顺序中的对应条目，避免留下幽灵坐标。
+                    self.insertion_order.retain(|&(cx, cz)| cx != evict_x || cz != evict_z);
                 }
             } else {
-                // access_order 为空（如克隆后），退化为 FIFO 淘汰最早插入的区块。
-                // 取 chunks 迭代器的第一个键作为最早插入的区块。
-                if let Some(&(evict_x, evict_z)) = self.chunks.keys().next() {
-                    self.chunks.remove(&(evict_x, evict_z));
+                // access_order 为空（如克隆后无访问记录），退化为 FIFO：取最早
+                // 插入的坐标（insertion_order 队首），淘汰该区块。
+                if let Some((evict_x, evict_z)) = self.insertion_order.pop_front() {
+                    // 防御：该坐标可能已被卸载但保留在队中；仅当仍在库时移除区块。
+                    if self.chunks.contains_key(&(evict_x, evict_z)) {
+                        self.chunks.remove(&(evict_x, evict_z));
+                    }
                 } else {
                     break;
                 }
@@ -160,16 +179,27 @@ impl ChunkStore {
     /// 加载后更新 LRU 访问顺序，并在超过上限时触发淘汰。
     pub fn load_chunk(&mut self, chunk: Chunk) -> Option<Chunk> {
         let coords = (chunk.x, chunk.z);
-        self.mark_access(coords.0, coords.1);
         let replaced = self.chunks.insert(coords, chunk);
+        // 维护 FIFO 插入顺序：替换已存在的坐标先移除旧条目，再追加到队尾；
+        // 新增坐标直接追加到队尾。
+        self.insertion_order.retain(|&(cx, cz)| cx != coords.0 || cz != coords.1);
+        self.insertion_order.push_back(coords);
         self.recompute_light(coords.0, coords.1);
         self.evict_lru();
+        // 访问标记置于淘汰之后：避免把刚加载的区块误当作淘汰候选，确保克隆等
+        // 无访问记录场景下 evict_lru 能命中 FIFO 退化路径。
+        self.mark_access(coords.0, coords.1);
         replaced
     }
 
     /// 卸载指定坐标的区块，返回被移除的区块（若有）。
     pub fn unload_chunk(&mut self, x: i32, z: i32) -> Option<Chunk> {
-        self.chunks.remove(&(x, z))
+        let removed = self.chunks.remove(&(x, z));
+        if removed.is_some() {
+            // 同步移除插入顺序中的对应条目，避免留下幽灵坐标。
+            self.insertion_order.retain(|&(cx, cz)| cx != x || cz != z);
+        }
+        removed
     }
 
     /// 查询指定坐标的区块。
@@ -384,8 +414,12 @@ impl ChunkStore {
         let generated = self.generator.as_ref()?.generate(x, z, seed);
         let chunk = generated_to_chunk(&generated, x, z);
         let _ = self.chunks.insert((x, z), chunk.clone());
-        self.mark_access(x, z);
+        // 维护 FIFO 插入顺序（该坐标此前缺失，retain 仅为防御）。
+        self.insertion_order.retain(|&(cx, cz)| cx != x || cz != z);
+        self.insertion_order.push_back((x, z));
         self.evict_lru();
+        // 访问标记置于淘汰之后，与 load_chunk 保持一致。
+        self.mark_access(x, z);
         Some(chunk)
     }
 
@@ -401,6 +435,9 @@ impl ChunkStore {
         for (x, z) in keys {
             if let Some(chunk) = loader.load(x, z) {
                 self.chunks.insert((x, z), chunk);
+                // 维护 FIFO 插入顺序：覆盖已存在的坐标先移除旧条目，再追加到队尾。
+                self.insertion_order.retain(|&(cx, cz)| cx != x || cz != z);
+                self.insertion_order.push_back((x, z));
             }
         }
     }
@@ -494,6 +531,9 @@ impl<'a> BulkEditContext<'a> {
         // 1. 合并区块数据。
         for (coords, chunk) in self.pending_chunks.drain() {
             self.store.chunks.insert(coords, chunk);
+            // 维护 FIFO 插入顺序：覆盖已存在的坐标先移除旧条目，再追加到队尾。
+            self.store.insertion_order.retain(|&(cx, cz)| cx != coords.0 || cz != coords.1);
+            self.store.insertion_order.push_back(coords);
         }
         // 2. 合并脏标记。
         self.store.dirty_chunks.extend(self.pending_dirty.drain());

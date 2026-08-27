@@ -1,4 +1,4 @@
-﻿// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+// Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
 //! tick 管线：消费动作类 serverbound 包并经事件总线派发。
 //!
@@ -455,7 +455,9 @@ mod tests {
         app.add_systems(super::super::block_interaction_validator::block_interaction_validator);
 
         let entity = app.world_mut().spawn_empty()
-            .insert(crate::component::Position::new(5.0, 64.0, 25.0))
+            // 玩家朝向 yaw=0、pitch=0，方向 dir=[0,0,-1]（面朝 -z）。
+            // 位置 (8,10,12)：到目标 (8,10,6) 的曼哈顿距离为 6（恰好边界）。
+            .insert(crate::component::Position::new(8.0, 10.0, 12.0))
             .insert(crate::component::Player::new(
                 uuid::Uuid::new_v4(),
                 "test",
@@ -467,13 +469,13 @@ mod tests {
             .open(1, None)
             .entity = Some(entity);
 
-        // 在目标区块加载石头方块（不透明，light_opacity=15）。
-        // 加载 chunk(0,0) 以覆盖玩家 (5,64,25) 及附近作用点。
+        // 加载 chunk(0,0)，单区段覆盖 y ∈ [0,15]。
+        // 仅 (8,10,6) 为实心方块（不透明，light_opacity=15），
+        // 射线沿 -z 从 z=12 推进至 z=6 的路径上其余方块均为空气。
+        // 玩家 (8,10,12) 所在格及其路径方块均落入该已加载区块。
         let chunk = {
             let mut c = crate::instance::chunk::Chunk::new(0, 0, 1);
-            for i in 0..crate::instance::chunk::SECTION_VOLUME {
-                let _ = c.set_block(0, i, 1);
-            }
+            let _ = c.set_block_world(8, 10, 6, 1);
             c
         };
         app.world_mut()
@@ -493,7 +495,8 @@ mod tests {
         });
 
         // 压入两条 PlayerAction 包。
-        // 位置均在 chunk(0,0) 内且距离玩家 (5,64,25) ≤ 6 格。
+        // status=1 位置 (5,64,6)（取消挖掘，不参与校验直接放行）；
+        // status=2 位置 (8,10,6)（完成挖掘，需通过距离+区块+射线校验）。
         app.world_mut()
             .resource_mut::<ClientNetworks>()
             .unwrap()
@@ -503,7 +506,7 @@ mod tests {
                     1,
                     InboundPacket::PlayerAction(PlayerAction {
                         status: 1,
-                        block_position: (5, 64, 20),
+                        block_position: (5, 64, 6),
                         block_face: 0,
                         sequence: 0,
                     }),
@@ -512,7 +515,7 @@ mod tests {
                     1,
                     InboundPacket::PlayerAction(PlayerAction {
                         status: 2,
-                        block_position: (8, 64, 25),
+                        block_position: (8, 10, 6),
                         block_face: 0,
                         sequence: 1,
                     }),
@@ -520,8 +523,9 @@ mod tests {
             ]);
         app.update();
 
-        // status=1（取消挖掘）直接放行；status=2 需通过校验（距离+区块已加载），
-        // 两条事件各触发两个监听器，顺序为 [1, 2, 1, 2]。
+        // status=1（取消挖掘）直接放行；status=2（完成挖掘）经距离（曼哈顿=6 ≤ 6）、
+        // 区块 (0,0) 已加载、射线首个实心 (8,10,6) 校验通过。
+        // 两条事件各触发两个监听器，顺序为 [1:1, 2:1, 1:2, 2:2]。
         let records = log.lock().unwrap();
         assert_eq!(records.len(), 4);
         assert_eq!(records[0], (1, 1, 5));

@@ -1,4 +1,4 @@
-﻿# Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
+# Copyright (C) 2026 @FogWayfarer(https://github.com/FogWayfarer)<FogWayfarer@163.com>
 # SPDX-License-Identifier: GPL-3.0-or-later
 [package]
 name = "particlemc-framework-core"
@@ -49,8 +49,10 @@ rustls = { version = "=0.23.43", features = ["ring"], optional = true }
 reqwest = { version = "=0.12.26", default-features = false, features = ["json", "rustls-tls"], optional = true }
 # URL 编码辅助（仅 online-auth feature）。
 urlencoding = { version = "=2.1.3", optional = true }
-# JSON 解析（仅 online-auth feature，与 serde 兼容）。
-serde_json = { version = "=1.0.149", optional = true }
+# JSON 解析（资源文件加载，替代 TOML）
+# enable preserve_order：无显式 id 的数据源（如附魔）按文件顺序自动编号，
+# 与 Java 数据生成器输出序位一致（BTreeMap 字典序会打乱该顺序）。
+serde_json = { version = "=1.0.149", features = ["preserve_order"] }
 
 # 允许 `#[cfg(fuzzing)]` 标记（协议/外部输入模块 fuzz 占位入口，见 constitution.md）。
 # 声明 check-cfg 后 rustc 不再对未知 cfg 名报错（否则 `-D warnings` 下触发 unexpected_cfgs）。
@@ -67,7 +69,7 @@ wasm-extensions = ["dep:wasmtime"]
 extension-mutation = ["wasm-extensions"]
 # 在线 Mojang 认证（RSA 握手 + hasJoined TLS）。默认关闭，不污染离线构建。见 ADR-017。
 # AES-CFB8 通道加密为后续独立事项，本 feature 不引入 aes/cfb8/cipher/generic-array。
-online-auth = ["dep:rsa", "dep:rand", "dep:rustls", "dep:reqwest", "dep:urlencoding", "dep:serde_json"]
+online-auth = ["dep:rsa", "dep:rand", "dep:rustls", "dep:reqwest", "dep:urlencoding"]
 
 # ── 开发依赖（仅测试 / 基准使用）──
 [dev-dependencies]

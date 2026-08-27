@@ -1,0 +1,11 @@
+{
+  "minecraft:plains": {
+    "name": "minecraft:plains"
+  },
+  "minecraft:desert": {
+    "name": "minecraft:desert"
+  },
+  "minecraft:ocean": {
+    "name": "minecraft:ocean"
+  }
+}
